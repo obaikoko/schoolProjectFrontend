@@ -2,6 +2,7 @@ import Head from 'next/head'
 import style from '../styles/Home.module.css'
 import SchoolHighlights from '@/components/schoolHighlights';
 import NewsSection from '@/components/NewsSection';
+import Newsletter from '@/components/NewLetter';
 
 
 
@@ -35,6 +36,7 @@ export default function Home() {
 
           <SchoolHighlights/>
           <NewsSection/>
+          <Newsletter/>
 
           <section className='my-5'>
             <div className='row'>
@@ -78,11 +80,7 @@ export default function Home() {
             </div>
           </section>
 
-          <footer className='text-center py-3'>
-            <p>
-              &copy; {new Date().getFullYear()} Our School. All rights reserved.
-            </p>
-          </footer>
+        
         </div>
       </main>
     </>
