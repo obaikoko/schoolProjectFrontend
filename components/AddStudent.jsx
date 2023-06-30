@@ -22,6 +22,7 @@ const addStudent = () => {
     firstName,
     lastName,
     surname,
+    level,
     dob,
     gender,
     yearAdmitted,

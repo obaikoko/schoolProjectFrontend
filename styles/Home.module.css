@@ -1,0 +1,31 @@
+.heroSection {
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1688120044/School%20Project/Classroom-Management-for-an-Effective-Learning-Environment-scaled_htdbmt.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroContent {
+  text-align: center;
+  
+  
+}
+
+.heroContent h2 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.heroContent p {
+    font-weight: bolder;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.heroContent .btn-secondary {
+  font-size: 1.5rem;
+  padding: 1rem 2.5rem;
+}
