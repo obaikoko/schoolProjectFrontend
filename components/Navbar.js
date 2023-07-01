@@ -45,18 +45,23 @@ const Navbar = () => {
                     className='nav-link active'
                     aria-current='page'
                   >
-                    HOME
+                    Home
                   </Link>
                 </li>
 
                 <li className='nav-item'>
                   <Link href='/about' className='nav-link'>
-                    ABOUT
+                    About
+                  </Link>
+                </li>
+                <li className='nav-item'>
+                  <Link href='/register' className='nav-link'>
+                    Register
                   </Link>
                 </li>
                 <li className='nav-item'>
                   <Link href='/loginPage' className='nav-link'>
-                    LOGIN
+                    Login
                   </Link>
                 </li>
               </ul>
