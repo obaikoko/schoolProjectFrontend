@@ -1,10 +1,8 @@
-import Head from 'next/head'
-import style from '../styles/Home.module.css'
+import Head from 'next/head';
+import style from '../styles/Home.module.css';
 import SchoolHighlights from '@/components/schoolHighlights';
 import NewsSection from '@/components/NewsSection';
 import Newsletter from '@/components/NewLetter';
-
-
 
 export default function Home() {
   return (
@@ -34,53 +32,15 @@ export default function Home() {
             </div>
           </section>
 
-          <SchoolHighlights/>
-          <NewsSection/>
-          <Newsletter/>
+          <SchoolHighlights />
+          <NewsSection />
+          <Newsletter />
 
-          <section className='my-5'>
-            <div className='row'>
-              <div className='col-md-6'>
-                <h2>About Us</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum sed feugiat lectus. Sed in risus vel mi tincidunt
-                  cursus eu vel massa.
-                </p>
-              </div>
-              <div className='col-md-6'>
-                <h2>Our Programs</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum sed feugiat lectus. Sed in risus vel mi tincidunt
-                  cursus eu vel massa.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className='my-5'>
-            <div className='row'>
-              <div className='col-md-6'>
-                <h2>Admissions</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum sed feugiat lectus. Sed in risus vel mi tincidunt
-                  cursus eu vel massa.
-                </p>
-              </div>
-              <div className='col-md-6'>
-                <h2>Contact Us</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum sed feugiat lectus. Sed in risus vel mi tincidunt
-                  cursus eu vel massa.
-                </p>
-              </div>
-            </div>
-          </section>
-
-        
+          <footer className=' bg-dark text-light text-center mt-4 py-3'>
+            <p>
+              &copy; {new Date().getFullYear()} Our School. All rights reserved.
+            </p>
+          </footer>
         </div>
       </main>
     </>

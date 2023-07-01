@@ -50,12 +50,12 @@ const Navbar = () => {
                 </li>
 
                 <li className='nav-item'>
-                  <Link href='/players' className='nav-link'>
+                  <Link href='/about' className='nav-link'>
                     ABOUT
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  <Link href='/api/auth/signin' className='nav-link'>
+                  <Link href='/loginPage' className='nav-link'>
                     LOGIN
                   </Link>
                 </li>
