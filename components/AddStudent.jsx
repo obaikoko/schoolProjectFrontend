@@ -920,7 +920,19 @@ const addStudent = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+  if (
+    (firstName &&
+    lastName &&
+    surname &&
+    level &&
+    dob &&
+    gender &&
+    yearAdmitted &&
+    stateOfOrigin &&
+    localGvt &&
+    homeTown &&
+    sponsorId)
+  ) {
     addStudent(
       firstName,
       lastName,
@@ -934,18 +946,23 @@ const addStudent = () => {
       homeTown,
       sponsorId
     );
-    // setFormData({
-    //   firstName: '',
-    //   lastName: '',
-    //   surname: '',
-    //   level: '',
-    //   gender: '',
-    //   dob: '',
-    //   yearAdmitted: '',
-    //   stateOfOrigin: '',
-    //   localGvt: '',
-    //   homeTown: '',
-    // });
+    toast.success(`${firstName} Registered successfully`)
+    setFormData({
+      firstName: '',
+      lastName: '',
+      surname: '',
+      level: '',
+      gender: '',
+      dob: '',
+      yearAdmitted: '',
+      stateOfOrigin: '',
+      localGvt: '',
+      homeTown: '',
+    });
+  } else {
+    toast.error('Please add all field')
+  }
+    
   };
   return (
     <>

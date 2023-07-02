@@ -967,36 +967,60 @@ const addTeacher = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addStaff(
-      firstName,
-      lastName,
-      surname,
-      qualification,
-      dob,
-      category,
-      role,
-      gender,
-      maritalStatus,
-      yearAdmitted,
-      stateOfOrigin,
-      localGvt,
-      homeTown,
-      residence,
-      phone,
+    if (
+      firstName &&
+      lastName &&
+      surname &&
+      qualification &&
+      dob &&
+      category &&
+      role &&
+      gender &&
+      maritalStatus &&
+      yearAdmitted &&
+      stateOfOrigin &&
+      localGvt &&
+      homeTown &&
+      residence &&
+      phone &&
       email
-    );
+    ) {
+  addStaff(
+    firstName,
+    lastName,
+    surname,
+    qualification,
+    dob,
+    category,
+    role,
+    gender,
+    maritalStatus,
+    yearAdmitted,
+    stateOfOrigin,
+    localGvt,
+    homeTown,
+    residence,
+    phone,
+    email
+  );
+
+  toast.success(`${firstName} Registered successfully`)
+
     setFormData({
-      // firstName: '',
-      // lastName: '',
-      // surname: '',
-      // qualification: '',
-      // gender: '',
-      // dob: '',
-      // yearAdmitted: '',
-      // stateOfOrigin: '',
-      // localGvt: '',
-      // homeTown: '',
+      firstName: '',
+      lastName: '',
+      surname: '',
+      qualification: '',
+      gender: '',
+      dob: '',
+      yearAdmitted: '',
+      stateOfOrigin: '',
+      localGvt: '',
+      homeTown: '',
     });
+    } else {
+      toast.error('Please add all field')
+    }
   };
   return (
     <>
@@ -1085,15 +1109,15 @@ const addTeacher = () => {
                     onChange={handleInputChange}
                   >
                     <option value=''>Select Highest Qualification</option>
-                    <option value='Professor '>Professor </option>
-                    <option value='Phd '>Phd </option>
-                    <option value='Master '>Master </option>
-                    <option value='Bachelors Degree '>Bachelors Degree </option>
-                    <option value='HND '>HND </option>
-                    <option value='OND '>OND </option>
-                    <option value='NCE '>NCE </option>
-                    <option value='SSCE '>SSCE </option>
-                    <option value='Others '>Others </option>
+                    <option value='Professor'>Professor </option>
+                    <option value='Phd'>Phd </option>
+                    <option value='Master'>Master </option>
+                    <option value='Bachelors Degree'>Bachelors Degree </option>
+                    <option value='HND'>HND </option>
+                    <option value='OND'>OND </option>
+                    <option value='NCE'>NCE </option>
+                    <option value='SSCE'>SSCE </option>
+                    <option value='Others'>Others </option>
                   </select>
                 </div>
                 <div className='mb-3'>

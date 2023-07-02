@@ -24,7 +24,7 @@ const addSponsor = () => {
     },
     refetchQueries: [{query: GET_SPONSORS}],
     onError: (error) => {
-      console.log(error.message);
+      toast.error(error.message);
     }
   });
   const handleInputChange = (e) => {
@@ -36,14 +36,21 @@ const addSponsor = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-   addSponsor(name, occupation, phoneNumber, address, relationship);
-    setFormData({
-      name: '',
-      occupation: '',
-      phoneNumber: '',
-      address: '',
-      relationship: '',
-    });
+    if ((name && occupation && phoneNumber && address && relationship)) {
+
+      addSponsor(name, occupation, phoneNumber, address, relationship);
+      toast.success(`${name} Registered Successfully`)
+        setFormData({
+          name: '',
+          occupation: '',
+          phoneNumber: '',
+          address: '',
+          relationship: '',
+        });
+    } else {
+      toast.warn(' please add all field ')
+    }
+  
   };
   return (
     <>
@@ -143,6 +150,7 @@ const addSponsor = () => {
                     className='form-select'
                     onChange={handleInputChange}
                   >
+                    <option value=''></option>
                     <option value='Father '>Father </option>
                     <option value='Mother '>Mother </option>
                     <option value='Uncle '>Uncle </option>
