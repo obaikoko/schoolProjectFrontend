@@ -31,17 +31,16 @@ export default function Home() {
               </a>
             </div>
           </section>
-
           <SchoolHighlights />
           <NewsSection />
           <Newsletter />
+        </div>
 
           <footer className=' bg-dark text-light text-center mt-4 py-3'>
             <p>
               &copy; {new Date().getFullYear()} Our School. All rights reserved.
             </p>
           </footer>
-        </div>
       </main>
     </>
   );

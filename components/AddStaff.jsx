@@ -1,7 +1,9 @@
 import { FaUser } from 'react-icons/fa';
-
+import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { ADD_STAFF } from './mutations/mutation';
+import { GET_STAFF } from './queries/query';
 
 const addTeacher = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,7 @@ const addTeacher = () => {
     surname: '',
     qualification: '',
     category: '',
+    role: '',
     gender: '',
     maritalStatus: '',
     dob: '',
@@ -26,9 +29,12 @@ const addTeacher = () => {
     firstName,
     lastName,
     surname,
+    qualification,
     dob,
     category,
+    role,
     gender,
+    maritalStatus,
     yearAdmitted,
     stateOfOrigin,
     localGvt,
@@ -37,6 +43,31 @@ const addTeacher = () => {
     phone,
     email,
   } = formData;
+
+  const [addStaff] = useMutation(ADD_STAFF, {
+    variables: {
+      firstName,
+      lastName,
+      surname,
+      qualification,
+      dob,
+      category,
+      role,
+      gender,
+      maritalStatus,
+      yearAdmitted,
+      stateOfOrigin,
+      localGvt,
+      homeTown,
+      residence,
+      phone,
+      email,
+    },
+    onError:(error)=> {
+      toast.error(error.message);
+    },
+    refetchQueries: [{query: GET_STAFF}]
+  });
 
   const handleInputChange = (e) => {
     setFormData((prevState) => ({
@@ -51,23 +82,23 @@ const addTeacher = () => {
     }));
 
     const selectedCategory = e.target.value;
-    const staffRole = document.getElementById('staffRole');
+    const role = document.getElementById('role');
 
-    staffRole.innerHTML = '';
+    role.innerHTML = '';
 
     if (selectedCategory === 'Tutorial') {
-      addStaffOption(staffRole, 'Mathematics');
-      addStaffOption(staffRole, 'English');
-      addStaffOption(staffRole, 'Physics');
+      addStaffOption(role, 'Mathematics');
+      addStaffOption(role, 'English');
+      addStaffOption(role, 'Physics');
     } else if (selectedCategory === 'Non Tutorial') {
-      addStaffOption(staffRole, '');
-      addStaffOption(staffRole, 'Kitchen');
-      addStaffOption(staffRole, 'Hostel Master/Mistress');
-      addStaffOption(staffRole, 'Driver');
-      addStaffOption(staffRole, 'Security');
-      addStaffOption(staffRole, 'Health');
-      addStaffOption(staffRole, 'Canteen');
-      addStaffOption(staffRole, 'Cleaner');
+      addStaffOption(role, '');
+      addStaffOption(role, 'Kitchen');
+      addStaffOption(role, 'Hostel Master/Mistress');
+      addStaffOption(role, 'Driver');
+      addStaffOption(role, 'Security');
+      addStaffOption(role, 'Health');
+      addStaffOption(role, 'Canteen');
+      addStaffOption(role, 'Cleaner');
     } else {
       return;
     }
@@ -936,31 +967,35 @@ const addTeacher = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (
-      !firstName ||
-      !lastName ||
-      !surname ||
-      !qualification ||
-      !gender ||
-      !dob ||
-      !yearAdmitted ||
-      !stateOfOrigin ||
-      !localGvt ||
-      !homeTown
-    ) {
-      return alert('Please add all field');
-    }
+    addStaff(
+      firstName,
+      lastName,
+      surname,
+      qualification,
+      dob,
+      category,
+      role,
+      gender,
+      maritalStatus,
+      yearAdmitted,
+      stateOfOrigin,
+      localGvt,
+      homeTown,
+      residence,
+      phone,
+      email
+    );
     setFormData({
-      firstName: '',
-      lastName: '',
-      surname: '',
-      qualification: '',
-      gender: '',
-      dob: '',
-      yearAdmitted: '',
-      stateOfOrigin: '',
-      localGvt: '',
-      homeTown: '',
+      // firstName: '',
+      // lastName: '',
+      // surname: '',
+      // qualification: '',
+      // gender: '',
+      // dob: '',
+      // yearAdmitted: '',
+      // stateOfOrigin: '',
+      // localGvt: '',
+      // homeTown: '',
     });
   };
   return (
@@ -1077,18 +1112,15 @@ const addTeacher = () => {
                   </select>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='staffRole' className='form-label'>
+                  <label htmlFor='role' className='form-label'>
                     Subject Handled or Role
                   </label>
                   <select
-                    name='staffRole'
-                    id='staffRole'
+                    name='role'
+                    id='role'
                     className='form-select'
                     onChange={handleInputChange}
                   >
-                    <option value=''></option>
-                    <option value='Male'>Male</option>
-                    <option value='Female'>Female</option>
                   </select>
                 </div>
                 <div className='mb-3'>
@@ -1206,7 +1238,7 @@ const addTeacher = () => {
                     Local Government
                   </label>
                   <select
-                    name='staffLocalGvt'
+                    name='localGvt'
                     id='staffLocalGvt'
                     className='form-select'
                     onChange={handleInputChange}

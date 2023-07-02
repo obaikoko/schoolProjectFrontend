@@ -1,22 +1,40 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '@/components/mutations/mutation';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 function loginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = formData;
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const router = useRouter()
+const [loginUser] = useMutation(LOGIN_USER, {
+  variables: { email, password },
+  onError: (error) => {
+    toast.error(error.message);
+  },
+});
+
+
+  const handleInputChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle login logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    loginUser(email, password);
+    setFormData({
+      email: '',
+      password: ''
+    })
+    router.push('/register')
   };
 
   return (
@@ -30,23 +48,25 @@ function loginPage() {
             <div className='card-body'>
               <form onSubmit={handleSubmit}>
                 <div className='form-group'>
-                  <label htmlFor='username'>Username</label>
+                  <label htmlFor='email'>Username</label>
                   <input
                     type='text'
+                    name='email'
                     className='form-control'
-                    id='username'
-                    value={username}
-                    onChange={handleUsernameChange}
+                    id='email'
+                    value={email}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className='form-group'>
                   <label htmlFor='password'>Password</label>
                   <input
                     type='password'
+                    name='password'
                     className='form-control'
                     id='password'
                     value={password}
-                    onChange={handlePasswordChange}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <button type='submit' className='btn btn-primary'>

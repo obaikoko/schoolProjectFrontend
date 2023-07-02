@@ -1,18 +1,32 @@
 import { FaUser } from 'react-icons/fa';
-
+import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { ADD_SPONSOR } from './mutations/mutation';
+import { GET_SPONSORS } from './queries/query';
 
 const addSponsor = () => {
   const [formData, setFormData] = useState({
     name: '',
     occupation: '',
-    phone: '',
+    phoneNumber: '',
     address: '',
     relationship: '',
   });
-  const { name, occupation, phone, address, relationship } = formData;
-
+  const { name, occupation, phoneNumber, address, relationship } = formData;
+  const [addSponsor] = useMutation(ADD_SPONSOR, {
+    variables: {
+      name,
+      occupation,
+      phoneNumber,
+      address,
+      relationship,
+    },
+    refetchQueries: [{query: GET_SPONSORS}],
+    onError: (error) => {
+      console.log(error.message);
+    }
+  });
   const handleInputChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -22,13 +36,11 @@ const addSponsor = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!name || !occupation || !phone || !address || !relationship) {
-      return alert('Please add all field');
-    }
+   addSponsor(name, occupation, phoneNumber, address, relationship);
     setFormData({
       name: '',
       occupation: '',
-      phone: '',
+      phoneNumber: '',
       address: '',
       relationship: '',
     });
@@ -96,14 +108,14 @@ const addSponsor = () => {
                   />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='phone' className='form-label'>
+                  <label htmlFor='phoneNumber' className='form-label'>
                     Phone Number
                   </label>
                   <input
                     type='text'
-                    name='phone'
-                    id='phone'
-                    value={phone}
+                    name='phoneNumber'
+                    id='phoneNumber'
+                    value={phoneNumber}
                     onChange={handleInputChange}
                     className='form-control'
                   />

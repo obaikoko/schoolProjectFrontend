@@ -4,8 +4,10 @@ import Navbar from './Navbar';
 const layout = ({ children }) => {
   return (
     <>
-      <Navbar />
-      <div>{children}</div>
+      <div>
+        <Navbar />
+        <div>{children}</div>
+      </div>
     </>
   );
 };
