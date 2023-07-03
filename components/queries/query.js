@@ -1,56 +1,6 @@
 import { gql } from '@apollo/client';
 
-const GET_STUDENTS = gql`
-  query getStudents {
-    students {
-      id
-      surname
-      firstName
-      lastName
-      level
-      gender
-      dob
-      yearAdmitted
-      stateOfOrigin
-      localGvt
-      homeTown
-      sponsor {
-        id
-        name
-        occupation
-        relationship
-        phoneNumber
-        address
-      }
-    }
-  }
-`;
 
-const GET_STUDENT = gql`
-  query getStudent($id: ID!) {
-    studentDetails(id: $id) {
-      id
-      surname
-      firstName
-      lastName
-      level
-      gender
-      dob
-      yearAdmitted
-      stateOfOrigin
-      localGvt
-      homeTown
-      sponsor {
-        id
-        name
-        occupation
-        relationship
-        phoneNumber
-        address
-      }
-    }
-  }
-`;
 
 const GET_STAFF = gql`
 query getStaff{
@@ -139,4 +89,4 @@ const GET_SPONSORS = gql`
     }
   }
 `;
-export { GET_STUDENTS, GET_STUDENT, GET_STAFF, GET_STAFF_DETAIL, GET_USERS, GET_USER, GET_SPONSORS };
+export { GET_STAFF, GET_STAFF_DETAIL, GET_USERS, GET_USER, GET_SPONSORS };

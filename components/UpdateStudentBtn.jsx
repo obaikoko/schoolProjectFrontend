@@ -1,25 +1,24 @@
-import { FaUser, FaChild } from 'react-icons/fa';
-import { useMutation, useQuery } from '@apollo/client';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
-import { ADD_STUDENT } from './mutations/studentMutations';
-import { GET_STUDENTS } from './queries/studentQueries';
+import { useMutation, useQuery } from '@apollo/client';
 import { GET_SPONSORS } from './queries/query';
+import { toast } from 'react-toastify';
+import { UPDATE_STUDENT } from './mutations/studentMutations';
+import { GET_STUDENTS } from './queries/studentQueries';
 import Spinner from './Spinner';
 
-const addStudent = () => {
+const UpdateStudentBtn = ({ student }) => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    surname: '',
-    level: '',
-    gender: '',
-    dob: '',
-    yearAdmitted: '',
-    stateOfOrigin: '',
-    localGvt: '',
-    homeTown: '',
-    sponsorId: '',
+    firstName: student.firstName,
+    lastName: student.lastName,
+    surname: student.surname,
+    level: student.level,
+    gender: student.gender,
+    dob: student.dob,
+    yearAdmitted: student.yearAdmitted,
+    stateOfOrigin: student.stateOfOrigin,
+    localGvt: student.localGvt,
+    homeTown: student.homeTown,
+    sponsorId: student.sponsorId
   });
 
   const {
@@ -38,7 +37,7 @@ const addStudent = () => {
 
   const { data } = useQuery(GET_SPONSORS);
 
-  const [addStudent, { loading, error }] = useMutation(ADD_STUDENT, {
+  const [updateStudent, { loading, error }] = useMutation(UPDATE_STUDENT, {
     variables: {
       firstName,
       lastName,
@@ -50,15 +49,15 @@ const addStudent = () => {
       stateOfOrigin,
       localGvt,
       homeTown,
-      sponsorId,
+      sponsorId
     },
-    refetchQueries: [{ query: GET_SPONSORS }, {query: GET_STUDENTS}],
+    refetchQueries: [{ query: GET_SPONSORS }, { query: GET_STUDENTS }],
     onError: (error) => {
       toast.error(error.message);
     },
 
     onCompleted: () => {
-      toast.success(`Student registered successfully`);
+      toast.success(`Student updated successfully`);
     },
   });
 
@@ -926,71 +925,40 @@ const addStudent = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (
-      firstName &&
-      lastName &&
-      surname &&
-      level &&
-      dob &&
-      gender &&
-      yearAdmitted &&
-      stateOfOrigin &&
-      localGvt &&
-      homeTown &&
+
+    updateStudent(
+      firstName,
+      lastName,
+      surname,
+      level,
+      dob,
+      gender,
+      yearAdmitted,
+      stateOfOrigin,
+      localGvt,
+      homeTown,
       sponsorId
-    ) {
-      addStudent(
-        firstName,
-        lastName,
-        surname,
-        level,
-        dob,
-        gender,
-        yearAdmitted,
-        stateOfOrigin,
-        localGvt,
-        homeTown,
-        sponsorId
-      );
-      setFormData({
-        firstName: '',
-        lastName: '',
-        surname: '',
-        level: '',
-        gender: '',
-        dob: '',
-        yearAdmitted: '',
-        stateOfOrigin: '',
-        localGvt: '',
-        homeTown: '',
-      });
-    } else if (loading) {
-      toast.loading(<Spinner />);
-    } else {
-      toast.error('Please add all field');
-    }
+    );
+
   };
   return (
     <>
       <button
         type='button'
-        className='btn btn-primary'
+        className='btn btn-sm'
         data-bs-toggle='modal'
-        data-bs-target='#addStudentmodal'
+        data-bs-target='#updateStudentModal'
       >
         {loading ? (
           <Spinner />
         ) : (
-          <div className='d-flex align-items-center'>
-            <FaChild className='icon mx-2' />
-            <div> Add Student</div>
-          </div>
+          <p className='btn btn-secondary'>update student</p>
         )}
       </button>
 
       <div
         className='modal fade'
-        id='addStudentmodal'
+        id='updateStudentModal'
         tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
@@ -999,7 +967,7 @@ const addStudent = () => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h1 className='modal-title fs-5' id='exampleModalLabel'>
-                Add Student
+                Update Student
               </h1>
               <button
                 type='button'
@@ -1207,9 +1175,7 @@ const addStudent = () => {
                           {sponsorId.name}
                         </option>
                       ))}
-                    <option value='Self Sponsored'>
-                        Self Sponsored
-                    </option>
+                    <option value='Self Sponsored'>Self Sponsored</option>
                   </select>
                 </div>
                 <button
@@ -1228,4 +1194,4 @@ const addStudent = () => {
   );
 };
 
-export default addStudent;
+export default UpdateStudentBtn;

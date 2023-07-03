@@ -15,56 +15,6 @@ const LOGIN_USER = gql`
   }
 `;
 
-const ADD_STUDENT = gql`
-  mutation addStudent(
-    $firstName: String!
-    $lastName: String!
-    $surname: String!
-    $dob: String!
-    $yearAdmitted: String!
-    $stateOfOrigin: String!
-    $localGvt: String!
-    $homeTown: String!
-    $gender: GenderType!
-    $level: ClassStatus!
-    $sponsorId: ID!
-  ) {
-    addStudent(
-      firstName: $firstName
-      lastName: $lastName
-      surname: $surname
-      dob: $dob
-      yearAdmitted: $yearAdmitted
-      stateOfOrigin: $stateOfOrigin
-      localGvt: $localGvt
-      homeTown: $homeTown
-      gender: $gender
-      level: $level
-      sponsorId: $sponsorId
-    ) {
-      id
-      surname
-      firstName
-      lastName
-      dob
-      yearAdmitted
-      stateOfOrigin
-      localGvt
-      homeTown
-      gender
-      level
-      sponsor{
-        name
-        occupation
-        relationship
-        phoneNumber
-        address
-      }
-    }
-  }
-`;
-
-
 const ADD_SPONSOR = gql`
   mutation addSponsor(
     $name: String!
@@ -150,4 +100,4 @@ const ADD_STAFF = gql`
 
 
 
-export {LOGIN_USER, ADD_STUDENT, ADD_SPONSOR, ADD_STAFF}
+export {LOGIN_USER, ADD_SPONSOR, ADD_STAFF}
