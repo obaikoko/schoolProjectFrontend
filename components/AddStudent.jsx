@@ -1,4 +1,4 @@
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaChild } from 'react-icons/fa';
 import { useMutation, useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -981,7 +981,7 @@ const addStudent = () => {
           <Spinner />
         ) : (
           <div className='d-flex align-items-center'>
-            <FaUser className='icon mx-2' />
+            <FaChild className='icon mx-2' />
             <div> Add Student</div>
           </div>
         )}
