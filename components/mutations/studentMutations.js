@@ -1,5 +1,4 @@
-import { gql } from "@apollo/client";
-
+import { gql } from '@apollo/client';
 
 const ADD_STUDENT = gql`
   mutation addStudent(
@@ -52,6 +51,7 @@ const ADD_STUDENT = gql`
 
 const UPDATE_STUDENT = gql`
   mutation updateStudent(
+    $id: ID!
     $firstName: String!
     $lastName: String!
     $surname: String!
@@ -65,6 +65,7 @@ const UPDATE_STUDENT = gql`
     $sponsorId: ID!
   ) {
     updateStudent(
+      id: $id
       firstName: $firstName
       lastName: $lastName
       surname: $surname
@@ -98,5 +99,18 @@ const UPDATE_STUDENT = gql`
     }
   }
 `;
+const DELETE_STUDENT = gql`
+  mutation deleteStudent(
+    $id: ID!
+   
+  ) {
+    deleteStudent(
+      id: $id
+   
+    ) {
+      id
+    }
+  }
+`;
 
-export {  ADD_STUDENT, UPDATE_STUDENT };
+export { ADD_STUDENT, UPDATE_STUDENT, DELETE_STUDENT };

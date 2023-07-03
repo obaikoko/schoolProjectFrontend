@@ -1,18 +1,19 @@
-import Spinner from "@/components/Spinner";
-import UpdateStudentBtn from "@/components/UpdateStudentBtn";
-import { GET_STUDENT } from "@/components/queries/studentQueries";
-import { useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
+import DeleteStudentBtn from '@/components/DeleteStudentBtn';
+import Spinner from '@/components/Spinner';
+import UpdateStudentBtn from '@/components/UpdateStudentBtn';
+import { GET_STUDENT } from '@/components/queries/studentQueries';
+import { useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
 
 const StudentDetails = () => {
-  const router = useRouter()
-  const {id} = router.query
+  const router = useRouter();
+  const { id } = router.query;
 
-  const {loading, error, data} = useQuery(GET_STUDENT, {variables: {
-    id
-  }})
-
-  
+  const { loading, error, data } = useQuery(GET_STUDENT, {
+    variables: {
+      id,
+    },
+  });
 
   return (
     <>
@@ -53,11 +54,15 @@ const StudentDetails = () => {
                 <div className='col-md-6'>
                   <div className='form-group'>
                     <label className='font-weight-bold'>Year Admitted:</label>
-                    <p className='text-muted'>{data.studentDetails.yearAdmitted}</p>
+                    <p className='text-muted'>
+                      {data.studentDetails.yearAdmitted}
+                    </p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>State of Origin:</label>
-                    <p className='text-muted'>{data.studentDetails.stateOfOrigin}</p>
+                    <p className='text-muted'>
+                      {data.studentDetails.stateOfOrigin}
+                    </p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>
@@ -73,8 +78,16 @@ const StudentDetails = () => {
               </div>
             </div>
           </div>
-
-          <UpdateStudentBtn student={data.studentDetails} key={data.studentDetails.id}/>
+          <div className='d-flex m-2'>
+            <UpdateStudentBtn
+              student={data.studentDetails}
+              key={data.studentDetails.id}
+            />
+            <DeleteStudentBtn
+              student={data.studentDetails}
+              key={data.studentDetails.id}
+            />
+          </div>
         </div>
       ) : (
         <Spinner />

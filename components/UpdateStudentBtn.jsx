@@ -39,6 +39,7 @@ const UpdateStudentBtn = ({ student }) => {
 
   const [updateStudent, { loading, error }] = useMutation(UPDATE_STUDENT, {
     variables: {
+      id: student.id,
       firstName,
       lastName,
       surname,
@@ -939,6 +940,7 @@ const UpdateStudentBtn = ({ student }) => {
       homeTown,
       sponsorId
     );
+    console.log(student.id);
 
   };
   return (
@@ -952,7 +954,7 @@ const UpdateStudentBtn = ({ student }) => {
         {loading ? (
           <Spinner />
         ) : (
-          <p className='btn btn-secondary'>update student</p>
+          <p className='btn btn-secondary'>update</p>
         )}
       </button>
 
