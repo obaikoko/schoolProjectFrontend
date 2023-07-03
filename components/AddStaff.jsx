@@ -1,6 +1,7 @@
 import { FaUser } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
+import Spinner from './Spinner';
 import { toast } from 'react-toastify';
 import { ADD_STAFF } from './mutations/mutation';
 import { GET_STAFF } from './queries/query';
@@ -44,7 +45,7 @@ const addTeacher = () => {
     email,
   } = formData;
 
-  const [addStaff] = useMutation(ADD_STAFF, {
+  const [addStaff, {loading}] = useMutation(ADD_STAFF, {
     variables: {
       firstName,
       lastName,
@@ -65,6 +66,9 @@ const addTeacher = () => {
     },
     onError:(error)=> {
       toast.error(error.message);
+    },
+    onCompleted: () => {
+        toast.success(`Staff registered successfully`);
     },
     refetchQueries: [{query: GET_STAFF}]
   });
@@ -1004,7 +1008,7 @@ const addTeacher = () => {
     email
   );
 
-  toast.success(`${firstName} Registered successfully`)
+
 
     setFormData({
       firstName: '',
@@ -1030,10 +1034,11 @@ const addTeacher = () => {
         data-bs-toggle='modal'
         data-bs-target='#addTeacherModal'
       >
-        <div className='d-flex align-items-center'>
+        {loading ? (<Spinner/>) : (<div className='d-flex align-items-center'>
           <FaUser className='icon mx-2' />
           <div> Add Staff</div>
-        </div>
+        </div>)}
+        
       </button>
 
       <div

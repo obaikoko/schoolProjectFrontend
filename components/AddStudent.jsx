@@ -3,7 +3,8 @@ import { useMutation, useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { ADD_STUDENT } from './mutations/mutation';
-import { GET_SPONSORS } from './queries/query';
+import { GET_SPONSORS, GET_STUDENTS } from './queries/query';
+import Spinner from './Spinner';
 
 const addStudent = () => {
   const [formData, setFormData] = useState({
@@ -34,9 +35,9 @@ const addStudent = () => {
     sponsorId,
   } = formData;
 
-  const { loading, error, data } = useQuery(GET_SPONSORS);
- 
-  const [addStudent] = useMutation(ADD_STUDENT, {
+  const { data } = useQuery(GET_SPONSORS);
+
+  const [addStudent, { loading, error }] = useMutation(ADD_STUDENT, {
     variables: {
       firstName,
       lastName,
@@ -50,9 +51,13 @@ const addStudent = () => {
       homeTown,
       sponsorId,
     },
-    refetchQueries:[{query: GET_SPONSORS}],
+    refetchQueries: [{ query: GET_SPONSORS }, {query: GET_STUDENTS}],
     onError: (error) => {
-      console.log(error.message);
+      toast.error(error.message);
+    },
+
+    onCompleted: () => {
+      toast.success(`Student registered successfully`);
     },
   });
 
@@ -920,295 +925,304 @@ const addStudent = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-  if (
-    (firstName &&
-    lastName &&
-    surname &&
-    level &&
-    dob &&
-    gender &&
-    yearAdmitted &&
-    stateOfOrigin &&
-    localGvt &&
-    homeTown &&
-    sponsorId)
-  ) {
-    addStudent(
-      firstName,
-      lastName,
-      surname,
-      level,
-      dob,
-      gender,
-      yearAdmitted,
-      stateOfOrigin,
-      localGvt,
-      homeTown,
+    if (
+      firstName &&
+      lastName &&
+      surname &&
+      level &&
+      dob &&
+      gender &&
+      yearAdmitted &&
+      stateOfOrigin &&
+      localGvt &&
+      homeTown &&
       sponsorId
-    );
-    toast.success(`${firstName} Registered successfully`)
-    setFormData({
-      firstName: '',
-      lastName: '',
-      surname: '',
-      level: '',
-      gender: '',
-      dob: '',
-      yearAdmitted: '',
-      stateOfOrigin: '',
-      localGvt: '',
-      homeTown: '',
-    });
-  } else {
-    toast.error('Please add all field')
-  }
-    
+    ) {
+      addStudent(
+        firstName,
+        lastName,
+        surname,
+        level,
+        dob,
+        gender,
+        yearAdmitted,
+        stateOfOrigin,
+        localGvt,
+        homeTown,
+        sponsorId
+      );
+      setFormData({
+        firstName: '',
+        lastName: '',
+        surname: '',
+        level: '',
+        gender: '',
+        dob: '',
+        yearAdmitted: '',
+        stateOfOrigin: '',
+        localGvt: '',
+        homeTown: '',
+      });
+    } else if (loading) {
+      toast.loading(<Spinner />);
+    } else {
+      toast.error('Please add all field');
+    }
   };
   return (
     <>
-    
-      {!loading && !error && (
-        <>
-          <button
-            type='button'
-            className='btn btn-primary'
-            data-bs-toggle='modal'
-            data-bs-target='#addStudentmodal'
-          >
-            <div className='d-flex align-items-center'>
-              <FaUser className='icon mx-2' />
-              <div> Add Student</div>
+      <button
+        type='button'
+        className='btn btn-primary'
+        data-bs-toggle='modal'
+        data-bs-target='#addStudentmodal'
+      >
+        {loading ? (
+          <Spinner />
+        ) : (
+          <div className='d-flex align-items-center'>
+            <FaUser className='icon mx-2' />
+            <div> Add Student</div>
+          </div>
+        )}
+      </button>
+
+      <div
+        className='modal fade'
+        id='addStudentmodal'
+        tabIndex='-1'
+        aria-labelledby='exampleModalLabel'
+        aria-hidden='true'
+      >
+        <div className='modal-dialog'>
+          <div className='modal-content'>
+            <div className='modal-header'>
+              <h1 className='modal-title fs-5' id='exampleModalLabel'>
+                Add Student
+              </h1>
+              <button
+                type='button'
+                className='btn-close'
+                data-bs-dismiss='modal'
+                aria-label='Close'
+              ></button>
             </div>
-          </button>
-
-          <div
-            className='modal fade'
-            id='addStudentmodal'
-            tabIndex='-1'
-            aria-labelledby='exampleModalLabel'
-            aria-hidden='true'
-          >
-            <div className='modal-dialog'>
-              <div className='modal-content'>
-                <div className='modal-header'>
-                  <h1 className='modal-title fs-5' id='exampleModalLabel'>
-                    Add Student
-                  </h1>
-                  <button
-                    type='button'
-                    className='btn-close'
-                    data-bs-dismiss='modal'
-                    aria-label='Close'
-                  ></button>
+            <div className='modal-body'>
+              <form onSubmit={onSubmit}>
+                <div className='mb-3'>
+                  <label htmlFor='firstName' className='form-label'>
+                    Fisrt Name
+                  </label>
+                  <input
+                    type='text'
+                    name='firstName'
+                    id='firstName'
+                    value={firstName}
+                    onChange={handleInputChange}
+                    className='form-control'
+                  />
                 </div>
-                <div className='modal-body'>
-                  <form onSubmit={onSubmit}>
-                    <div className='mb-3'>
-                      <label htmlFor='firstName' className='form-label'>
-                        Fisrt Name
-                      </label>
-                      <input
-                        type='text'
-                        name='firstName'
-                        id='firstName'
-                        value={firstName}
-                        onChange={handleInputChange}
-                        className='form-control'
-                      />
-                    </div>
-                    <div className='mb-3'>
-                      <label htmlFor='lastName' className='form-label'>
-                        Last Name
-                      </label>
-                      <input
-                        type='text'
-                        name='lastName'
-                        id='lastName'
-                        value={lastName}
-                        onChange={handleInputChange}
-                        className='form-control'
-                      />
-                    </div>
-                    <div className='mb-3'>
-                      <label htmlFor='surname' className='form-label'>
-                        Surname
-                      </label>
-                      <input
-                        type='text'
-                        name='surname'
-                        id='surname'
-                        value={surname}
-                        onChange={handleInputChange}
-                        className='form-control'
-                      />
-                    </div>
-
-                    <div className='mb-3'>
-                      <label htmlFor='level' className='form-label'>
-                        Class
-                      </label>
-                      <select
-                        name='level'
-                        id='level'
-                        className='form-select'
-                        onChange={handleInputChange}
-                      >
-                        <option value=''>Select class</option>
-                        <option value='Jss1'>Jss1</option>
-                        <option value='Jss2'>Jss2</option>
-                        <option value='Jss3'>Jss3</option>
-                        <option value='Sss1'>Sss1</option>
-                        <option value='Sss2'>Sss2</option>
-                        <option value='Sss3'>Sss3</option>
-                      </select>
-                    </div>
-                    <div className='mb-3'>
-                      <label htmlFor='gender' className='form-label'>
-                        Gender
-                      </label>
-                      <select
-                        name='gender'
-                        id='gender'
-                        className='form-select'
-                        onChange={handleInputChange}
-                      >
-                        <option value=''></option>
-                        <option value='Male'>Male</option>
-                        <option value='Female'>Female</option>
-                      </select>
-                    </div>
-
-                    <div className='mb-3'>
-                      <label htmlFor='dob' className='form-label'>
-                        Date of birth
-                      </label>
-                      <input
-                        type='text'
-                        name='dob'
-                        placeholder='DD/MM/YYYY'
-                        id='dob'
-                        value={dob}
-                        onChange={handleInputChange}
-                        className='form-control'
-                      />
-                    </div>
-                    <div className='mb-3'>
-                      <label htmlFor='yearAdmitted' className='form-label'>
-                        Session Admitted
-                      </label>
-                      <input
-                        type='text'
-                        name='yearAdmitted'
-                        placeholder='Enter the session Admitted eg(2017/2018)'
-                        id='yearAdmitted'
-                        value={yearAdmitted}
-                        onChange={handleInputChange}
-                        className='form-control'
-                      />
-                    </div>
-
-                    <div className='mb-3'>
-                      <label htmlFor='stateOfOrigin' className='form-label'>
-                        State of origin
-                      </label>
-                      <select
-                        name='stateOfOrigin'
-                        id='stateOfOrigin'
-                        className='form-select'
-                        // onChange={handleInputChange}
-                        onChange={handleStateChange}
-                      >
-                        <option value=''></option>
-                        <option value='Abia'>Abia</option>
-                        <option value='Adamawa'>Adamawa</option>
-                        <option value='Akwa Ibom'>Akwa Ibom</option>
-                        <option value='Anambra'>Anambra</option>
-                        <option value='Bauchi'>Bauchi</option>
-                        <option value='Bayelsa'>Bayelsa</option>
-                        <option value='Benue'>Benue</option>
-                        <option value='Borno'>Borno</option>
-                        <option value='Cross River'>Cross River</option>
-                        <option value='Delta'>Delta</option>
-                        <option value='Ebonyi'>Ebonyi</option>
-                        <option value='Edo'>Edo</option>
-                        <option value='Ekiti'>Ekiti</option>
-                        <option value='Enugu'>Enugu</option>
-                        <option value='Gombe'>Gombe</option>
-                        <option value='Imo'>Imo</option>
-                        <option value='Jigawa'>Jigawa</option>
-                        <option value='Kaduna'>Kaduna</option>
-                        <option value='Kano'>Kano</option>
-                        <option value='Katsina'>Katsina</option>
-                        <option value='Kebbi'>Kebbi</option>
-                        <option value='Kogi'>Kogi</option>
-                        <option value='Kwara'>Kwara</option>
-                        <option value='Lagos'>Lagos</option>
-                        <option value='Nasarawa'>Nasarawa</option>
-                        <option value='Niger'>Niger</option>
-                        <option value='Ogun'>Ogun</option>
-                        <option value='Ondo'>Ondo</option>
-                        <option value='Osun'>Osun</option>
-                        <option value='Oyo'>Oyo</option>
-                        <option value='Plateau'>Plateau</option>
-                        <option value='Rivers'>Rivers</option>
-                        <option value='Sokoto'>Sokoto</option>
-                        <option value='Taraba'>Taraba</option>
-                        <option value='Yobe'>Yobe</option>
-                        <option value='Zamfara'>Zamfara</option>
-                      </select>
-                    </div>
-                    <div className='mb-3'>
-                      <label htmlFor='localGvt' className='form-label'>
-                        Local Government
-                      </label>
-                      <select
-                        name='localGvt'
-                        id='localGvt'
-                        className='form-select'
-                        onChange={handleInputChange}
-                      ></select>
-                    </div>
-                    <div className='mb-3'>
-                      <label htmlFor='homeTown' className='form-label'>
-                        Home Town
-                      </label>
-                      <input
-                        type='text'
-                        name='homeTown'
-                        id='homeTown'
-                        value={homeTown}
-                        onChange={handleInputChange}
-                        className='form-control'
-                      />
-                    </div>
-                    <div className='mb-3'>
-                      <label htmlFor='sponsorId' className='form-label'>
-                        Sponsor
-                      </label>
-                      <select
-                        className='form-select'
-                        name='sponsorId'
-                        id='sponsorId'
-                        onChange={handleInputChange}
-                      >
-                        <option value='sponsorId'></option>
-                        {data.Sponsors.map((sponsorId) => (<option value={sponsorId.id} key={sponsorId.id}>{sponsorId.name}</option>))}
-                      </select>
-                    </div>
-                    <button
-                      className='btn btn-secondary'
-                      type='submit'
-                      data-bs-dismiss='modal'
-                    >
-                      submit
-                    </button>
-                  </form>
+                <div className='mb-3'>
+                  <label htmlFor='lastName' className='form-label'>
+                    Last Name
+                  </label>
+                  <input
+                    type='text'
+                    name='lastName'
+                    id='lastName'
+                    value={lastName}
+                    onChange={handleInputChange}
+                    className='form-control'
+                  />
                 </div>
-              </div>
+                <div className='mb-3'>
+                  <label htmlFor='surname' className='form-label'>
+                    Surname
+                  </label>
+                  <input
+                    type='text'
+                    name='surname'
+                    id='surname'
+                    value={surname}
+                    onChange={handleInputChange}
+                    className='form-control'
+                  />
+                </div>
+
+                <div className='mb-3'>
+                  <label htmlFor='level' className='form-label'>
+                    Class
+                  </label>
+                  <select
+                    name='level'
+                    id='level'
+                    className='form-select'
+                    onChange={handleInputChange}
+                  >
+                    <option value=''>Select class</option>
+                    <option value='Jss1'>Jss1</option>
+                    <option value='Jss2'>Jss2</option>
+                    <option value='Jss3'>Jss3</option>
+                    <option value='Sss1'>Sss1</option>
+                    <option value='Sss2'>Sss2</option>
+                    <option value='Sss3'>Sss3</option>
+                  </select>
+                </div>
+                <div className='mb-3'>
+                  <label htmlFor='gender' className='form-label'>
+                    Gender
+                  </label>
+                  <select
+                    name='gender'
+                    id='gender'
+                    className='form-select'
+                    onChange={handleInputChange}
+                  >
+                    <option value=''></option>
+                    <option value='Male'>Male</option>
+                    <option value='Female'>Female</option>
+                  </select>
+                </div>
+
+                <div className='mb-3'>
+                  <label htmlFor='dob' className='form-label'>
+                    Date of birth
+                  </label>
+                  <input
+                    type='text'
+                    name='dob'
+                    placeholder='DD/MM/YYYY'
+                    id='dob'
+                    value={dob}
+                    onChange={handleInputChange}
+                    className='form-control'
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label htmlFor='yearAdmitted' className='form-label'>
+                    Session Admitted
+                  </label>
+                  <input
+                    type='text'
+                    name='yearAdmitted'
+                    placeholder='Enter the session Admitted eg(2017/2018)'
+                    id='yearAdmitted'
+                    value={yearAdmitted}
+                    onChange={handleInputChange}
+                    className='form-control'
+                  />
+                </div>
+
+                <div className='mb-3'>
+                  <label htmlFor='stateOfOrigin' className='form-label'>
+                    State of origin
+                  </label>
+                  <select
+                    name='stateOfOrigin'
+                    id='stateOfOrigin'
+                    className='form-select'
+                    // onChange={handleInputChange}
+                    onChange={handleStateChange}
+                  >
+                    <option value=''></option>
+                    <option value='Abia'>Abia</option>
+                    <option value='Adamawa'>Adamawa</option>
+                    <option value='Akwa Ibom'>Akwa Ibom</option>
+                    <option value='Anambra'>Anambra</option>
+                    <option value='Bauchi'>Bauchi</option>
+                    <option value='Bayelsa'>Bayelsa</option>
+                    <option value='Benue'>Benue</option>
+                    <option value='Borno'>Borno</option>
+                    <option value='Cross River'>Cross River</option>
+                    <option value='Delta'>Delta</option>
+                    <option value='Ebonyi'>Ebonyi</option>
+                    <option value='Edo'>Edo</option>
+                    <option value='Ekiti'>Ekiti</option>
+                    <option value='Enugu'>Enugu</option>
+                    <option value='Gombe'>Gombe</option>
+                    <option value='Imo'>Imo</option>
+                    <option value='Jigawa'>Jigawa</option>
+                    <option value='Kaduna'>Kaduna</option>
+                    <option value='Kano'>Kano</option>
+                    <option value='Katsina'>Katsina</option>
+                    <option value='Kebbi'>Kebbi</option>
+                    <option value='Kogi'>Kogi</option>
+                    <option value='Kwara'>Kwara</option>
+                    <option value='Lagos'>Lagos</option>
+                    <option value='Nasarawa'>Nasarawa</option>
+                    <option value='Niger'>Niger</option>
+                    <option value='Ogun'>Ogun</option>
+                    <option value='Ondo'>Ondo</option>
+                    <option value='Osun'>Osun</option>
+                    <option value='Oyo'>Oyo</option>
+                    <option value='Plateau'>Plateau</option>
+                    <option value='Rivers'>Rivers</option>
+                    <option value='Sokoto'>Sokoto</option>
+                    <option value='Taraba'>Taraba</option>
+                    <option value='Yobe'>Yobe</option>
+                    <option value='Zamfara'>Zamfara</option>
+                  </select>
+                </div>
+                <div className='mb-3'>
+                  <label htmlFor='localGvt' className='form-label'>
+                    Local Government
+                  </label>
+                  <select
+                    name='localGvt'
+                    id='localGvt'
+                    className='form-select'
+                    onChange={handleInputChange}
+                  ></select>
+                </div>
+                <div className='mb-3'>
+                  <label htmlFor='homeTown' className='form-label'>
+                    Home Town
+                  </label>
+                  <input
+                    type='text'
+                    name='homeTown'
+                    id='homeTown'
+                    value={homeTown}
+                    onChange={handleInputChange}
+                    className='form-control'
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label htmlFor='sponsorId' className='form-label'>
+                    Sponsor
+                  </label>
+                  <select
+                    className='form-select'
+                    name='sponsorId'
+                    id='sponsorId'
+                    onChange={handleInputChange}
+                  >
+                    <option value=''>
+                      Ensure Sponsor has already been registered
+                    </option>
+                    {data &&
+                      data.Sponsors.map((sponsorId) => (
+                        <option value={sponsorId.id} key={sponsorId.id}>
+                          {sponsorId.name}
+                        </option>
+                      ))}
+                    <option value='Self Sponsored'>
+                        Self Sponsored
+                    </option>
+                  </select>
+                </div>
+                <button
+                  className='btn btn-secondary'
+                  type='submit'
+                  data-bs-dismiss='modal'
+                >
+                  submit
+                </button>
+              </form>
             </div>
           </div>
-        </>
-      )}
+        </div>
+      </div>
     </>
   );
 };

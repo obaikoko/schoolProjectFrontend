@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { ADD_SPONSOR } from './mutations/mutation';
 import { GET_SPONSORS } from './queries/query';
+import Spinner from './Spinner';
 
 const addSponsor = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ const addSponsor = () => {
     relationship: '',
   });
   const { name, occupation, phoneNumber, address, relationship } = formData;
-  const [addSponsor] = useMutation(ADD_SPONSOR, {
+  const [addSponsor, {loading}] = useMutation(ADD_SPONSOR, {
     variables: {
       name,
       occupation,
@@ -22,10 +23,13 @@ const addSponsor = () => {
       address,
       relationship,
     },
-    refetchQueries: [{query: GET_SPONSORS}],
     onError: (error) => {
       toast.error(error.message);
-    }
+    }, 
+    onCompleted: () => {
+      toast.success('Sponsor registered successfully')
+    },
+    refetchQueries: [{query: GET_SPONSORS}],
   });
   const handleInputChange = (e) => {
     setFormData((prevState) => ({
@@ -39,7 +43,6 @@ const addSponsor = () => {
     if ((name && occupation && phoneNumber && address && relationship)) {
 
       addSponsor(name, occupation, phoneNumber, address, relationship);
-      toast.success(`${name} Registered Successfully`)
         setFormData({
           name: '',
           occupation: '',
@@ -60,10 +63,11 @@ const addSponsor = () => {
         data-bs-toggle='modal'
         data-bs-target='#addSponsorModal'
       >
-        <div className='d-flex align-items-center'>
+        {loading ? (<Spinner/>) : (  <div className='d-flex align-items-center'>
           <FaUser className='icon mx-2' />
           <div> Add Sponsor</div>
-        </div>
+        </div>)}
+      
       </button>
 
       <div
