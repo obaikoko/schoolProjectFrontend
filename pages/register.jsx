@@ -1,8 +1,9 @@
 import React from 'react';
-import AddStudent from '../components/AddStudent';
+import AddStudent from '../components/Student/AddStudent';
 import AddSponsor from '../components/AddSponsor';
-import AddStaff from '../components/AddStaff';
-import StudentList from '@/components/StudentList';
+import AddStaff from '../components/staff/AddStaff';
+import StudentList from '@/components/Student/StudentList';
+import StaffList from '@/components/staff/StaffList';
 
 const register = () => {
   return (
@@ -18,8 +19,18 @@ const register = () => {
           <AddStaff />
         </div>
       </div>
-
-      <StudentList />
+      <div
+        style={{ maxHeight: '300px', overflowY: 'auto' }}
+        className='card container '
+      >
+        <StudentList />
+      </div>
+      <div
+        style={{ maxHeight: '300px', overflowY: 'auto' }}
+        className='card container '
+      >
+        <StaffList />
+      </div>
     </>
   );
 };

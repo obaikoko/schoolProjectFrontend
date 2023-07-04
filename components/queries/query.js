@@ -2,51 +2,6 @@ import { gql } from '@apollo/client';
 
 
 
-const GET_STAFF = gql`
-query getStaff{
-  staff{
-    id
-    surname
-    firstName
-    lastName
-    qualification
-    gender
-    dob
-    maritalStatus
-    role
-    yearAdmitted
-    stateOfOrigin
-    localGvt
-    homeTown
-    residence
-    phone
-    email
-  }
-}
-`;
-const GET_STAFF_DETAIL = gql`
-query getStaff($id: ID!){
-  staff (id: $id){
-    id
-    surname
-    firstName
-    lastName
-    qualification
-    gender
-    dob
-    maritalStatus
-    role
-    yearAdmitted
-    stateOfOrigin
-    localGvt
-    homeTown
-    residence
-    phone
-    email
-  }
-}
-`;
-
 const GET_USERS = gql`
   query getUsers {
     users {
@@ -89,4 +44,4 @@ const GET_SPONSORS = gql`
     }
   }
 `;
-export { GET_STAFF, GET_STAFF_DETAIL, GET_USERS, GET_USER, GET_SPONSORS };
+export {  GET_USERS, GET_USER, GET_SPONSORS };

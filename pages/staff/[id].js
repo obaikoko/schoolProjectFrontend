@@ -1,25 +1,26 @@
 import DeleteStudentBtn from '@/components/Student/DeleteStudentBtn';
 import Spinner from '@/components/Spinner';
 import UpdateStudentBtn from '@/components/Student/UpdateStudentBtn';
-import { GET_STUDENT } from '@/components/Student/studentQueries';
+import { GET_STAFF_DETAIL } from '@/components/staff/staffQueries';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 
-const StudentDetails = () => {
+const StaffDetails = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { loading, error, data } = useQuery(GET_STUDENT, {
+  const { loading, error, data } = useQuery(GET_STAFF_DETAIL, {
     variables: {
       id,
     },
   });
 
+
   return (
     <>
       {data ? (
         <div className='container'>
-          <h1 className='text-center mb-4'>Student Details</h1>
+          <h1 className='text-center mb-4'>Staff Details</h1>
           <div className='card shadow'>
             <div className='card-body'>
               <div className='row'>
@@ -27,52 +28,52 @@ const StudentDetails = () => {
                   <div className='form-group'>
                     <label className='font-weight-bold'>First Name:</label>
                     <p className='text-muted'>
-                      {data.studentDetails.firstName}
+                      {data.staffDetail.firstName}
                     </p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>Last Name:</label>
-                    <p className='text-muted'>{data.studentDetails.lastName}</p>
+                    <p className='text-muted'>{data.staffDetail.lastName}</p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>Surname:</label>
-                    <p className='text-muted'>{data.studentDetails.surname}</p>
+                    <p className='text-muted'>{data.staffDetail.surname}</p>
                   </div>
                   <div className='form-group'>
-                    <label className='font-weight-bold'>Level:</label>
-                    <p className='text-muted'>{data.studentDetails.level}</p>
+                    <label className='font-weight-bold'>Role or Subject handled:</label>
+                    <p className='text-muted'>{data.staffDetail.role}</p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>Date of Birth:</label>
-                    <p className='text-muted'>{data.studentDetails.dob}</p>
+                    <p className='text-muted'>{data.staffDetail.dob}</p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>Gender:</label>
-                    <p className='text-muted'>{data.studentDetails.gender}</p>
+                    <p className='text-muted'>{data.staffDetail.gender}</p>
                   </div>
                 </div>
                 <div className='col-md-6'>
                   <div className='form-group'>
                     <label className='font-weight-bold'>Year Admitted:</label>
                     <p className='text-muted'>
-                      {data.studentDetails.yearAdmitted}
+                      {data.staffDetail.yearAdmitted}
                     </p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>State of Origin:</label>
                     <p className='text-muted'>
-                      {data.studentDetails.stateOfOrigin}
+                      {data.staffDetail.stateOfOrigin}
                     </p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>
                       Local Government:
                     </label>
-                    <p className='text-muted'>{data.studentDetails.localGvt}</p>
+                    <p className='text-muted'>{data.staffDetail.localGvt}</p>
                   </div>
                   <div className='form-group'>
                     <label className='font-weight-bold'>Home Town:</label>
-                    <p className='text-muted'>{data.studentDetails.homeTown}</p>
+                    <p className='text-muted'>{data.staffDetail.homeTown}</p>
                   </div>
                 </div>
               </div>
@@ -80,11 +81,11 @@ const StudentDetails = () => {
           </div>
           <div className='d-flex m-2'>
             <UpdateStudentBtn
-              student={data.studentDetails}
-              key={data.studentDetails.id}
+              student={data.staffDetail}
+              key={data.staffDetail.id}
             />
             <DeleteStudentBtn
-              student={data.studentDetails}
+              student={data.staffDetail}
             />
           </div>
         </div>
@@ -95,4 +96,4 @@ const StudentDetails = () => {
   );
 };
 
-export default StudentDetails;
+export default StaffDetails;

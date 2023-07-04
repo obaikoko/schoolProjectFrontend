@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_STUDENTS } from './queries/studentQueries';
-import StudentCard from './StudentCard';
-import Spinner from './Spinner';
+import { GET_STUDENTS } from './studentQueries';
+
+import Link from 'next/link';
+import Spinner from '../Spinner';
 
 const StudentList = () => {
   const [filterLevel, setFilterLevel] = useState('');
@@ -33,7 +34,7 @@ const StudentList = () => {
   });
 
   return (
-    <div className='container'>
+    <div className='container p-3'>
       <h3>Filter Students </h3>
       <div className='form-group'>
         <select className='form-control' onChange={handleFilterChange}>
@@ -55,13 +56,41 @@ const StudentList = () => {
         />
       </div>
 
-      <div className='row'>
-        {filteredStudents.map((student, index) => (
-          <div className='col-md-4' key={index}>
-            <StudentCard student={student} />
-          </div>
-        ))}
-      </div>
+      <table className='table table-hover table-striped'>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Class</th>
+
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredStudents.map((student, index) => (
+            <tr key={student.id}>
+              <td>{index + 1}</td>
+              <td>
+                {student.surname} {student.firstName}
+              </td>
+              <td>
+                {student.level} 
+              </td>
+              <td>
+               
+                <Link
+                  className='btn btn-sm btn-light'
+                  href={`/student/${student.id}`}
+                >
+                  View
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div className='row'></div>
     </div>
   );
 };

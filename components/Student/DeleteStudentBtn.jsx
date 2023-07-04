@@ -1,9 +1,9 @@
 import { useRouter } from "next/router"
 import { useMutation } from "@apollo/client"
-import { DELETE_STUDENT } from "./mutations/studentMutations"
+import { DELETE_STUDENT } from "./studentMutations"
 import { toast } from "react-toastify"
-import Spinner from "./Spinner"
-import { GET_STUDENTS } from "./queries/studentQueries"
+import Spinner from "../Spinner"
+import { GET_STUDENTS } from "./studentQueries"
 
 
 const DeleteStudentBtn = () => {

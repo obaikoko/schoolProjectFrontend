@@ -1,76 +1,65 @@
-import { FaUser } from 'react-icons/fa';
-import { useMutation } from '@apollo/client';
+import { FaUser, FaChild } from 'react-icons/fa';
+import { useMutation, useQuery } from '@apollo/client';
 import { useState } from 'react';
-import Spinner from './Spinner';
 import { toast } from 'react-toastify';
-import { ADD_STAFF } from './mutations/mutation';
-import { GET_STAFF } from './queries/query';
+import { ADD_STUDENT } from './studentMutations';
+import { GET_STUDENTS } from './studentQueries';
+import { GET_SPONSORS } from '../queries/query';
+import Spinner from '../Spinner';
 
-const addTeacher = () => {
+const addStudent = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     surname: '',
-    qualification: '',
-    category: '',
-    role: '',
+    level: '',
     gender: '',
-    maritalStatus: '',
     dob: '',
     yearAdmitted: '',
     stateOfOrigin: '',
     localGvt: '',
     homeTown: '',
-    residence: '',
-    phone: '',
-    email: '',
+    sponsorId: '',
   });
 
   const {
     firstName,
     lastName,
     surname,
-    qualification,
+    level,
     dob,
-    category,
-    role,
     gender,
-    maritalStatus,
     yearAdmitted,
     stateOfOrigin,
     localGvt,
     homeTown,
-    residence,
-    phone,
-    email,
+    sponsorId,
   } = formData;
 
-  const [addStaff, {loading}] = useMutation(ADD_STAFF, {
+  const { data } = useQuery(GET_SPONSORS);
+
+  const [addStudent, { loading, error }] = useMutation(ADD_STUDENT, {
     variables: {
       firstName,
       lastName,
       surname,
-      qualification,
+      level,
       dob,
-      category,
-      role,
       gender,
-      maritalStatus,
       yearAdmitted,
       stateOfOrigin,
       localGvt,
       homeTown,
-      residence,
-      phone,
-      email,
+      sponsorId,
     },
-    onError:(error)=> {
+    refetchQueries: [{ query: GET_SPONSORS }, { query: GET_STUDENTS }],
+    onError: (error) => {
       toast.error(error.message);
     },
+
     onCompleted: () => {
-        toast.success(`Staff registered successfully`);
+      toast.success(`Student registered successfully`);
     },
-    refetchQueries: [{query: GET_STAFF}]
   });
 
   const handleInputChange = (e) => {
@@ -79,48 +68,14 @@ const addTeacher = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  function handleCategoryChange(e) {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
 
-    const selectedCategory = e.target.value;
-    const role = document.getElementById('role');
-
-    role.innerHTML = '';
-
-    if (selectedCategory === 'Tutorial') {
-      addStaffOption(role, 'Mathematics');
-      addStaffOption(role, 'English');
-      addStaffOption(role, 'Physics');
-    } else if (selectedCategory === 'Non Tutorial') {
-      addStaffOption(role, '');
-      addStaffOption(role, 'Kitchen');
-      addStaffOption(role, 'Hostel Master/Mistress');
-      addStaffOption(role, 'Driver');
-      addStaffOption(role, 'Security');
-      addStaffOption(role, 'Health');
-      addStaffOption(role, 'Canteen');
-      addStaffOption(role, 'Cleaner');
-    } else {
-      return;
-    }
-
-    function addStaffOption(selectElement, optionValue) {
-      const option = document.createElement('option');
-      option.value = optionValue;
-      option.text = optionValue;
-      selectElement.add(option);
-    }
-  }
   function handleStateChange(e) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
     const selectedState = e.target.value;
-    const localGvtSelect = document.getElementById('staffLocalGvt');
+    const localGvtSelect = document.getElementById('localGvt');
 
     localGvtSelect.innerHTML = '';
 
@@ -975,55 +930,44 @@ const addTeacher = () => {
       firstName &&
       lastName &&
       surname &&
-      qualification &&
+      level &&
       dob &&
-      category &&
-      role &&
       gender &&
-      maritalStatus &&
       yearAdmitted &&
       stateOfOrigin &&
       localGvt &&
       homeTown &&
-      residence &&
-      phone &&
-      email
+      sponsorId
     ) {
-  addStaff(
-    firstName,
-    lastName,
-    surname,
-    qualification,
-    dob,
-    category,
-    role,
-    gender,
-    maritalStatus,
-    yearAdmitted,
-    stateOfOrigin,
-    localGvt,
-    homeTown,
-    residence,
-    phone,
-    email
-  );
-
-
-
-    setFormData({
-      firstName: '',
-      lastName: '',
-      surname: '',
-      qualification: '',
-      gender: '',
-      dob: '',
-      yearAdmitted: '',
-      stateOfOrigin: '',
-      localGvt: '',
-      homeTown: '',
-    });
+      addStudent(
+        firstName,
+        lastName,
+        surname,
+        level,
+        dob,
+        gender,
+        yearAdmitted,
+        stateOfOrigin,
+        localGvt,
+        homeTown,
+        sponsorId
+      );
+      setFormData({
+        firstName: '',
+        lastName: '',
+        surname: '',
+        level: '',
+        gender: '',
+        dob: '',
+        yearAdmitted: '',
+        stateOfOrigin: '',
+        localGvt: '',
+        homeTown: '',
+      });
+    } else if (loading) {
+      toast.loading(<Spinner />);
     } else {
-      toast.error('Please add all field')
+      toast.error('Please add all field');
     }
   };
   return (
@@ -1032,18 +976,21 @@ const addTeacher = () => {
         type='button'
         className='btn btn-primary'
         data-bs-toggle='modal'
-        data-bs-target='#addTeacherModal'
+        data-bs-target='#addStudentmodal'
       >
-        {loading ? (<Spinner/>) : (<div className='d-flex align-items-center'>
-          <FaUser className='icon mx-2' />
-          <div> Add Staff</div>
-        </div>)}
-        
+        {loading ? (
+          <Spinner />
+        ) : (
+          <div className='d-flex align-items-center'>
+            <FaChild className='icon mx-2' />
+            <div> Add Student</div>
+          </div>
+        )}
       </button>
 
       <div
         className='modal fade'
-        id='addTeacherModal'
+        id='addStudentmodal'
         tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
@@ -1052,7 +999,7 @@ const addTeacher = () => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h1 className='modal-title fs-5' id='exampleModalLabel'>
-                Add Staff
+                Add Student
               </h1>
               <button
                 type='button'
@@ -1104,52 +1051,22 @@ const addTeacher = () => {
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='qualification' className='form-label'>
-                    Qualification
+                  <label htmlFor='level' className='form-label'>
+                    Class
                   </label>
                   <select
-                    name='qualification'
-                    id='qualification'
+                    name='level'
+                    id='level'
                     className='form-select'
                     onChange={handleInputChange}
                   >
-                    <option value=''>Select Highest Qualification</option>
-                    <option value='Professor'>Professor </option>
-                    <option value='Phd'>Phd </option>
-                    <option value='Master'>Master </option>
-                    <option value='Bachelors Degree'>Bachelors Degree </option>
-                    <option value='HND'>HND </option>
-                    <option value='OND'>OND </option>
-                    <option value='NCE'>NCE </option>
-                    <option value='SSCE'>SSCE </option>
-                    <option value='Others'>Others </option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='category' className='form-label'>
-                    Staff Category
-                  </label>
-                  <select
-                    name='category'
-                    id='category'
-                    className='form-select'
-                    onChange={handleCategoryChange}
-                  >
-                    <option value=''></option>
-                    <option value='Tutorial'>Tutorial</option>
-                    <option value='Non Tutorial'>Non Tutorial</option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='role' className='form-label'>
-                    Subject Handled or Role
-                  </label>
-                  <select
-                    name='role'
-                    id='role'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  >
+                    <option value=''>Select class</option>
+                    <option value='Jss1'>Jss1</option>
+                    <option value='Jss2'>Jss2</option>
+                    <option value='Jss3'>Jss3</option>
+                    <option value='Sss1'>Sss1</option>
+                    <option value='Sss2'>Sss2</option>
+                    <option value='Sss3'>Sss3</option>
                   </select>
                 </div>
                 <div className='mb-3'>
@@ -1165,21 +1082,6 @@ const addTeacher = () => {
                     <option value=''></option>
                     <option value='Male'>Male</option>
                     <option value='Female'>Female</option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='maritalStatus' className='form-label'>
-                    Marital Status
-                  </label>
-                  <select
-                    name='maritalStatus'
-                    id='maritalStatus'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  >
-                    <option value=''></option>
-                    <option value='Married'>Married</option>
-                    <option value='Single'>Single</option>
                   </select>
                 </div>
 
@@ -1263,12 +1165,12 @@ const addTeacher = () => {
                   </select>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='staffLocalGvt' className='form-label'>
+                  <label htmlFor='localGvt' className='form-label'>
                     Local Government
                   </label>
                   <select
                     name='localGvt'
-                    id='staffLocalGvt'
+                    id='localGvt'
                     className='form-select'
                     onChange={handleInputChange}
                   ></select>
@@ -1287,43 +1189,26 @@ const addTeacher = () => {
                   />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='residence' className='form-label'>
-                    Residential Address
+                  <label htmlFor='sponsorId' className='form-label'>
+                    Sponsor
                   </label>
-                  <input
-                    type='text'
-                    name='residence'
-                    id='residence'
-                    value={residence}
+                  <select
+                    className='form-select'
+                    name='sponsorId'
+                    id='sponsorId'
                     onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='phone' className='form-label'>
-                    Phone Number
-                  </label>
-                  <input
-                    className='form-control'
-                    type='text'
-                    name='phone'
-                    id='phone'
-                    value={phone}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='email' className='form-label'>
-                    Email Address
-                  </label>
-                  <input
-                    className='form-control'
-                    type='email'
-                    name='email'
-                    id='email'
-                    value={email}
-                    onChange={handleInputChange}
-                  />
+                  >
+                    <option value=''>
+                      Ensure Sponsor has already been registered
+                    </option>
+                    {data &&
+                      data.Sponsors.map((sponsorId) => (
+                        <option value={sponsorId.id} key={sponsorId.id}>
+                          {sponsorId.name}
+                        </option>
+                      ))}
+                    <option value='Self Sponsored'>Self Sponsored</option>
+                  </select>
                 </div>
                 <button
                   className='btn btn-secondary'
@@ -1341,4 +1226,4 @@ const addTeacher = () => {
   );
 };
 
-export default addTeacher;
+export default addStudent;
