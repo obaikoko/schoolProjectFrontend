@@ -61,7 +61,7 @@ const UPDATE_STAFF = gql`
     $lastName: String!
     $surname: String!
     $qualification: String!
-    $gender: StaffGenderType!
+    $gender: StaffGenderTypeUpdate!
     $dob: String!
     $yearAdmitted: String!
     $role: String!

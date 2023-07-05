@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_STAFF } from './staffQueries';
+import Link from 'next/link';
 import StaffCard from './StaffCard';
 import Spinner from '../Spinner';
 
@@ -52,13 +53,44 @@ const StaffList = () => {
         />
       </div>
 
-      <div className='row'>
+      <table className='table table-hover table-striped'>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Department</th>
+
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredStaff.map((staff, index) => (
+            <tr key={staff.id}>
+              <td>{index + 1}</td>
+              <td>
+                {staff.surname} {staff.firstName}
+              </td>
+              <td>{staff.role}</td>
+              <td>
+                <Link
+                  className='btn btn-sm btn-light'
+                  href={`/staff/${staff.id}`}
+                >
+                  View
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* <div className='row'>
         {filteredStaff.map((staff) => (
           <div className='col-md-4' key={staff.id}>
             <StaffCard staff={staff} />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

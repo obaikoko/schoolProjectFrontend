@@ -1207,7 +1207,6 @@ const addStudent = () => {
                           {sponsorId.name}
                         </option>
                       ))}
-                    <option value='Self Sponsored'>Self Sponsored</option>
                   </select>
                 </div>
                 <button

@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/client';
-import { DELETE_STUDENT } from './studentMutations';
+import { DELETE_STAFF } from './staffMutation';
 import { toast } from 'react-toastify';
 import Spinner from '../Spinner';
-import { GET_STUDENTS } from './studentQueries';
+import { GET_STAFF } from './staffQueries';
 
-const DeleteStudentBtn = () => {
+const DeleteStaffBtn = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [deleteStudent, { loading, error }] = useMutation(DELETE_STUDENT, {
+  const [deleteStaff, { loading, error }] = useMutation(DELETE_STAFF, {
     variables: {
       id,
     },
@@ -19,7 +19,7 @@ const DeleteStudentBtn = () => {
       toast.warning('Student deleted successfully');
       router.push('/register');
     },
-    refetchQueries: [{ query: GET_STUDENTS }],
+    refetchQueries: [{ query: GET_STAFF }],
   });
   return (
     <div>
@@ -27,7 +27,7 @@ const DeleteStudentBtn = () => {
         type='button'
         className='btn btn-sm'
         onClick={() => {
-          deleteStudent();
+          deleteStaff();
         }}
       >
         {loading ? <Spinner /> : <p className='btn btn-secondary'>delete</p>}
@@ -36,4 +36,4 @@ const DeleteStudentBtn = () => {
   );
 };
 
-export default DeleteStudentBtn;
+export default DeleteStaffBtn;

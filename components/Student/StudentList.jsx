@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_STUDENTS } from './studentQueries';
 
@@ -73,11 +73,8 @@ const StudentList = () => {
               <td>
                 {student.surname} {student.firstName}
               </td>
+              <td>{student.level}</td>
               <td>
-                {student.level} 
-              </td>
-              <td>
-               
                 <Link
                   className='btn btn-sm btn-light'
                   href={`/student/${student.id}`}

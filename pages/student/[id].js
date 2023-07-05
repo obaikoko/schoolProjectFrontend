@@ -74,6 +74,20 @@ const StudentDetails = () => {
                     <label className='font-weight-bold'>Home Town:</label>
                     <p className='text-muted'>{data.studentDetails.homeTown}</p>
                   </div>
+                  <div className='form-group'>
+                    <label className='font-weight-bold'>Sponsor:</label>
+                    <p className='text-muted'>
+                      {data.studentDetails.sponsor.name}
+                    </p>
+                  </div>
+                  <div className='form-group'>
+                    <label className='font-weight-bold'>
+                      Sponsor Relationship:
+                    </label>
+                    <p className='text-muted'>
+                      {data.studentDetails.sponsor.relationship}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -83,9 +97,7 @@ const StudentDetails = () => {
               student={data.studentDetails}
               key={data.studentDetails.id}
             />
-            <DeleteStudentBtn
-              student={data.studentDetails}
-            />
+            <DeleteStudentBtn student={data.studentDetails} />
           </div>
         </div>
       ) : (

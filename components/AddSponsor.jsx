@@ -162,6 +162,7 @@ const addSponsor = () => {
                     <option value='Brother '>Brother </option>
                     <option value='Sister '>Sister </option>
                     <option value='Guardian '>Guardian </option>
+                    <option value='Self Sponsor'>Self Sponsor </option>
                     <option value='Others '>Others </option>
                   </select>
                 </div>

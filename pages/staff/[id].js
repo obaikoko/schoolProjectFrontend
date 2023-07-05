@@ -1,9 +1,9 @@
-import DeleteStudentBtn from '@/components/Student/DeleteStudentBtn';
 import Spinner from '@/components/Spinner';
-import UpdateStudentBtn from '@/components/Student/UpdateStudentBtn';
 import { GET_STAFF_DETAIL } from '@/components/staff/staffQueries';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
+import UpdateStaffBtn from '@/components/staff/UpdateStaffBtn';
+import DeleteStaffBtn from '@/components/staff/DeleteStaffBtn';
 
 const StaffDetails = () => {
   const router = useRouter();
@@ -75,17 +75,25 @@ const StaffDetails = () => {
                     <label className='font-weight-bold'>Home Town:</label>
                     <p className='text-muted'>{data.staffDetail.homeTown}</p>
                   </div>
+                  <div className='form-group'>
+                    <label className='font-weight-bold'>Residence:</label>
+                    <p className='text-muted'>{data.staffDetail.residence}</p>
+                  </div>
+                  <div className='form-group'>
+                    <label className='font-weight-bold'>Phone No:</label>
+                    <p className='text-muted'>{data.staffDetail.phone}</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className='d-flex m-2'>
-            <UpdateStudentBtn
-              student={data.staffDetail}
+            <UpdateStaffBtn
+              staff={data.staffDetail}
               key={data.staffDetail.id}
             />
-            <DeleteStudentBtn
-              student={data.staffDetail}
+            <DeleteStaffBtn
+              staff={data.staffDetail}
             />
           </div>
         </div>
