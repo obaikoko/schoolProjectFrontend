@@ -4,6 +4,7 @@ import AddSponsor from '../components/AddSponsor';
 import AddStaff from '../components/staff/AddStaff';
 import StudentList from '@/components/Student/StudentList';
 import StaffList from '@/components/staff/StaffList';
+import AddUser from '@/components/users/AddUser';
 
 const register = () => {
   return (
@@ -17,6 +18,9 @@ const register = () => {
         </div>
         <div className='card m-4 p-3'>
           <AddStaff />
+        </div>
+        <div className='card m-4 p-3'>
+          <AddUser />
         </div>
       </div>
       <div
