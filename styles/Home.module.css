@@ -1,31 +1,65 @@
 .heroSection {
-  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1688120044/School%20Project/Classroom-Management-for-an-Effective-Learning-Environment-scaled_htdbmt.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroContent {
+  position: relative;
+  margin-left: 0 !important;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
   text-align: center;
-  
-  
 }
-
-.heroContent h2 {
-  font-size: 3rem;
-  font-weight: bold;
+.background_image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  filter: blur(5px);
 }
-
-.heroContent p {
-    font-weight: bolder;
+.heroContent {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
   font-size: 1.5rem;
-  margin-bottom: 2rem;
 }
 
-.heroContent .btn-secondary {
-  font-size: 1.5rem;
-  padding: 1rem 2.5rem;
+.heroContent .hero_heading {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.heroContent .hero_text {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.heroContent a {
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  background: hsl(220, 70%, 17%);
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-decoration: none;
+  width: 200px;
+  color: hsl(33, 93%, 54%);
+}
+
+.heroContent a:hover {
+  background-color: #9fd8ed;
+  color: hsl(220, 70%, 17%);
+}
+
+@media (min-width: 800px) {
+  .background_image {
+    height: 500px;
+  }
+  .heroContent .hero_heading {
+    font-size: 3em;
+  }
+  .heroContent .hero_text {
+    font-size: 2em;
+  }
 }
