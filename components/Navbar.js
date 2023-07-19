@@ -17,14 +17,14 @@ const Navbar = () => {
         </Link>
 
         <button
-          className="navbar-toggler"
+          className={`${style.btn_open} navbar-toggler`}
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasNavbar"
           aria-controls="offcanvasNavbar"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className={`${style.btn_open_icon} navbar-toggler-icon`}></span>
         </button>
         <div
           className="offcanvas offcanvas-end"

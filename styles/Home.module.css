@@ -33,13 +33,6 @@
   font-weight: 500;
 }
 
-/* .heroContent .explore {
-  width: 70%;
-  height: 20%;
-  padding-top: 5px;
-  background: hsl(220, 70%, 17%);
-  border-radius: 20px;
-} */
 .heroContent a {
   display: inline-block;
   width: 200px;
