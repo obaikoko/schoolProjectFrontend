@@ -1,9 +1,11 @@
 import Head from "next/head";
+import Image from "next/image";
 import style from "../styles/Home.module.css";
 import SchoolHighlights from "@/components/schoolHighlights";
 import NewsSection from "@/components/NewsSection";
 import Newsletter from "@/components/NewLetter";
-import Navbar from "@/components/Navbar";
+// import schoolBackground from "../assets/school-background.jpg";
+import schoolBackgroundimg from "../assets/img-background.jpg";
 
 export default function Home() {
   return (
@@ -14,22 +16,25 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div className="container">
-          <header className="text-center mt-5">
-            <h1>Welcome to Super School</h1>
-            <p className="lead">A place to learn and grow</p>
-          </header>
 
+      <main>
+        <div>
           <section className={style.heroSection}>
+            <Image
+              src={schoolBackgroundimg}
+              className={style.background_image}
+              loading="lazy"
+            />
+
             <div className={style.heroContent}>
-              <h2 className="display-4">Discover Your Potential</h2>
-              <p className="lead ">
+              <h2 className={style.hero_heading}>Discover Your Potential</h2>
+              <p className={style.hero_text}>
                 Unlock the doors to knowledge and endless possibilities.
               </p>
-              <a href="#programs" className="btn btn-secondary btn-lg">
-                Explore Programs
-              </a>
+
+              <div className={style.explore}>
+                <a href="#programs">Explore Programs</a>
+              </div>
             </div>
           </section>
           <SchoolHighlights />

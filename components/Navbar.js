@@ -43,7 +43,7 @@ const Navbar = () => {
               aria-label="Close"
             ></button>
           </div>
-          <div className="offcanvas-body">
+          <div className={`${style["offcanvas-body-custom"]} offcanvas-body`}>
             <ul
               className={`${style["navbar-nav-custom"]} navbar-nav justify-content-end flex-grow-1 pe-3`}
             >
