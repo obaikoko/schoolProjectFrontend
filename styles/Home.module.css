@@ -35,16 +35,16 @@
 
 .heroContent a {
   display: inline-block;
-  width: 200px;
-  height: 40px;
-  text-align: center;
-  background: hsl(220, 70%, 17%);
-  border-radius: 20px;
+  width: 250px;
+  height: 50px;
+  border-radius: 15px;
+  text-align: cente;
+  background: rgb(1, 65, 111);
+  color: hsl(0, 0%, 100%);
   font-size: 0.8em;
   font-weight: 600;
   text-decoration: none;
-  width: 200px;
-  color: hsl(33, 93%, 54%);
+  padding: 10px 0;
 }
 
 .heroContent a:hover {

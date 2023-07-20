@@ -2,7 +2,9 @@
   margin: 25px 0;
 }
 .heading {
+  font-weight: 700;
   text-align: center;
+  color: hsl(220, 70%, 17%);
 }
 .card {
   display: flex;
@@ -11,10 +13,11 @@
 }
 .card_body {
   height: 160px;
+  flex: 1;
+  flex-wrap: wrap;
   margin: 5px 10px;
-  background-color: hsl(220, 70%, 17%);
   background-color: rgb(1, 65, 111);
-  box-shadow: 0 3px 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 2px 5px 5px rgba(29, 29, 29, 0.7);
   padding: 10px 20px;
   color: #fff;
   border-radius: 20px;
@@ -23,13 +26,14 @@
 .card_text {
   text-align: center;
 }
+.card_date {
+  text-align: left;
+  color: hsl(33, 93%, 54%);
+}
 
 @media (min-width: 800px) {
   .card {
     flex-direction: row;
     justify-content: center;
-  }
-  .card_body {
-    width: 400px;
   }
 }
