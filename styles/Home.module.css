@@ -1,31 +1,195 @@
-.heroSection {
-  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1688120044/School%20Project/Classroom-Management-for-an-Effective-Learning-Environment-scaled_htdbmt.jpg');
+.sectionA {
+  position: relative;
+  background-image: url('../components/img/Facade_of_Central_High_School_-_Little_Rock_-_Arkansas_-_USA_-_01.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  height: 500px;
+  height: 100vh;
+  text-transform: capitalize;
+  z-index: -1;
   display: flex;
+  align-items: center;
   justify-content: center;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  overflow: hidden;
+}
+.sectionAInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 100px;
+  z-index: 2;
+}
+.sectionAInner h1 {
+  font-size: 40px;
+  font-weight: bolder;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+.sectionAInner p {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.5s ease-in-out 0.2s;
+  animation-fill-mode: both;
+}
+.sectionB {
+  padding: 100px 0;
+
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
-
-.heroContent {
+.sectionBInner {
+  display: flex;
+}
+.curses {
+  max-width: 300px;
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  margin: 20px 30px;
+  border-radius: 10px;
   text-align: center;
-  
-  
+  text-justify: center;
+  box-shadow: 1px 1px 2px;
+}
+.curses h4 {
+  margin: 10px 0;
+}
+.sectionC {
+  /* background-color: #deddfd; */
+  padding: 50px;
+  margin-top: 10px;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sectionCInner {
+  display: flex;
+}
+.campus {
+  width: 300px;
+  height: 400px;
+  box-shadow: 1px 1px 2px;
+  margin: 10px 20px;
+  border-radius: 10px;
+}
+.imgA {
+  background-image: url(../components/img/thumbnail_0v4a8001_0.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+
+  width: 100%;
+  height: 100%;
+}
+.imgB {
+  background-image: url(../components/img/how-to-improve-school-facilities-ideas-for-improving-a-school-23-a.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+.imgC {
+  background-image: url(../components/img/slider-business-lecture-hall-learning-spaces.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+.sectionD {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+.imgD {
+  background-image: url(../components/img/University-Management-System.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.sectionDInner {
+  position: absolute;
+  max-width: 500px;
+  top: 50px;
+  left: 10px;
+  color: #fff;
+}
+.sectionDInner h1 {
+  font-size: 30px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.sectionDInner p {
+  font-size: 18px;
+  line-height: 2rem;
 }
 
-.heroContent h2 {
-  font-size: 3rem;
-  font-weight: bold;
+/* Animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-140px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
 }
 
-.heroContent p {
+@media (max-width: 600px) {
+  .sectionA{
+    align-items: end;
+  }
+  .sectionAInner h1 {
+    font-size: 20px;
     font-weight: bolder;
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease-in-out;
+  }
+  .sectionAInner p{
+    font-weight: 100;
+    font-size: 15px;
+  }
+  .sectionBInner{
+    display: flex;
+    flex-direction: column;
+  }
+  .sectionCInner{
+    display: flex;
+    flex-direction: column;
+  }
+.sectionDInner {
+  position: absolute;
+  max-width: 300px;
+  top: 300px;
+  left: 10px;
+  color: #fff;
 }
-
-.heroContent .btn-secondary {
-  font-size: 1.5rem;
-  padding: 1rem 2.5rem;
 }

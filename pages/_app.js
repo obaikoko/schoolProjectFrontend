@@ -4,8 +4,8 @@ import { ToastContainer } from 'react-toastify';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import 'react-toastify/dist/ReactToastify.css';
 const client = new ApolloClient({
-  // uri: 'http://localhost:5000/graphql',
-  uri: 'https://schproject.onrender.com/graphql',
+  uri: 'http://localhost:5000/graphql',
+  // uri: 'https://schproject.onrender.com/graphql',
   cache: new InMemoryCache(),
 });
 

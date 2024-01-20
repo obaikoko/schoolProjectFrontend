@@ -1034,11 +1034,14 @@ const addTeacher = () => {
         data-bs-toggle='modal'
         data-bs-target='#addTeacherModal'
       >
-        {loading ? (<Spinner/>) : (<div className='d-flex align-items-center'>
-          <FaUser className='icon mx-2' />
-          <div> Add Staff</div>
-        </div>)}
-        
+        {loading ? (
+          <Spinner />
+        ) : (
+          <div className='d-flex align-items-center'>
+            <FaUser className='icon mx-2' />
+            <div> Add Staff</div>
+          </div>
+        )}
       </button>
 
       <div
@@ -1070,7 +1073,7 @@ const addTeacher = () => {
                   <input
                     type='text'
                     name='firstName'
-                    id='firstName'
+                    id='staffFirstName'
                     value={firstName}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1083,7 +1086,7 @@ const addTeacher = () => {
                   <input
                     type='text'
                     name='lastName'
-                    id='lastName'
+                    id='staffLastName'
                     value={lastName}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1096,7 +1099,7 @@ const addTeacher = () => {
                   <input
                     type='text'
                     name='surname'
-                    id='surname'
+                    id='staffSurname'
                     value={surname}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1149,8 +1152,7 @@ const addTeacher = () => {
                     id='role'
                     className='form-select'
                     onChange={handleInputChange}
-                  >
-                  </select>
+                  ></select>
                 </div>
                 <div className='mb-3'>
                   <label htmlFor='gender' className='form-label'>
@@ -1158,7 +1160,7 @@ const addTeacher = () => {
                   </label>
                   <select
                     name='gender'
-                    id='gender'
+                    id='staffGender'
                     className='form-select'
                     onChange={handleInputChange}
                   >
@@ -1173,7 +1175,7 @@ const addTeacher = () => {
                   </label>
                   <select
                     name='maritalStatus'
-                    id='maritalStatus'
+                    id='staffMaritalStatus'
                     className='form-select'
                     onChange={handleInputChange}
                   >
@@ -1191,7 +1193,7 @@ const addTeacher = () => {
                     type='text'
                     name='dob'
                     placeholder='DD/MM/YYYY'
-                    id='dob'
+                    id='staffDob'
                     value={dob}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1205,7 +1207,7 @@ const addTeacher = () => {
                     type='text'
                     name='yearAdmitted'
                     placeholder='Enter the session Admitted eg(2017/2018)'
-                    id='yearAdmitted'
+                    id='staffYearAdmitted'
                     value={yearAdmitted}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1218,9 +1220,8 @@ const addTeacher = () => {
                   </label>
                   <select
                     name='stateOfOrigin'
-                    id='stateOfOrigin'
+                    id='staffStateOfOrigin'
                     className='form-select'
-                    // onChange={handleInputChange}
                     onChange={handleStateChange}
                   >
                     <option value=''></option>
@@ -1280,7 +1281,7 @@ const addTeacher = () => {
                   <input
                     type='text'
                     name='homeTown'
-                    id='homeTown'
+                    id='staffHomeTown'
                     value={homeTown}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1293,7 +1294,7 @@ const addTeacher = () => {
                   <input
                     type='text'
                     name='residence'
-                    id='residence'
+                    id='staffResidence'
                     value={residence}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1305,9 +1306,9 @@ const addTeacher = () => {
                   </label>
                   <input
                     className='form-control'
-                    type='text'
+                    type='number'
                     name='phone'
-                    id='phone'
+                    id='staffPhone'
                     value={phone}
                     onChange={handleInputChange}
                   />
@@ -1320,7 +1321,7 @@ const addTeacher = () => {
                     className='form-control'
                     type='email'
                     name='email'
-                    id='email'
+                    id='staffEmail'
                     value={email}
                     onChange={handleInputChange}
                   />

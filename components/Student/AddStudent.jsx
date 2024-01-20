@@ -1017,7 +1017,7 @@ const addStudent = () => {
                   <input
                     type='text'
                     name='firstName'
-                    id='firstName'
+                    id='studentFirstName'
                     value={firstName}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1030,7 +1030,7 @@ const addStudent = () => {
                   <input
                     type='text'
                     name='lastName'
-                    id='lastName'
+                    id='studentLastName'
                     value={lastName}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1043,7 +1043,7 @@ const addStudent = () => {
                   <input
                     type='text'
                     name='surname'
-                    id='surname'
+                    id='studentSurname'
                     value={surname}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1056,7 +1056,7 @@ const addStudent = () => {
                   </label>
                   <select
                     name='level'
-                    id='level'
+                    id='lstudentLevel'
                     className='form-select'
                     onChange={handleInputChange}
                   >
@@ -1075,7 +1075,7 @@ const addStudent = () => {
                   </label>
                   <select
                     name='gender'
-                    id='gender'
+                    id='studentGender'
                     className='form-select'
                     onChange={handleInputChange}
                   >
@@ -1093,7 +1093,7 @@ const addStudent = () => {
                     type='text'
                     name='dob'
                     placeholder='DD/MM/YYYY'
-                    id='dob'
+                    id='studentDob'
                     value={dob}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1107,7 +1107,7 @@ const addStudent = () => {
                     type='text'
                     name='yearAdmitted'
                     placeholder='Enter the session Admitted eg(2017/2018)'
-                    id='yearAdmitted'
+                    id='studentYearAdmitted'
                     value={yearAdmitted}
                     onChange={handleInputChange}
                     className='form-control'
@@ -1120,7 +1120,7 @@ const addStudent = () => {
                   </label>
                   <select
                     name='stateOfOrigin'
-                    id='stateOfOrigin'
+                    id='studentStateOfOrigin'
                     className='form-select'
                     // onChange={handleInputChange}
                     onChange={handleStateChange}
@@ -1182,7 +1182,7 @@ const addStudent = () => {
                   <input
                     type='text'
                     name='homeTown'
-                    id='homeTown'
+                    id='studentHomeTown'
                     value={homeTown}
                     onChange={handleInputChange}
                     className='form-control'
