@@ -14,7 +14,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 70px;
   align-items: center;
   z-index: 3;
   display: flex;
@@ -113,10 +113,10 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 350px;
+  width: 250px;
   height: 100%;
   z-index: 5;
-  background-color: blue;
+  background-color: #161643;
   display: flex;
   align-items: center;
   justify-content: center;

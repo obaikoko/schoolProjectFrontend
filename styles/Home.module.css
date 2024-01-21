@@ -190,4 +190,13 @@
     left: 10px;
     color: #fff;
   }
+  .sectionDInner h1 {
+  font-size: 20px;
+  text-transform: capitalize;
+  margin-top: 60%;
+}
+.sectionDInner p {
+  font-size: 18px;
+  line-height: 1.2rem;
+}
 }

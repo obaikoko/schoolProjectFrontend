@@ -37,6 +37,8 @@
   top: 30px;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
 }
 .footer ul li{
   margin-bottom: 10px;
