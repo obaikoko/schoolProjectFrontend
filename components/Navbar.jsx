@@ -40,9 +40,9 @@ const Navbar = () => {
             <Link
               onClick={menuBtnClicked}
               className={style.navLink}
-              href='/register'
+              href='/news'
             >
-              register
+              News
             </Link>
           </li>
           <li>
@@ -77,8 +77,8 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link className={style.navLink} href='/register'>
-                register
+              <Link className={style.navLink} href='/news'>
+                news
               </Link>
             </li>
             <li>

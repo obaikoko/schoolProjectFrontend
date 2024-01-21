@@ -1,8 +1,5 @@
 import Head from 'next/head';
 import style from '../styles/Home.module.css';
-import SchoolHighlights from '@/components/schoolHighlights';
-import NewsSection from '@/components/NewsSection';
-import Newsletter from '@/components/NewLetter';
 
 export default function Home() {
   return (
@@ -16,7 +13,6 @@ export default function Home() {
       <main>
         <div>
           <div className={`${style.sections} ${style.sectionA}`}>
-            <div className={style.overlay}></div>
             <section className={style.sectionAInner}>
               <h1>Bendonalds International Secondary School</h1>
               <p className='lead'>A place to learn and grow</p>
@@ -82,17 +78,8 @@ export default function Home() {
               </div>
             </div>
           </section>
-
-          <SchoolHighlights />
-          <NewsSection />
-          <Newsletter />
         </div>
 
-        <footer className=' bg-dark text-light text-center mt-4 py-3'>
-          <p>
-            &copy; {new Date().getFullYear()} Our School. All rights reserved.
-          </p>
-        </footer>
       </main>
     </>
   );

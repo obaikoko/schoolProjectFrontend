@@ -19,6 +19,7 @@
   z-index: 3;
   display: flex;
   justify-content: space-between;
+  background-color: #161643;
   color: #fff;
   text-transform: uppercase;
   padding: 0 20px;
@@ -115,7 +116,7 @@
   width: 350px;
   height: 100%;
   z-index: 5;
-  background-color: #3c53b7;
+  background-color: blue;
   display: flex;
   align-items: center;
   justify-content: center;

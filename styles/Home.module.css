@@ -1,6 +1,6 @@
 .sectionA {
   position: relative;
-  background-image: url('../components/img/Facade_of_Central_High_School_-_Little_Rock_-_Arkansas_-_USA_-_01.jpg');
+  background-image: url('../components/img/schoolBuliding.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -58,21 +58,19 @@
 .curses {
   max-width: 300px;
   background-color: #fff;
-  color: #000;
+  color: #161643;
   padding: 20px;
   margin: 20px 30px;
   border-radius: 10px;
   text-align: center;
   text-justify: center;
-  box-shadow: 1px 1px 2px;
+  box-shadow: 1px 0px 4px #161643;
 }
 .curses h4 {
   margin: 10px 0;
 }
 .sectionC {
-  /* background-color: #deddfd; */
-  padding: 50px;
-  margin-top: 10px;
+  margin: 40px 0px;
   text-transform: capitalize;
   display: flex;
   flex-direction: column;
@@ -84,7 +82,7 @@
 .campus {
   width: 300px;
   height: 400px;
-  box-shadow: 1px 1px 2px;
+  box-shadow: 1px 1px 2px #161643;
   margin: 10px 20px;
   border-radius: 10px;
 }
@@ -119,10 +117,10 @@
 .sectionD {
   position: relative;
   height: 100vh;
-  width: 100vw;
+  width: 98.5vw;
 }
 .imgD {
-  background-image: url(../components/img/University-Management-System.jpg);
+  background-image: url(../components/img/Choice-Based-Credit-System-Guide.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -164,7 +162,7 @@
 }
 
 @media (max-width: 600px) {
-  .sectionA{
+  .sectionA {
     align-items: end;
   }
   .sectionAInner h1 {
@@ -173,23 +171,23 @@
     margin-bottom: 20px;
     animation: fadeInUp 0.5s ease-in-out;
   }
-  .sectionAInner p{
+  .sectionAInner p {
     font-weight: 100;
     font-size: 15px;
   }
-  .sectionBInner{
+  .sectionBInner {
     display: flex;
     flex-direction: column;
   }
-  .sectionCInner{
+  .sectionCInner {
     display: flex;
     flex-direction: column;
   }
-.sectionDInner {
-  position: absolute;
-  max-width: 300px;
-  top: 300px;
-  left: 10px;
-  color: #fff;
-}
+  .sectionDInner {
+    position: absolute;
+    max-width: 300px;
+    top: 300px;
+    left: 10px;
+    color: #fff;
+  }
 }
