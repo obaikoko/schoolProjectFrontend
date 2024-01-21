@@ -73,7 +73,7 @@ export default function Home() {
             </section>
           </div>
           <section className={style.sectionB}>
-            <h1>Curses We Offer</h1>
+            <h1>Courses We Offer</h1>
             <div className={style.sectionBInner}>
               <div className={style.curses}>
                 <h4>Nursary</h4>

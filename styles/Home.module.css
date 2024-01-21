@@ -166,7 +166,7 @@
 }
 .testimonial {
   line-height: 20px;
-  text-align: justify;
+  text-align: center;
 }
 .user {
   display: flex;
