@@ -21,37 +21,38 @@ const Navbar = () => {
         }
       >
         <ul>
-          <li>
-            <Link onClick={menuBtnClicked} href='/' className={style.navLink}>
+          {/* monile menu only */}
+
+          <li className={style.mobileOnly}>
+            <Link href='/' className={style.navLink}>
               home
             </Link>
           </li>
-          <li>
-            <Link
-              onClick={menuBtnClicked}
-              className={style.navLink}
-              href='/about'
-            >
+          <li className={style.mobileOnly}>
+            <Link className={style.navLink} href='/about'>
               about
+            </Link>
+          </li>
+          <li className={style.mobileOnly}>
+            <Link className={style.navLink} href='/news'>
+              news
+            </Link>
+          </li>
+          <li className={style.mobileOnly}>
+            <Link className={style.navLink} href='/login'>
+              login
+            </Link>
+          </li>
+
+          <li className={style.mobileOnly}>
+            <Link className={style.navLink} href='/admission'>
+              Admission
             </Link>
           </li>
 
           <li>
-            <Link
-              onClick={menuBtnClicked}
-              className={style.navLink}
-              href='/news'
-            >
-              News
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={style.navLink}
-              onClick={menuBtnClicked}
-              href='/login'
-            >
-              login
+            <Link className={style.navLink} href='/admission'>
+              Admission
             </Link>
           </li>
         </ul>
@@ -59,7 +60,7 @@ const Navbar = () => {
       <header className={style.mainHeader}>
         <div className={style.logo}>
           <Link href='/'>
-           <div className={style.img}></div>
+            <div className={style.img}></div>
           </Link>
         </div>
 
@@ -73,12 +74,6 @@ const Navbar = () => {
             <li>
               <Link className={style.navLink} href='/about'>
                 about
-              </Link>
-            </li>
-
-            <li>
-              <Link className={style.navLink} href='/admission'>
-                Admission
               </Link>
             </li>
             <li>

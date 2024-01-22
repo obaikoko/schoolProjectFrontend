@@ -261,6 +261,9 @@
     display: flex;
     flex-direction: column;
   }
+   .campus {
+  width: 350px;
+}
   .sectionCInner {
     display: flex;
     flex-direction: column;
@@ -281,5 +284,6 @@
     font-size: 18px;
     line-height: 1.2rem;
   }
+
 
 }

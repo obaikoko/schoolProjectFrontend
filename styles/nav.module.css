@@ -75,9 +75,8 @@
   transition-duration: 0.4s;
 }
 .hambuger {
-  display: none;
   position: fixed;
-  top: 40px;
+  top: 27px;
   right: 20px;
   cursor: pointer;
   z-index: 10;
@@ -159,6 +158,9 @@
 .mobileMainMenu ul li .navLink:hover {
   color: #aaa;
 }
+.mobileOnly {
+  display: none;
+}
 @media(max-width: 600px) {
     .destopMainMenu{
         display: none;
@@ -166,4 +168,7 @@
     .hambuger{
         display: block;
     }
+    .mobileOnly {
+  display: block;
+}
 }
