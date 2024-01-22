@@ -76,27 +76,21 @@ export default function Home() {
             <h1>Courses We Offer</h1>
             <div className={style.sectionBInner}>
               <div className={style.curses}>
-                <h4>Nursary</h4>
+                <h4>Nursery</h4>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
-                  necessitatibus soluta! Dolorem, repellat tempore. Nemo
-                  voluptatibus enim veritatis alias non?
+                  Alphabet Adventures Number Carnival Creative Canvas Tiny Tech
+                  Explorers Nature Detectives Rhythm & Rhyme
                 </p>
               </div>
               <div className={style.curses}>
                 <h4>Primary</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
-                  necessitatibus soluta! Dolorem, repellat tempore. Nemo
-                  voluptatibus enim veritatis alias non?
-                </p>
+                <p>Math, Language, Science, Arts, Digital, Social Studies.</p>
               </div>
               <div className={style.curses}>
                 <h4>Secondary</h4>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
-                  necessitatibus soluta! Dolorem, repellat tempore. Nemo
-                  voluptatibus enim veritatis alias non?
+                  Advanced Math/Science, Language Mastery, In-depth Sciences,
+                  Creative Arts, Digital Innovations, Global Perspectives.
                 </p>
               </div>
             </div>

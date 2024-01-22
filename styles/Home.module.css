@@ -211,11 +211,42 @@
     transform: scaleX(0);
   }
 }
-
-@media (max-width: 600px) {
-  .sectionA {
+@media(max-width: 960px) {
+   .sectionA {
     align-items: end;
   }
+  .sectionAInner h1 {
+    font-size: 60px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease-in-out;
+  }
+  .campus {
+  width: 700px;
+  height: 400px;
+  box-shadow: 1px 1px 2px #161643;
+  margin: 10px 20px;
+  border-radius: 10px;
+}
+    .sectionCInner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sectionDInner {
+    position: absolute;
+    max-width: 300px;
+    top: 400px;
+    left: 10px;
+    color: #fff;
+  }
+  
+  .testimonialSection {
+    margin: 20px;
+  }
+}
+@media (max-width: 600px) {
+
   .sectionAInner h1 {
     font-size: 20px;
     font-weight: bolder;
@@ -251,7 +282,4 @@
     line-height: 1.2rem;
   }
 
-  .testimonialSection {
-    margin: 20px;
-  }
 }

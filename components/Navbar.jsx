@@ -59,7 +59,7 @@ const Navbar = () => {
       <header className={style.mainHeader}>
         <div className={style.logo}>
           <Link href='/'>
-            <img src='' alt='Logo' />
+           <div className={style.img}></div>
           </Link>
         </div>
 
@@ -76,6 +76,11 @@ const Navbar = () => {
               </Link>
             </li>
 
+            <li>
+              <Link className={style.navLink} href='/admission'>
+                Admission
+              </Link>
+            </li>
             <li>
               <Link className={style.navLink} href='/news'>
                 news

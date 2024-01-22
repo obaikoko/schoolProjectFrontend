@@ -1,0 +1,22 @@
+.imgBg{
+    /* margin-top: 200px; */
+   
+    height: 500px;
+}
+.img{
+    background-image: url('../components/img/22-Courses-After-B.com-to-Get-High-Paying-Jobs-in-2023.webp');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+.admissionTxt{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    /* height: 300px; */
+    border: 1px solid #161643;
+}
