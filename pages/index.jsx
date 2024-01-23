@@ -6,31 +6,31 @@ export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const testimonials = [
     {
-      name: 'Sophia Johnson',
-      role: 'Senior Student',
+      name: 'Daniella Bassey',
+      role: 'Junior Student',
       photo: 'https://randomuser.me/api/portraits/women/11.jpg',
       text: 'BIS has been an incredible learning experience! The dedication of the teachers and the engaging curriculum have made my journey in J.S.S 3 truly enriching. I appreciate the supportive environment and the opportunities for personal growth.',
     },
     {
-      name: 'Ethan Rodriguez',
-      role: 'Junior Student',
+      name: 'Michael Itafegha',
+      role: 'Senior Student',
       photo: 'https://randomuser.me/api/portraits/men/12.jpg',
       text: "I'm enjoying my time at BIS! The academic challenges and extracurricular activities in J.S.S 2 keep me motivated. The school's commitment to holistic development has made my learning journey both enjoyable and rewarding.",
     },
     {
-      name: 'Isabella Smith',
-      role: 'Junior Student',
+      name: 'Magdalene Agiye',
+      role: 'Senior Student',
       photo: 'https://randomuser.me/api/portraits/women/13.jpg',
       text: "BIS is my second home! The supportive community and diverse learning opportunities in J.S.S 2 have shaped me into a well-rounded individual. I'm grateful for the friendships and knowledge gained during my time here.",
     },
     {
-      name: 'Liam Thompson',
+      name: 'Fahad Ahmed',
       role: 'Fresher',
       photo: 'https://randomuser.me/api/portraits/men/14.jpg',
       text: "I'm loving the creative atmosphere at BIS! As a J.S.S 1 student, I've been inspired by the innovative teaching methods and the emphasis on self-expression. BIS is fostering my passion for learning and creativity.",
     },
     {
-      name: 'Ava Clark',
+      name: 'Okeke Francis',
       role: 'Fresher',
       photo: 'https://randomuser.me/api/portraits/women/15.jpg',
       text: "BIS offers a welcoming environment for newcomers like me! In J.S.S 1, I've found a diverse range of activities and a supportive community. The teachers' dedication to our success is truly commendable.",
@@ -126,34 +126,52 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className={style.sectionE}>
-            <section className={style.testimonialSection}>
-              <h1>What Our Students Say</h1>
-              <div className={style.testimonialContainer}>
-                <div className={style.progressBar}></div>
-                <div className={style.quote}></div>
-                <p id='testimonial' className={style.testimonial}>
-                  {testimonials[currentTestimonial].text}
-                </p>
-                <div className={style.user}>
-                  <img
-                    id='photo'
-                    className={style.userImage}
-                    src={testimonials[currentTestimonial].photo}
-                    alt=''
-                  />
-                  <div className={style.userDetails}>
-                    <h4 id='name' className={style.name}>
-                      {testimonials[currentTestimonial].name}
-                    </h4>
-                    <p id='role' className={style.role}>
-                      {testimonials[currentTestimonial].role}
-                    </p>
-                  </div>
+
+          <section className={style.testimonialSection}>
+            <h1>What Our Students Say</h1>
+            <div className={style.testimonialContainer}>
+              <div className={style.progressBar}></div>
+              <div className={style.quote}></div>
+              <p id='testimonial' className={style.testimonial}>
+                {testimonials[currentTestimonial].text}
+              </p>
+              <div className={style.user}>
+                <img
+                  id='photo'
+                  className={style.userImage}
+                  src={testimonials[currentTestimonial].photo}
+                  alt=''
+                />
+                <div className={style.userDetails}>
+                  <h4 id='name' className={style.name}>
+                    {testimonials[currentTestimonial].name}
+                  </h4>
+                  <p id='role' className={style.role}>
+                    {testimonials[currentTestimonial].role}
+                  </p>
                 </div>
               </div>
-            </section>
+            </div>
           </section>
+          <section className={style.admin}>
+            <div className={style.adminTxt}>
+              <h1>The Proprietress</h1>
+              <p>
+                Welcome to Bendonalds International Secondary School, led by the
+                visionary Mrs. Agiye Esther. With a passion for holistic
+                education, Mrs. Esther fosters a nurturing environment where
+                students thrive academically and personally. Her commitment to
+                excellence and character development ensures our students are
+                well-prepared for a dynamic future. Join us on this journey of
+                growth and achievement under Mrs. Agiye Esther's inspiring
+                leadership
+              </p>
+            </div>
+            <div className={style.adminImgBg}>
+              <div className={style.adminImg}></div>
+            </div>
+          </section>
+        
         </div>
       </main>
     </>

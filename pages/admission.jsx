@@ -8,20 +8,26 @@ function admission() {
         <div className={style.img}></div>
       </div>
       <div className={style.admissionTxt}>
-        <h1>Admission!!! Admission!!! Admission!!!</h1>
+        <h1>ADMISSION</h1>
+        <h2>
+           Explore a world of possibilities at Bendonalds International
+          Secondary School! 
+        </h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          perferendis magnam veritatis molestias nemo dolore cupiditate quia.
-          Quos voluptates voluptatum nesciunt cumque voluptatibus non, modi nisi
-          rerum aperiam doloremque voluptatem incidunt laboriosam harum, quaerat
-          natus dolorum, eos et inventore ut aspernatur. Libero ex nostrum harum
-          repellendus quam fugit corporis nobis sint ullam vel beatae labore
-          totam ratione neque similique ipsa quasi, itaque praesentium
-          voluptate, a asperiores. Fuga, praesentium voluptas enim minus
-          veritatis autem asperiores dolorem provident quidem. Vero possimus at
-          placeat voluptates ab dolore consequuntur veniam. Dolores culpa
-          excepturi esse velit temporibus quisquam illum, illo nulla molestiae,
-          hic doloremque tempore.
+          Welcome to a place where education transcends boundaries, guided by
+          the visionary Mrs. Agiye Esther. Our admission doors are open to
+          aspiring students eager to embark on a transformative academic
+          journey. At Bendonalds, we believe in cultivating not just knowledge
+          but fostering a passion for learning. Mrs. Esther's commitment to
+          academic excellence and personalized attention ensures that each
+          student receives the support they need to thrive. Join our diverse
+          community of learners and discover a dynamic curriculum that prepares
+          you for success in an ever-evolving world. From innovative teaching
+          methods to a rich tapestry of extracurricular activities, our school
+          offers a holistic education experience. Enroll now to be part of
+          Bendonalds International Secondary School, where dreams take flight,
+          and futures are shaped. Together, let's unlock your potential and pave
+          the way for a bright tomorrow!
         </p>
       </div>
     </div>

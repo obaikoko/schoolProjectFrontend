@@ -195,6 +195,44 @@
   animation: grow 10s linear infinite;
   transform-origin: left;
 }
+.admin {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+  border-radius: 10px;
+  border: 1px solid #161643;
+}
+.admin .adminTxt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #161643;
+  width: 30%;
+  height: 300px;
+
+  border-radius: 10px;
+  margin: 0 20px;
+}
+.adminTxt p{
+  text-align: center;
+}
+.adminImgBg {
+  width: 50%;
+  height: 300px;
+}
+.adminImgBg .adminImg {
+  background-image: url('../components/img/03.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 3%;
+}
 /* Animation */
 @keyframes fadeInUp {
   0% {
@@ -211,8 +249,8 @@
     transform: scaleX(0);
   }
 }
-@media(max-width: 960px) {
-   .sectionA {
+@media (max-width: 960px) {
+  .sectionA {
     align-items: end;
   }
   .sectionAInner h1 {
@@ -222,13 +260,13 @@
     animation: fadeInUp 0.5s ease-in-out;
   }
   .campus {
-  width: 700px;
-  height: 400px;
-  box-shadow: 1px 1px 2px #161643;
-  margin: 10px 20px;
-  border-radius: 10px;
-}
-    .sectionCInner {
+    width: 700px;
+    height: 400px;
+    box-shadow: 1px 1px 2px #161643;
+    margin: 10px 20px;
+    border-radius: 10px;
+  }
+  .sectionCInner {
     display: flex;
     flex-direction: column;
   }
@@ -240,13 +278,12 @@
     left: 10px;
     color: #fff;
   }
-  
+
   .testimonialSection {
     margin: 20px;
   }
 }
 @media (max-width: 600px) {
-
   .sectionAInner h1 {
     font-size: 20px;
     font-weight: bolder;
@@ -261,9 +298,9 @@
     display: flex;
     flex-direction: column;
   }
-   .campus {
-  width: 350px;
-}
+  .campus {
+    width: 350px;
+  }
   .sectionCInner {
     display: flex;
     flex-direction: column;
@@ -284,6 +321,16 @@
     font-size: 18px;
     line-height: 1.2rem;
   }
-
-
+  .admin {
+    display: flex;
+    flex-direction: column;
+   
+  }
+  .admin .adminTxt {
+  width: 100%;
+}
+.adminImgBg {
+  width: 100%;
+  height: 300px;
+}
 }

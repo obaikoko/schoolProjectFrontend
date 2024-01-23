@@ -38,21 +38,15 @@ const Navbar = () => {
               news
             </Link>
           </li>
-          <li className={style.mobileOnly}>
-            <Link className={style.navLink} href='/login'>
-              login
-            </Link>
-          </li>
-
-          <li className={style.mobileOnly}>
-            <Link className={style.navLink} href='/admission'>
-              Admission
-            </Link>
-          </li>
 
           <li>
             <Link className={style.navLink} href='/admission'>
               Admission
+            </Link>
+          </li>
+          <li className={style.mobileOnly}>
+            <Link className={style.navLink} href='/login'>
+              login
             </Link>
           </li>
         </ul>

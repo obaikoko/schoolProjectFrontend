@@ -6,7 +6,7 @@ const About = () => {
     <div className={style.about}>
       <div className={style.imgBg}></div>
       <div className={style.aboutTxt}>
-        <h1>Bondonalds Internation Secondary School</h1>
+        <h1>Bendonalds International Secondary School</h1>
         <p>
           Welcome to Bendonalds International Secondary School, where excellence
           meets education in the heart of Ikot Eneobong F.H.E, 8 Miles Calabar,
