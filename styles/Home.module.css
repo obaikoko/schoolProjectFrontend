@@ -1,6 +1,6 @@
 .sectionA {
   position: relative;
-  background-image: url('../components/img/schoolBuilding.jpg');
+  background-image: url('../components/img/SchBuilding.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,7 +87,7 @@
   border-radius: 10px;
 }
 .imgA {
-  background-image: url(../components/img/thumbnail_0v4a8001_0.jpg);
+  background-image: url(../components/img/facility.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -97,7 +97,7 @@
   height: 100%;
 }
 .imgB {
-  background-image: url(../components/img/how-to-improve-school-facilities-ideas-for-improving-a-school-23-a.jpg);
+  background-image: url(../components/img/facility2.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -106,7 +106,7 @@
   height: 100%;
 }
 .imgC {
-  background-image: url(../components/img/slider-business-lecture-hall-learning-spaces.jpg);
+  background-image: url(../components/img/facility3.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -119,7 +119,7 @@
   height: 100vh;
 }
 .imgD {
-  background-image: url(../components/img/Choice-Based-Credit-System-Guide.jpg);
+  background-image: url(../components/img/morningDrills.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -128,17 +128,20 @@
 }
 .sectionDInner {
   position: absolute;
-  max-width: 500px;
-  top: 30%;
-  left: 10px;
+  top: 25%;
+  left: 5%;
+
+  
   color: #fff;
 }
 .sectionDInner h1 {
+  text-align: center;
   font-size: 30px;
   text-transform: capitalize;
   margin-bottom: 10px;
 }
 .sectionDInner p {
+  text-align: center;
   font-size: 18px;
   line-height: 2rem;
 }
@@ -196,7 +199,6 @@
   transform-origin: left;
 }
 .admin {
-  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,10 +212,9 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
-  border: 1px solid #161643;
   width: 30%;
   height: 300px;
-
+  margin: 10px 0;
   border-radius: 10px;
   margin: 0 20px;
 }
@@ -223,9 +224,10 @@
 .adminImgBg {
   width: 50%;
   height: 300px;
+  margin-top: 10px;
 }
 .adminImgBg .adminImg {
-  background-image: url('../components/img/03.png');
+  background-image: url('../components/img/Mrs\ Esther.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -327,6 +329,7 @@
    
   }
   .admin .adminTxt {
+    border-bottom: none;
   width: 100%;
 }
 .adminImgBg {

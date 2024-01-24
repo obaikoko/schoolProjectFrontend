@@ -1,0 +1,76 @@
+.section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imgBgA {
+  background-image: url('../components/img/Art2.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.imgBgB {
+  background-image: url('../components/img/sport3.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.imgBgC {
+  background-image: url('../components/img/parenting-178380-elementaryconference-es-main1-200608.webp');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.imgBgD {
+  background-image: url('../components/img/LiteracyWeek.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.imgBgE {
+  background-image: url('../components/img/Culture.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.newsTxt {
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px;
+}
+.section h1 {
+  text-shadow: 1px 2px 3px#fff;
+  color: #161643;
+  font-size: 60px;
+  font-weight: bold;
+}
+.section p {
+  color: #161643;
+  font-size: 30px;
+  font-weight: bold;
+}
+@media (max-width: 600px) {
+  .section {
+    padding: 0;
+  }
+  .section h1 {
+    font-size: 30px;
+  }
+}

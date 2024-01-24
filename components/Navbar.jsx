@@ -33,15 +33,20 @@ const Navbar = () => {
               about
             </Link>
           </li>
-          <li className={style.mobileOnly}>
-            <Link className={style.navLink} href='/news'>
-              news
-            </Link>
-          </li>
 
           <li>
             <Link className={style.navLink} href='/admission'>
               Admission
+            </Link>
+          </li>
+          <li className={style.mobileOnly}>
+            <Link className={style.navLink} href='/news'>
+             events
+            </Link>
+          </li>
+          <li>
+            <Link className={style.navLink} href='/news'>
+              news
             </Link>
           </li>
           <li className={style.mobileOnly}>
@@ -71,8 +76,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className={style.navLink} href='/news'>
-                news
+              <Link className={style.navLink} href='/events'>
+                events
               </Link>
             </li>
             <li>
