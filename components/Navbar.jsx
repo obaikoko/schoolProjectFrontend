@@ -24,33 +24,53 @@ const Navbar = () => {
           {/* monile menu only */}
 
           <li className={style.mobileOnly}>
-            <Link href='/' className={style.navLink}>
+            <Link onClick={menuBtnClicked} href='/' className={style.navLink}>
               home
             </Link>
           </li>
           <li className={style.mobileOnly}>
-            <Link className={style.navLink} href='/about'>
+            <Link
+              onClick={menuBtnClicked}
+              className={style.navLink}
+              href='/about'
+            >
               about
             </Link>
           </li>
 
           <li>
-            <Link className={style.navLink} href='/admission'>
+            <Link
+              onClick={menuBtnClicked}
+              className={style.navLink}
+              href='/admission'
+            >
               Admission
             </Link>
           </li>
           <li className={style.mobileOnly}>
-            <Link className={style.navLink} href='/news'>
-             events
+            <Link
+              onClick={menuBtnClicked}
+              className={style.navLink}
+              href='/events'
+            >
+              events
             </Link>
           </li>
           <li>
-            <Link className={style.navLink} href='/news'>
+            <Link
+              onClick={menuBtnClicked}
+              className={style.navLink}
+              href='/news'
+            >
               news
             </Link>
           </li>
           <li className={style.mobileOnly}>
-            <Link className={style.navLink} href='/login'>
+            <Link
+              onClick={menuBtnClicked}
+              className={style.navLink}
+              href='/login'
+            >
               login
             </Link>
           </li>

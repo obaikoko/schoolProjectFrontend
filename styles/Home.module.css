@@ -274,15 +274,20 @@
   }
 
   .sectionDInner {
-    position: absolute;
-    max-width: 300px;
-    top: 400px;
-    left: 10px;
+    position: absolute;  
     color: #fff;
   }
 
   .testimonialSection {
     margin: 20px;
+  }
+  .admin{
+   width: 100%;
+   padding: 10px;
+  }
+  .admin .adminTxt{
+    
+    width: 40%;
   }
 }
 @media (max-width: 600px) {
@@ -326,6 +331,7 @@
   .admin {
     display: flex;
     flex-direction: column;
+    width: 90%;
    
   }
   .admin .adminTxt {
