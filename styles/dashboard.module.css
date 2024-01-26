@@ -6,12 +6,15 @@
   overflow-x: hidden;
 }
 .formContainer {
-  margin-top: px;
+ display: none;
   width: 300px;
   overflow-y: auto;
 }
+.showForm {
+  display: block;
+}
 .form {
-  display: none;
+  
   width: 100%;
   height: 100%;
   padding: 10px;
@@ -20,9 +23,7 @@
   /* background-color: #161643; */
   padding: 10px;
 }
-.showForm {
-  display: block;
-}
+
 .formGroup {
   display: flex;
   flex-direction: column;

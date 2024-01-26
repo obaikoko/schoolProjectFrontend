@@ -8,6 +8,7 @@ import Spinner from './Spinner';
 import style from '@/styles/dashboard.module.css'
 
 const addSponsor = () => {
+  const [isSponsorForm, setIsSponsorForm] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     occupation: '',
@@ -56,9 +57,15 @@ const addSponsor = () => {
     }
   
   };
+  const clickedSponsorForm = () => {
+    setIsSponsorForm(!isSponsorForm)
+  }
   return (
-    <>
-      <div className={style.formContainer}>
+    <div className={style.container}>
+      <button className={style.btn} onClick={clickedSponsorForm}>
+        Register Sponsor
+      </button>
+      <div className={ isSponsorForm ? (`${style.formContainer} ${style.showForm} `) : (`${style.formContainer}`)}>
         <h2>Register Sponsor</h2>
         <form className={`${style.form} ${style.showForm}`} onSubmit={onSubmit}>
           <div className={style.formGroup}>
@@ -135,14 +142,10 @@ const addSponsor = () => {
               <option value='Others '>Others </option>
             </select>
           </div>
-          <button
-            className={style.btn}
-            type='submit'
-            data-bs-dismiss='modal'
-          >
+          <button className={style.btn} type='submit' data-bs-dismiss='modal'>
             Register
           </button>
-          <button className={style.btnCancel} type='button'>
+          <button onClick={clickedSponsorForm} className={style.btnCancel} type='button'>
             Cancel
           </button>
         </form>
@@ -268,7 +271,7 @@ const addSponsor = () => {
           </div>
         </div>
       </div> */}
-    </>
+    </div>
   );
 };
 

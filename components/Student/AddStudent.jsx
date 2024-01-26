@@ -9,6 +9,7 @@ import style from '../../styles/dashboard.module.css'
 import Spinner from '../Spinner';
 
 const addStudent = () => {
+  const [isStudentForm, setIsStudentForm] = useState(false)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -971,12 +972,22 @@ const addStudent = () => {
       toast.error('Please add all field');
     }
   };
+  const clickedStudentBtn =() => {
+    setIsStudentForm(!isStudentForm)
+  }
   return (
-    <>
-      <div className={style.formContainer}>
-        <h2>
-          Register Student
-        </h2>
+    <div className={style.container}>
+      <button onClick={clickedStudentBtn} className={style.btn}>
+        Register Student
+      </button>
+      <div
+        className={
+          isStudentForm
+            ? `${style.formContainer} ${style.showForm} `
+            : `${style.formContainer}`
+        }
+      >
+        <h2>Register Student</h2>
         <div className={style.form}>
           <form onSubmit={onSubmit}>
             <div className={style.formGroup}>
@@ -1181,6 +1192,13 @@ const addStudent = () => {
               data-bs-dismiss='modal'
             >
               submit
+            </button>
+            <button
+              onClick={clickedStudentBtn}
+              className={style.btnCancel}
+              type='button'
+            >
+              Cancel
             </button>
           </form>
         </div>
@@ -1435,7 +1453,7 @@ const addStudent = () => {
         </div>
       </div> */}
       </div>
-    </>
+    </div>
   );
 };
 

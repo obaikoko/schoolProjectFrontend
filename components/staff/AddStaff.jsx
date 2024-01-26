@@ -8,6 +8,7 @@ import { GET_STAFF } from '../queries/query';
 import style from '../../styles/dashboard.module.css'
 
 const addTeacher = () => {
+    const [isStaffForm, setIsStaffForm] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -1027,9 +1028,22 @@ const addTeacher = () => {
       toast.error('Please add all field')
     }
   };
+
+    const clickedStaffForm = () => {
+      setIsStaffForm(!isStaffForm);
+    };
   return (
-    <>
-      <div className={style.formContainer}>
+    <div>
+      <button onClick={clickedStaffForm} className={style.btn}>
+        Register Staff
+      </button>
+      <div
+        className={
+          isStaffForm
+            ? `${style.formContainer} ${style.showForm} `
+            : `${style.formContainer}`
+        }
+      >
         <h2>Register Staff</h2>
         <form className={style.form} onSubmit={onSubmit}>
           <div className={style.formGroup}>
@@ -1058,7 +1072,7 @@ const addTeacher = () => {
               className='form-control'
             />
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='surname' className='form-label'>
               Surname
             </label>
@@ -1072,7 +1086,7 @@ const addTeacher = () => {
             />
           </div>
 
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='qualification' className='form-label'>
               Qualification
             </label>
@@ -1094,7 +1108,7 @@ const addTeacher = () => {
               <option value='Others'>Others </option>
             </select>
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='category' className='form-label'>
               Staff Category
             </label>
@@ -1109,7 +1123,7 @@ const addTeacher = () => {
               <option value='Non Tutorial'>Non Tutorial</option>
             </select>
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='role' className='form-label'>
               Subject Handled or Role
             </label>
@@ -1120,7 +1134,7 @@ const addTeacher = () => {
               onChange={handleInputChange}
             ></select>
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='gender' className='form-label'>
               Gender
             </label>
@@ -1135,7 +1149,7 @@ const addTeacher = () => {
               <option value='Female'>Female</option>
             </select>
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='maritalStatus' className='form-label'>
               Marital Status
             </label>
@@ -1151,7 +1165,7 @@ const addTeacher = () => {
             </select>
           </div>
 
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='dob' className='form-label'>
               Date of birth
             </label>
@@ -1165,7 +1179,7 @@ const addTeacher = () => {
               className='form-control'
             />
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='yearAdmitted' className='form-label'>
               Session Admitted
             </label>
@@ -1180,7 +1194,7 @@ const addTeacher = () => {
             />
           </div>
 
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='stateOfOrigin' className='form-label'>
               State of origin
             </label>
@@ -1229,7 +1243,7 @@ const addTeacher = () => {
               <option value='Zamfara'>Zamfara</option>
             </select>
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='staffLocalGvt' className='form-label'>
               Local Government
             </label>
@@ -1240,7 +1254,7 @@ const addTeacher = () => {
               onChange={handleInputChange}
             ></select>
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='homeTown' className='form-label'>
               Home Town
             </label>
@@ -1253,7 +1267,7 @@ const addTeacher = () => {
               className='form-control'
             />
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='residence' className='form-label'>
               Residential Address
             </label>
@@ -1266,7 +1280,7 @@ const addTeacher = () => {
               className='form-control'
             />
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='phone' className='form-label'>
               Phone Number
             </label>
@@ -1279,7 +1293,7 @@ const addTeacher = () => {
               onChange={handleInputChange}
             />
           </div>
-         <div className={style.formGroup}>
+          <div className={style.formGroup}>
             <label htmlFor='email' className='form-label'>
               Email Address
             </label>
@@ -1298,6 +1312,13 @@ const addTeacher = () => {
             data-bs-dismiss='modal'
           >
             submit
+          </button>
+          <button
+            onClick={clickedStaffForm}
+            className={style.btnCancel}
+            type='button'
+          >
+            Cancel
           </button>
         </form>
       </div>
@@ -1611,7 +1632,7 @@ const addTeacher = () => {
           </div>
         </div>
       </div> */}
-    </>
+    </div>
   );
 };
 

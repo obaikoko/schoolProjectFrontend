@@ -8,6 +8,7 @@ import style from '../styles/dashboard.module.css'
 function dashboard() {
   return (
     <div className={style.dashboard}>
+      
         <AddStudent/>
         <AddUser/>
         <AddStaff/>

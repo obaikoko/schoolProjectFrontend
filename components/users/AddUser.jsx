@@ -7,6 +7,7 @@ import { ADD_USER } from './userMutation';
 import style from '../../styles/dashboard.module.css';
 
 const addUser = () => {
+    const [isUserForm, setIsUserForm] = useState(false);
   const [formData, setFormData] = useState({
     surname: '',
     firstName: '',
@@ -948,30 +949,15 @@ const addUser = () => {
     //   toast.error('Please add all field');
     // }
   };
+   const clickedUserForm = () => {
+     setIsUserForm(!isUserForm);
+   };
   return (
     <>
-      {/* <button
-        type='button'
-        className='btn btn-primary'
-        data-bs-toggle='modal'
-        data-bs-target='#addUserModal'
-      >
-        {loading ? (
-          <Spinner />
-        ) : (
-          <div className='d-flex align-items-center'>
-            <FaUserCircle className='icon mx-2' />
-            <div> Add User</div>
-          </div>
-        )}
-      </button> */}
+     
 
       <div
-        className='modal fade'
-        id='addUserModal'
-        tabIndex='-1'
-        aria-labelledby='exampleModalLabel'
-        aria-hidden='true'
+      
       >
         <div className={style.formContainer}>
           <h2>Register User</h2>
