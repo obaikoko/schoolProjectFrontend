@@ -943,177 +943,175 @@ const addUser = () => {
     //   email: '',
     //   password: '',
     // });
-    // } else if (loading) {
-    //   toast.loading(<Spinner />);
-    // } else {
-    //   toast.error('Please add all field');
-    // }
+
   };
    const clickedUserForm = () => {
      setIsUserForm(!isUserForm);
    };
   return (
-    <>
-     
-
+    <div className={style.container}>
+      <button className={style.btn} onClick={clickedUserForm}>
+        Register User
+      </button>
       <div
-      
+        className={
+          isUserForm
+            ? `${style.formContainer} ${style.showForm} `
+            : `${style.formContainer}`
+        }
       >
-        <div className={style.formContainer}>
-          <h2>Register User</h2>
-          <form className={style.form} onSubmit={onSubmit}>
-            <div className={style.formGroup}>
-              <label htmlFor='firstName' className='form-label'>
-                Fisrt Name
-              </label>
-              <input
-                type='text'
-                name='firstName'
-                id='firstName'
-                value={firstName}
-                onChange={handleInputChange}
-                className='form-control'
-              />
-            </div>
-            <div className={style.formGroup}>
-              <label htmlFor='lastName' className='form-label'>
-                Last Name
-              </label>
-              <input
-                type='text'
-                name='lastName'
-                id='lastName'
-                value={lastName}
-                onChange={handleInputChange}
-                className='form-control'
-              />
-            </div>
-            <div className={style.formGroup}>
-              <label htmlFor='surname' className='form-label'>
-                Surname
-              </label>
-              <input
-                type='text'
-                name='surname'
-                id='surname'
-                value={surname}
-                onChange={handleInputChange}
-                className='form-control'
-              />
-            </div>
+        <h2>Register User</h2>
+        <form className={style.form} onSubmit={onSubmit}>
+          <div className={style.formGroup}>
+            <label htmlFor='firstName' className='form-label'>
+              Fisrt Name
+            </label>
+            <input
+              type='text'
+              name='firstName'
+              id='firstName'
+              value={firstName}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='lastName' className='form-label'>
+              Last Name
+            </label>
+            <input
+              type='text'
+              name='lastName'
+              id='lastName'
+              value={lastName}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='surname' className='form-label'>
+              Surname
+            </label>
+            <input
+              type='text'
+              name='surname'
+              id='surname'
+              value={surname}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
 
-            <div className={style.formGroup}>
-              <label htmlFor='stateOfOrigin' className='form-label'>
-                State of origin
-              </label>
-              <select
-                name='stateOfOrigin'
-                id='stateOfOrigin'
-                className='form-select'
-                // onChange={handleInputChange}
-                onChange={handleStateChange}
-              >
-                <option value=''></option>
-                <option value='Abia'>Abia</option>
-                <option value='Adamawa'>Adamawa</option>
-                <option value='Akwa Ibom'>Akwa Ibom</option>
-                <option value='Anambra'>Anambra</option>
-                <option value='Bauchi'>Bauchi</option>
-                <option value='Bayelsa'>Bayelsa</option>
-                <option value='Benue'>Benue</option>
-                <option value='Borno'>Borno</option>
-                <option value='Cross River'>Cross River</option>
-                <option value='Delta'>Delta</option>
-                <option value='Ebonyi'>Ebonyi</option>
-                <option value='Edo'>Edo</option>
-                <option value='Ekiti'>Ekiti</option>
-                <option value='Enugu'>Enugu</option>
-                <option value='Gombe'>Gombe</option>
-                <option value='Imo'>Imo</option>
-                <option value='Jigawa'>Jigawa</option>
-                <option value='Kaduna'>Kaduna</option>
-                <option value='Kano'>Kano</option>
-                <option value='Katsina'>Katsina</option>
-                <option value='Kebbi'>Kebbi</option>
-                <option value='Kogi'>Kogi</option>
-                <option value='Kwara'>Kwara</option>
-                <option value='Lagos'>Lagos</option>
-                <option value='Nasarawa'>Nasarawa</option>
-                <option value='Niger'>Niger</option>
-                <option value='Ogun'>Ogun</option>
-                <option value='Ondo'>Ondo</option>
-                <option value='Osun'>Osun</option>
-                <option value='Oyo'>Oyo</option>
-                <option value='Plateau'>Plateau</option>
-                <option value='Rivers'>Rivers</option>
-                <option value='Sokoto'>Sokoto</option>
-                <option value='Taraba'>Taraba</option>
-                <option value='Yobe'>Yobe</option>
-                <option value='Zamfara'>Zamfara</option>
-              </select>
-            </div>
-            <div className={style.formGroup}>
-              <label htmlFor='userLocalGvt' className='form-label'>
-                Local Government
-              </label>
-              <select
-                name='localGvt'
-                id='userLocalGvt'
-                className='form-select'
-                onChange={handleInputChange}
-              ></select>
-            </div>
-            <div className={style.formGroup}>
-              <label htmlFor='phone' className='form-label'>
-                Phone Number
-              </label>
-              <input
-                type='text'
-                name='phone'
-                id='phone'
-                value={phone}
-                onChange={handleInputChange}
-                className='form-control'
-              />
-            </div>
-            <div className={style.formGroup}>
-              <label htmlFor='email' className='form-label'>
-                Email
-              </label>
-              <input
-                type='text'
-                name='email'
-                id='email'
-                value={email}
-                onChange={handleInputChange}
-                className='form-control'
-              />
-            </div>
-            <div className={style.formGroup}>
-              <label htmlFor='password' className='form-label'>
-                password
-              </label>
-              <input
-                type='password'
-                name='password'
-                id='password'
-                value={password}
-                onChange={handleInputChange}
-                className='form-control'
-              />
-            </div>
-
-            <button
-              className='btn btn-secondary'
-              type='submit'
-              data-bs-dismiss='modal'
+          <div className={style.formGroup}>
+            <label htmlFor='stateOfOrigin' className='form-label'>
+              State of origin
+            </label>
+            <select
+              name='stateOfOrigin'
+              id='stateOfOrigin'
+              className='form-select'
+              // onChange={handleInputChange}
+              onChange={handleStateChange}
             >
-              submit
-            </button>
-          </form>
-        </div>
+              <option value=''></option>
+              <option value='Abia'>Abia</option>
+              <option value='Adamawa'>Adamawa</option>
+              <option value='Akwa Ibom'>Akwa Ibom</option>
+              <option value='Anambra'>Anambra</option>
+              <option value='Bauchi'>Bauchi</option>
+              <option value='Bayelsa'>Bayelsa</option>
+              <option value='Benue'>Benue</option>
+              <option value='Borno'>Borno</option>
+              <option value='Cross River'>Cross River</option>
+              <option value='Delta'>Delta</option>
+              <option value='Ebonyi'>Ebonyi</option>
+              <option value='Edo'>Edo</option>
+              <option value='Ekiti'>Ekiti</option>
+              <option value='Enugu'>Enugu</option>
+              <option value='Gombe'>Gombe</option>
+              <option value='Imo'>Imo</option>
+              <option value='Jigawa'>Jigawa</option>
+              <option value='Kaduna'>Kaduna</option>
+              <option value='Kano'>Kano</option>
+              <option value='Katsina'>Katsina</option>
+              <option value='Kebbi'>Kebbi</option>
+              <option value='Kogi'>Kogi</option>
+              <option value='Kwara'>Kwara</option>
+              <option value='Lagos'>Lagos</option>
+              <option value='Nasarawa'>Nasarawa</option>
+              <option value='Niger'>Niger</option>
+              <option value='Ogun'>Ogun</option>
+              <option value='Ondo'>Ondo</option>
+              <option value='Osun'>Osun</option>
+              <option value='Oyo'>Oyo</option>
+              <option value='Plateau'>Plateau</option>
+              <option value='Rivers'>Rivers</option>
+              <option value='Sokoto'>Sokoto</option>
+              <option value='Taraba'>Taraba</option>
+              <option value='Yobe'>Yobe</option>
+              <option value='Zamfara'>Zamfara</option>
+            </select>
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='userLocalGvt' className='form-label'>
+              Local Government
+            </label>
+            <select
+              name='localGvt'
+              id='userLocalGvt'
+              className='form-select'
+              onChange={handleInputChange}
+            ></select>
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='phone' className='form-label'>
+              Phone Number
+            </label>
+            <input
+              type='text'
+              name='phone'
+              id='phone'
+              value={phone}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='email' className='form-label'>
+              Email
+            </label>
+            <input
+              type='text'
+              name='email'
+              id='email'
+              value={email}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='password' className='form-label'>
+              password
+            </label>
+            <input
+              type='password'
+              name='password'
+              id='password'
+              value={password}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+
+          <button className={style.btn} type='submit'>
+            submit
+          </button>
+          <button onClick={clickedUserForm} className={style.btnCancel} type='button'>
+            Cancel
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -13,6 +13,10 @@
 .showForm {
   display: block;
 }
+.showForm h2{
+    text-align: center;
+    color: #161643;
+}
 .form {
   
   width: 100%;
@@ -47,6 +51,9 @@
   border: none;
   padding: 5px;
   border-radius: 10px;
+}
+.formGroup label{
+    cursor: pointer;
 }
 .btn {
   background-color:transparent;
@@ -88,13 +95,17 @@
     width: 100vw;
   }
   .formContainer {
+    display: none;
+  
+  }
+  .showForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100vw;
     margin: 10px 0;
-  }
+}
   .form {
     width: 90%;
   }
