@@ -10,6 +10,7 @@ const GET_USERS = gql`
       firstName
       lastName
       phone
+      role
       stateOfOrigin
       localGvt
       email
@@ -25,6 +26,7 @@ const GET_USER = gql`
       firstName
       lastName
       phone
+      role
       stateOfOrigin
       localGvt
       email

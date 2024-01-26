@@ -42,6 +42,15 @@ const Navbar = () => {
             <Link
               onClick={menuBtnClicked}
               className={style.navLink}
+              href='/dashboard'
+            >
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link
+              onClick={menuBtnClicked}
+              className={style.navLink}
               href='/admission'
             >
               Admission

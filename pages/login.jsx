@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '@/components/mutations/mutation';
+import { LOGIN_USER } from '@/components/users/userMutation';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
@@ -20,8 +20,10 @@ function loginPage() {
     onError: (error) => {
       toast.error(error.message);
     },
-    onCompleted: () => {
-      router.push('/register');
+    onCompleted: (data) => {
+      toast.success(`welcome ${data.loginUser.firstName} `)
+      localStorage.setItem('User', JSON.stringify(data));
+      router.push('/dashboard')
     },
   });
 
@@ -77,33 +79,6 @@ function loginPage() {
             Forgotten password ?
           </Link>
         </form>
-        // <form onSubmit={handleSubmit}>
-        //   <div className='form-group'>
-        //     <label htmlFor='email'>Username</label>
-        //     <input
-        //       type='text'
-        //       name='email'
-        //       className='form-control'
-        //       id='email'
-        //       value={email}
-        //       onChange={handleInputChange}
-        //     />
-        //   </div>
-        //   <div className='form-group'>
-        //     <label htmlFor='password'>Password</label>
-        //     <input
-        //       type='password'
-        //       name='password'
-        //       className='form-control'
-        //       id='password'
-        //       value={password}
-        //       onChange={handleInputChange}
-        //     />
-        //   </div>
-        //   <button type='submit' className='btn btn-primary'>
-        //     Login
-        //   </button>
-        // </form>
       )}
     </div>
   );

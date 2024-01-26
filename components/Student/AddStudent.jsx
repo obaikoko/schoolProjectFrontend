@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { ADD_STUDENT } from './studentMutations';
 import { GET_STUDENTS } from './studentQueries';
 import { GET_SPONSORS } from '../queries/query';
+import style from '../../styles/dashboard.module.css'
 import Spinner from '../Spinner';
 
 const addStudent = () => {
@@ -972,6 +973,218 @@ const addStudent = () => {
   };
   return (
     <>
+      <div className={style.formContainer}>
+        <h2>
+          Register Student
+        </h2>
+        <div className={style.form}>
+          <form onSubmit={onSubmit}>
+            <div className={style.formGroup}>
+              <label htmlFor='studentFirstName'>Fisrt Name</label>
+              <input
+                type='text'
+                name='firstName'
+                id='studentFirstName'
+                value={firstName}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='studentLastName' className='form-label'>
+                Last Name
+              </label>
+              <input
+                type='text'
+                name='lastName'
+                id='studentLastName'
+                value={lastName}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='studentSurname' className='form-label'>
+                Surname
+              </label>
+              <input
+                type='text'
+                name='surname'
+                id='studentSurname'
+                value={surname}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+
+            <div className={style.formGroup}>
+              <label htmlFor='selectStudentLevel' className='form-label'>
+                Class
+              </label>
+              <select
+                name='level'
+                id='selectStudentLevel'
+                className='form-select'
+                onChange={handleInputChange}
+              >
+                <option value=''>Select class</option>
+                <option value='Jss1'>Jss1</option>
+                <option value='Jss2'>Jss2</option>
+                <option value='Jss3'>Jss3</option>
+                <option value='Sss1'>Sss1</option>
+                <option value='Sss2'>Sss2</option>
+                <option value='Sss3'>Sss3</option>
+              </select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='stdGender' className='form-label'>
+                Gender
+              </label>
+              <select
+                name='gender'
+                id='stdGender'
+                className='form-select'
+                onChange={handleInputChange}
+              >
+                <option value=''></option>
+                <option value='Male'>Male</option>
+                <option value='Female'>Female</option>
+              </select>
+            </div>
+
+            <div className={style.formGroup}>
+              <label htmlFor='studentDob' className='form-label'>
+                Date of birth
+              </label>
+              <input
+                type='date'
+                name='dob'
+                placeholder='DD/MM/YYYY'
+                id='studentDob'
+                value={dob}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='studentYearAdmitted' className='form-label'>
+                Session Admitted
+              </label>
+              <input
+                type='text'
+                name='yearAdmitted'
+                placeholder='Enter the session Admitted eg(2017/2018)'
+                id='studentYearAdmitted'
+                value={yearAdmitted}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+
+            <div className={style.formGroup}>
+              <label htmlFor='studentStateOfOrigin' className='form-label'>
+                State of origin
+              </label>
+              <select
+                name='stateOfOrigin'
+                id='studentStateOfOrigin'
+                className='form-select'
+                // onChange={handleInputChange}
+                onChange={handleStateChange}
+              >
+                <option value=''></option>
+                <option value='Abia'>Abia</option>
+                <option value='Adamawa'>Adamawa</option>
+                <option value='Akwa Ibom'>Akwa Ibom</option>
+                <option value='Anambra'>Anambra</option>
+                <option value='Bauchi'>Bauchi</option>
+                <option value='Bayelsa'>Bayelsa</option>
+                <option value='Benue'>Benue</option>
+                <option value='Borno'>Borno</option>
+                <option value='Cross River'>Cross River</option>
+                <option value='Delta'>Delta</option>
+                <option value='Ebonyi'>Ebonyi</option>
+                <option value='Edo'>Edo</option>
+                <option value='Ekiti'>Ekiti</option>
+                <option value='Enugu'>Enugu</option>
+                <option value='Gombe'>Gombe</option>
+                <option value='Imo'>Imo</option>
+                <option value='Jigawa'>Jigawa</option>
+                <option value='Kaduna'>Kaduna</option>
+                <option value='Kano'>Kano</option>
+                <option value='Katsina'>Katsina</option>
+                <option value='Kebbi'>Kebbi</option>
+                <option value='Kogi'>Kogi</option>
+                <option value='Kwara'>Kwara</option>
+                <option value='Lagos'>Lagos</option>
+                <option value='Nasarawa'>Nasarawa</option>
+                <option value='Niger'>Niger</option>
+                <option value='Ogun'>Ogun</option>
+                <option value='Ondo'>Ondo</option>
+                <option value='Osun'>Osun</option>
+                <option value='Oyo'>Oyo</option>
+                <option value='Plateau'>Plateau</option>
+                <option value='Rivers'>Rivers</option>
+                <option value='Sokoto'>Sokoto</option>
+                <option value='Taraba'>Taraba</option>
+                <option value='Yobe'>Yobe</option>
+                <option value='Zamfara'>Zamfara</option>
+              </select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='localGvt' className='form-label'>
+                Local Government
+              </label>
+              <select
+                name='localGvt'
+                id='localGvt'
+                className='form-select'
+                onChange={handleInputChange}
+              ></select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='stdHomeTown' className='form-label'>
+                Home Town
+              </label>
+              <input
+                type='text'
+                name='homeTown'
+                id='stdHomeTown'
+                value={homeTown}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='stdSponsorId' className='form-label'>
+                Sponsor
+              </label>
+              <select
+                className='form-select'
+                name='sponsorId'
+                id='stdSponsorId'
+                onChange={handleInputChange}
+              >
+                <option value=''>
+                  Ensure Sponsor has already been registered
+                </option>
+                {data &&
+                  data.Sponsors.map((sponsorId) => (
+                    <option value={sponsorId.id} key={sponsorId.id}>
+                      {sponsorId.name}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <button
+              className='btn btn-secondary'
+              type='submit'
+              data-bs-dismiss='modal'
+            >
+              submit
+            </button>
+          </form>
+        </div>
+        {/*     
       <button
         type='button'
         className='btn btn-primary'
@@ -1010,8 +1223,8 @@ const addStudent = () => {
             </div>
             <div className='modal-body'>
               <form onSubmit={onSubmit}>
-                <div className='mb-3'>
-                  <label htmlFor='firstName' className='form-label'>
+                  <div className={style.formGroup}>
+                  <label htmlFor='studentFirstName' className='form-label'>
                     Fisrt Name
                   </label>
                   <input
@@ -1024,7 +1237,7 @@ const addStudent = () => {
                   />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='lastName' className='form-label'>
+                  <label htmlFor='studentLastName' className='form-label'>
                     Last Name
                   </label>
                   <input
@@ -1037,7 +1250,7 @@ const addStudent = () => {
                   />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='surname' className='form-label'>
+                  <label htmlFor='studentSurname' className='form-label'>
                     Surname
                   </label>
                   <input
@@ -1051,12 +1264,12 @@ const addStudent = () => {
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='level' className='form-label'>
+                  <label htmlFor='selectStudentLevel' className='form-label'>
                     Class
                   </label>
                   <select
                     name='level'
-                    id='lstudentLevel'
+                    id='studentStudentLevel'
                     className='form-select'
                     onChange={handleInputChange}
                   >
@@ -1070,7 +1283,7 @@ const addStudent = () => {
                   </select>
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='gender' className='form-label'>
+                  <label htmlFor='studentGender' className='form-label'>
                     Gender
                   </label>
                   <select
@@ -1086,11 +1299,11 @@ const addStudent = () => {
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='dob' className='form-label'>
+                  <label htmlFor='studentDob' className='form-label'>
                     Date of birth
                   </label>
                   <input
-                    type='text'
+                    type='date'
                     name='dob'
                     placeholder='DD/MM/YYYY'
                     id='studentDob'
@@ -1100,7 +1313,7 @@ const addStudent = () => {
                   />
                 </div>
                 <div className='mb-3'>
-                  <label htmlFor='yearAdmitted' className='form-label'>
+                  <label htmlFor='studentYearAdmitted' className='form-label'>
                     Session Admitted
                   </label>
                   <input
@@ -1115,7 +1328,7 @@ const addStudent = () => {
                 </div>
 
                 <div className='mb-3'>
-                  <label htmlFor='stateOfOrigin' className='form-label'>
+                  <label htmlFor='studentStateOfOrigin' className='form-label'>
                     State of origin
                   </label>
                   <select
@@ -1220,6 +1433,7 @@ const addStudent = () => {
             </div>
           </div>
         </div>
+      </div> */}
       </div>
     </>
   );

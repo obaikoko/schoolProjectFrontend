@@ -4,12 +4,8 @@ const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
     loginUser(email: $email, password: $password) {
       id
-      surname
       firstName
-      lastName
-      phone
-      stateOfOrigin
-      localGvt
+      role
       email
     }
   }
@@ -20,6 +16,7 @@ const ADD_USER = gql`
     $firstName: String!
     $lastName: String!
     $phone: String!
+    $role: UserRoleType!
     $stateOfOrigin: String!
     $localGvt: String!
     $email: String!
@@ -30,6 +27,7 @@ const ADD_USER = gql`
       firstName: $firstName
       lastName: $lastName
       phone: $phone
+      role: $role
       stateOfOrigin: $stateOfOrigin
       localGvt: $localGvt
       email: $email
@@ -40,6 +38,7 @@ const ADD_USER = gql`
       firstName
       lastName
       phone
+      role
       stateOfOrigin
       localGvt
       email

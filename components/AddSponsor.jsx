@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { ADD_SPONSOR } from './mutations/mutation';
 import { GET_SPONSORS } from './queries/query';
 import Spinner from './Spinner';
+import style from '@/styles/dashboard.module.css'
 
 const addSponsor = () => {
   const [formData, setFormData] = useState({
@@ -57,7 +58,96 @@ const addSponsor = () => {
   };
   return (
     <>
-      <button
+      <div className={style.formContainer}>
+        <h2>Register Sponsor</h2>
+        <form className={`${style.form} ${style.showForm}`} onSubmit={onSubmit}>
+          <div className={style.formGroup}>
+            <label htmlFor='name' className='form-label'>
+              Name
+            </label>
+            <input
+              type='text'
+              name='name'
+              id='name'
+              value={name}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='occupation' className='form-label'>
+              Occupation
+            </label>
+            <input
+              type='text'
+              name='occupation'
+              id='occupation'
+              value={occupation}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='phoneNumber' className='form-label'>
+              Phone Number
+            </label>
+            <input
+              type='text'
+              name='phoneNumber'
+              id='phoneNumber'
+              value={phoneNumber}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='address' className='form-label'>
+              Address
+            </label>
+            <input
+              type='text'
+              name='address'
+              id='address'
+              value={address}
+              onChange={handleInputChange}
+              className='form-control'
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='relationship' className='form-label'>
+              Relationship
+            </label>
+            <select
+              name='relationship'
+              id='relationship'
+              className='form-select'
+              onChange={handleInputChange}
+            >
+              <option value=''></option>
+              <option value='Father '>Father </option>
+              <option value='Mother '>Mother </option>
+              <option value='Uncle '>Uncle </option>
+              <option value='Aunty '>Aunty </option>
+              <option value='Brother '>Brother </option>
+              <option value='Sister '>Sister </option>
+              <option value='Guardian '>Guardian </option>
+              <option value='Self Sponsor'>Self Sponsor </option>
+              <option value='Others '>Others </option>
+            </select>
+          </div>
+          <button
+            className={style.btn}
+            type='submit'
+            data-bs-dismiss='modal'
+          >
+            Register
+          </button>
+          <button className={style.btnCancel} type='button'>
+            Cancel
+          </button>
+        </form>
+      </div>
+      {/* <button
         type='button'
         className='btn btn-primary'
         data-bs-toggle='modal'
@@ -177,7 +267,7 @@ const addSponsor = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
