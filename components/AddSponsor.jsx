@@ -72,7 +72,7 @@ const addSponsor = () => {
             : `${style.formContainer}`
         }
       >
-        <form className={`${style.form} ${style.showForm}`} onSubmit={onSubmit}>
+        <form className={style.form} onSubmit={onSubmit}>
           <h2>Register Sponsor</h2>
           <div className={style.formGroup}>
             <label htmlFor='name' className='form-label'>
@@ -153,7 +153,7 @@ const addSponsor = () => {
           </button>
           <button
             onClick={clickedSponsorForm}
-            className={style.btnCancel}
+            className={`${style.btn} ${style.btnCancel} `}
             type='button'
           >
             Cancel

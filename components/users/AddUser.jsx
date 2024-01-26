@@ -960,8 +960,8 @@ const addUser = () => {
             : `${style.formContainer}`
         }
       >
-        <h2>Register User</h2>
         <form className={style.form} onSubmit={onSubmit}>
+          <h2>Register User</h2>
           <div className={style.formGroup}>
             <label htmlFor='firstName' className='form-label'>
               Fisrt Name
@@ -1106,7 +1106,11 @@ const addUser = () => {
           <button className={style.btn} type='submit'>
             submit
           </button>
-          <button onClick={clickedUserForm} className={style.btnCancel} type='button'>
+          <button
+            onClick={clickedUserForm}
+            className={`${style.btn} ${style.btnCancel} `}
+            type='button'
+          >
             Cancel
           </button>
         </form>

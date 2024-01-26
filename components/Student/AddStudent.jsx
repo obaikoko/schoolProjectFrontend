@@ -1191,7 +1191,7 @@ const addStudent = () => {
             </button>
             <button
               onClick={clickedStudentBtn}
-              className={style.btnCancel}
+              className={`${style.btn} ${style.btnCancel} `}
               type='button'
             >
               Cancel

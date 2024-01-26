@@ -1310,7 +1310,7 @@ const addTeacher = () => {
           </button>
           <button
             onClick={clickedStaffForm}
-            className={style.btnCancel}
+            className={`${style.btn} ${style.btnCancel} `}
             type='button'
           >
             Cancel
