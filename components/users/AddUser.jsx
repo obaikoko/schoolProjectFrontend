@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Spinner from '../Spinner';
 import { ADD_USER } from './userMutation';
-import style from '../../styles/dashboard.module.css';
+import style from '../../styles/register.module.css';
 
 const addUser = () => {
     const [isUserForm, setIsUserForm] = useState(false);

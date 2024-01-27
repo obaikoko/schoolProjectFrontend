@@ -5,8 +5,10 @@ import { toast } from 'react-toastify';
 import { UPDATE_STUDENT } from './studentMutations';
 import { GET_STUDENTS } from './studentQueries';
 import Spinner from '../Spinner';
+import style from '@/styles/register.module.css'
 
 const UpdateStudentBtn = ({ student }) => {
+   const [isStudentForm, setIsStudentForm] = useState(false);
   const [formData, setFormData] = useState({
     firstName: student.firstName,
     lastName: student.lastName,
@@ -943,253 +945,237 @@ const UpdateStudentBtn = ({ student }) => {
     console.log(student.id);
 
   };
+    const clickedStudentBtn = () => {
+      setIsStudentForm(!isStudentForm);
+    };
   return (
     <>
-      <button
-        type='button'
-        className='btn btn-sm'
-        data-bs-toggle='modal'
-        data-bs-target='#updateStudentModal'
-      >
-        {loading ? (
-          <Spinner />
-        ) : (
-          <p className='btn btn-secondary'>update</p>
-        )}
+
+      <button onClick={clickedStudentBtn} className={style.btn}>
+        update Student profile
       </button>
 
       <div
-        className='modal fade'
-        id='updateStudentModal'
-        tabIndex='-1'
-        aria-labelledby='exampleModalLabel'
-        aria-hidden='true'
+        className={
+          isStudentForm
+            ? `${style.formContainer} ${style.showForm} `
+            : `${style.formContainer}`
+        }
       >
-        <div className='modal-dialog'>
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <h1 className='modal-title fs-5' id='exampleModalLabel'>
-                Update Student
-              </h1>
-              <button
-                type='button'
-                className='btn-close'
-                data-bs-dismiss='modal'
-                aria-label='Close'
-              ></button>
+        <div className={style.form}>
+          <form onSubmit={onSubmit}>
+            <h2>Update {student.surname}'s profile</h2>
+            <div className={style.formGroup}>
+              <label htmlFor='firstName' className='form-label'>
+                Fisrt Name
+              </label>
+              <input
+                type='text'
+                name='firstName'
+                id='firstName'
+                value={firstName}
+                onChange={handleInputChange}
+                className='form-control'
+              />
             </div>
-            <div className='modal-body'>
-              <form onSubmit={onSubmit}>
-                <div className='mb-3'>
-                  <label htmlFor='firstName' className='form-label'>
-                    Fisrt Name
-                  </label>
-                  <input
-                    type='text'
-                    name='firstName'
-                    id='firstName'
-                    value={firstName}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='lastName' className='form-label'>
-                    Last Name
-                  </label>
-                  <input
-                    type='text'
-                    name='lastName'
-                    id='lastName'
-                    value={lastName}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='surname' className='form-label'>
-                    Surname
-                  </label>
-                  <input
-                    type='text'
-                    name='surname'
-                    id='surname'
-                    value={surname}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
+            <div className={style.formGroup}>
+              <label htmlFor='lastName' className='form-label'>
+                Last Name
+              </label>
+              <input
+                type='text'
+                name='lastName'
+                id='lastName'
+                value={lastName}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='surname' className='form-label'>
+                Surname
+              </label>
+              <input
+                type='text'
+                name='surname'
+                id='surname'
+                value={surname}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
 
-                <div className='mb-3'>
-                  <label htmlFor='level' className='form-label'>
-                    Class
-                  </label>
-                  <select
-                    name='level'
-                    id='level'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  >
-                    <option value=''>Select class</option>
-                    <option value='Jss1'>Jss1</option>
-                    <option value='Jss2'>Jss2</option>
-                    <option value='Jss3'>Jss3</option>
-                    <option value='Sss1'>Sss1</option>
-                    <option value='Sss2'>Sss2</option>
-                    <option value='Sss3'>Sss3</option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='gender' className='form-label'>
-                    Gender
-                  </label>
-                  <select
-                    name='gender'
-                    id='gender'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  >
-                    <option value=''></option>
-                    <option value='Male'>Male</option>
-                    <option value='Female'>Female</option>
-                  </select>
-                </div>
+            <div className={style.formGroup}>
+              <label htmlFor='level' className='form-label'>
+                Class
+              </label>
+              <select
+                name='level'
+                id='level'
+                className='form-select'
+                onChange={handleInputChange}
+              >
+                <option value=''>Select class</option>
+                <option value='Jss1'>Jss1</option>
+                <option value='Jss2'>Jss2</option>
+                <option value='Jss3'>Jss3</option>
+                <option value='Sss1'>Sss1</option>
+                <option value='Sss2'>Sss2</option>
+                <option value='Sss3'>Sss3</option>
+              </select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='gender' className='form-label'>
+                Gender
+              </label>
+              <select
+                name='gender'
+                id='gender'
+                className='form-select'
+                onChange={handleInputChange}
+              >
+                <option value=''></option>
+                <option value='Male'>Male</option>
+                <option value='Female'>Female</option>
+              </select>
+            </div>
 
-                <div className='mb-3'>
-                  <label htmlFor='dob' className='form-label'>
-                    Date of birth
-                  </label>
-                  <input
-                    type='text'
-                    name='dob'
-                    placeholder='DD/MM/YYYY'
-                    id='dob'
-                    value={dob}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='yearAdmitted' className='form-label'>
-                    Session Admitted
-                  </label>
-                  <input
-                    type='text'
-                    name='yearAdmitted'
-                    placeholder='Enter the session Admitted eg(2017/2018)'
-                    id='yearAdmitted'
-                    value={yearAdmitted}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
+            <div className={style.formGroup}>
+              <label htmlFor='dob' className='form-label'>
+                Date of birth
+              </label>
+              <input
+                type='text'
+                name='dob'
+                placeholder='DD/MM/YYYY'
+                id='dob'
+                value={dob}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='yearAdmitted' className='form-label'>
+                Session Admitted
+              </label>
+              <input
+                type='text'
+                name='yearAdmitted'
+                placeholder='Enter the session Admitted eg(2017/2018)'
+                id='yearAdmitted'
+                value={yearAdmitted}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
 
-                <div className='mb-3'>
-                  <label htmlFor='stateOfOrigin' className='form-label'>
-                    State of origin
-                  </label>
-                  <select
-                    name='stateOfOrigin'
-                    id='stateOfOrigin'
-                    className='form-select'
-                    // onChange={handleInputChange}
-                    onChange={handleStateChange}
-                  >
-                    <option value=''></option>
-                    <option value='Abia'>Abia</option>
-                    <option value='Adamawa'>Adamawa</option>
-                    <option value='Akwa Ibom'>Akwa Ibom</option>
-                    <option value='Anambra'>Anambra</option>
-                    <option value='Bauchi'>Bauchi</option>
-                    <option value='Bayelsa'>Bayelsa</option>
-                    <option value='Benue'>Benue</option>
-                    <option value='Borno'>Borno</option>
-                    <option value='Cross River'>Cross River</option>
-                    <option value='Delta'>Delta</option>
-                    <option value='Ebonyi'>Ebonyi</option>
-                    <option value='Edo'>Edo</option>
-                    <option value='Ekiti'>Ekiti</option>
-                    <option value='Enugu'>Enugu</option>
-                    <option value='Gombe'>Gombe</option>
-                    <option value='Imo'>Imo</option>
-                    <option value='Jigawa'>Jigawa</option>
-                    <option value='Kaduna'>Kaduna</option>
-                    <option value='Kano'>Kano</option>
-                    <option value='Katsina'>Katsina</option>
-                    <option value='Kebbi'>Kebbi</option>
-                    <option value='Kogi'>Kogi</option>
-                    <option value='Kwara'>Kwara</option>
-                    <option value='Lagos'>Lagos</option>
-                    <option value='Nasarawa'>Nasarawa</option>
-                    <option value='Niger'>Niger</option>
-                    <option value='Ogun'>Ogun</option>
-                    <option value='Ondo'>Ondo</option>
-                    <option value='Osun'>Osun</option>
-                    <option value='Oyo'>Oyo</option>
-                    <option value='Plateau'>Plateau</option>
-                    <option value='Rivers'>Rivers</option>
-                    <option value='Sokoto'>Sokoto</option>
-                    <option value='Taraba'>Taraba</option>
-                    <option value='Yobe'>Yobe</option>
-                    <option value='Zamfara'>Zamfara</option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='localGvt' className='form-label'>
-                    Local Government
-                  </label>
-                  <select
-                    name='localGvt'
-                    id='localGvt'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  ></select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='homeTown' className='form-label'>
-                    Home Town
-                  </label>
-                  <input
-                    type='text'
-                    name='homeTown'
-                    id='homeTown'
-                    value={homeTown}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='sponsorId' className='form-label'>
-                    Sponsor
-                  </label>
-                  <select
-                    className='form-select'
-                    name='sponsorId'
-                    id='sponsorId'
-                    onChange={handleInputChange}
-                  >
-                    <option value=''>
-                      Ensure Sponsor has already been registered
+            <div className={style.formGroup}>
+              <label htmlFor='stateOfOrigin' className='form-label'>
+                State of origin
+              </label>
+              <select
+                name='stateOfOrigin'
+                id='stateOfOrigin'
+                className='form-select'
+                // onChange={handleInputChange}
+                onChange={handleStateChange}
+              >
+                <option value=''></option>
+                <option value='Abia'>Abia</option>
+                <option value='Adamawa'>Adamawa</option>
+                <option value='Akwa Ibom'>Akwa Ibom</option>
+                <option value='Anambra'>Anambra</option>
+                <option value='Bauchi'>Bauchi</option>
+                <option value='Bayelsa'>Bayelsa</option>
+                <option value='Benue'>Benue</option>
+                <option value='Borno'>Borno</option>
+                <option value='Cross River'>Cross River</option>
+                <option value='Delta'>Delta</option>
+                <option value='Ebonyi'>Ebonyi</option>
+                <option value='Edo'>Edo</option>
+                <option value='Ekiti'>Ekiti</option>
+                <option value='Enugu'>Enugu</option>
+                <option value='Gombe'>Gombe</option>
+                <option value='Imo'>Imo</option>
+                <option value='Jigawa'>Jigawa</option>
+                <option value='Kaduna'>Kaduna</option>
+                <option value='Kano'>Kano</option>
+                <option value='Katsina'>Katsina</option>
+                <option value='Kebbi'>Kebbi</option>
+                <option value='Kogi'>Kogi</option>
+                <option value='Kwara'>Kwara</option>
+                <option value='Lagos'>Lagos</option>
+                <option value='Nasarawa'>Nasarawa</option>
+                <option value='Niger'>Niger</option>
+                <option value='Ogun'>Ogun</option>
+                <option value='Ondo'>Ondo</option>
+                <option value='Osun'>Osun</option>
+                <option value='Oyo'>Oyo</option>
+                <option value='Plateau'>Plateau</option>
+                <option value='Rivers'>Rivers</option>
+                <option value='Sokoto'>Sokoto</option>
+                <option value='Taraba'>Taraba</option>
+                <option value='Yobe'>Yobe</option>
+                <option value='Zamfara'>Zamfara</option>
+              </select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='localGvt' className='form-label'>
+                Local Government
+              </label>
+              <select
+                name='localGvt'
+                id='localGvt'
+                className='form-select'
+                onChange={handleInputChange}
+              ></select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='homeTown' className='form-label'>
+                Home Town
+              </label>
+              <input
+                type='text'
+                name='homeTown'
+                id='homeTown'
+                value={homeTown}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='sponsorId' className='form-label'>
+                Sponsor
+              </label>
+              <select
+                className='form-select'
+                name='sponsorId'
+                id='sponsorId'
+                onChange={handleInputChange}
+              >
+                <option value=''>
+                  Ensure Sponsor has already been registered
+                </option>
+                {data &&
+                  data.Sponsors.map((sponsorId) => (
+                    <option value={sponsorId.id} key={sponsorId.id}>
+                      {sponsorId.name}
                     </option>
-                    {data &&
-                      data.Sponsors.map((sponsorId) => (
-                        <option value={sponsorId.id} key={sponsorId.id}>
-                          {sponsorId.name}
-                        </option>
-                      ))}
-                    <option value='Self Sponsored'>Self Sponsored</option>
-                  </select>
-                </div>
-                <button
-                  className='btn btn-secondary'
-                  type='submit'
-                  data-bs-dismiss='modal'
-                >
-                  submit
-                </button>
-              </form>
+                  ))}
+                <option value='Self Sponsored'>Self Sponsored</option>
+              </select>
             </div>
-          </div>
+            <button className={style.btn} type='submit'>
+              submit
+            </button>
+            <button
+              onClick={clickedStudentBtn}
+              className={`${style.btn} ${style.btnCancel} `}
+              type='button'
+            >
+              Cancel
+            </button>
+          </form>
         </div>
       </div>
     </>

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { ADD_SPONSOR } from './mutations/mutation';
 import { GET_SPONSORS } from './queries/query';
 import Spinner from './Spinner';
-import style from '@/styles/dashboard.module.css'
+import style from '@/styles/register.module.css'
 
 const addSponsor = () => {
   const [isSponsorForm, setIsSponsorForm] = useState(false)

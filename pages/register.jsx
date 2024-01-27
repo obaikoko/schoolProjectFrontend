@@ -1,42 +1,27 @@
 import React from 'react';
-import AddStudent from '../components/Student/AddStudent';
-import AddSponsor from '../components/AddSponsor';
-import AddStaff from '../components/staff/AddStaff';
+import AddUser from '@/components/users/AddUser';
+import AddStudent from '@/components/Student/AddStudent';
+import AddStaff from '@/components/staff/AddStaff';
+import AddSponsor from '@/components/AddSponsor';
+import style from '../styles/register.module.css';
 import StudentList from '@/components/Student/StudentList';
 import StaffList from '@/components/staff/StaffList';
-import AddUser from '@/components/users/AddUser';
 
-const register = () => {
+function register() {
   return (
     <>
-      <div className='d-md-flex align-items-center justify-content-center'>
-        <div className='card m-4 p-3'>
-          <AddStudent />
-        </div>
-        <div className='card m-4 p-3'>
-          <AddSponsor />
-        </div>
-        <div className='card m-4 p-3'>
-          <AddStaff />
-        </div>
-        <div className='card m-4 p-3'>
-          <AddUser />
-        </div>
+      <div className={style.registers}>
+        <AddSponsor />
+        <AddStudent />
+        <AddUser />
+        <AddStaff />
       </div>
-      <div
-        style={{ maxHeight: '300px', overflowY: 'auto' }}
-        className='card container '
-      >
+      <div className={style.allList}>
         <StudentList />
-      </div>
-      <div
-        style={{ maxHeight: '300px', overflowY: 'auto' }}
-        className='card container '
-      >
         <StaffList />
       </div>
     </>
   );
-};
+}
 
 export default register;

@@ -4,7 +4,7 @@ import { GET_STUDENTS } from './studentQueries';
 
 import Link from 'next/link';
 import Spinner from '../Spinner';
-import style from '@/styles/dashboard.module.css'
+import style from '@/styles/register.module.css';
 
 const StudentList = () => {
   const [filterLevel, setFilterLevel] = useState('');
@@ -20,7 +20,7 @@ const StudentList = () => {
 
   const { loading, error, data } = useQuery(GET_STUDENTS);
 
-  if (loading) return <Spinner />;
+  if (loading) return <h3>Loading Students Data...</h3>;
   if (error) return <p>Error: {error.message}</p>;
 
   const studentsData = data.students;
@@ -37,7 +37,7 @@ const StudentList = () => {
   return (
     <div className='container p-3'>
       <h3>Filter Students </h3>
-      <div className='form-group'>
+      <div className={style.formGroup}>
         <select className='form-control' onChange={handleFilterChange}>
           <option value=''>All Levels</option>
           <option value='Jss1'>Jss1</option>
@@ -48,7 +48,7 @@ const StudentList = () => {
           <option value='Sss3'>Sss3</option>
         </select>
       </div>
-      <div className='form-group'>
+      <div className={style.formGroup}>
         <input
           type='text'
           className='form-control'
@@ -57,27 +57,26 @@ const StudentList = () => {
         />
       </div>
 
-      <div className={style.students}>
-        <div className={style.stdContainer}>
-          <ul>
-            <li>#</li>
-            <li>Name</li>
-            <li>Class</li>
-            <li>Details</li>
-          </ul>
-          {filteredStudents.map((student, index) => (
-            <div className={style.student}>
-              <p>{index + 1}</p>
-              <p>
-                {student.surname} {student.firstName} {student.lastName}
-              </p>
-              <p>{student.level}</p>
-              <Link className={style.link} href={`/student/${student.id}`}>
-                Details
-              </Link>
-            </div>
-          ))}
-        </div>
+      <div className={style.listContainer}>
+        <ul>
+          <li>#</li>
+          <li>Name</li>
+          <li>Class</li>
+          <li>Details</li>
+        </ul>
+        {filteredStudents.map((student, index) => (
+          <div className={style.list} key={index}>
+            <p>{index + 1}</p>
+            <p>
+              {student.surname} {student.firstName}
+              {student.lastName}
+            </p>
+            <p>{student.level}</p>
+            <Link className={style.link} href={`/student/${student.id}`}>
+              Details
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );

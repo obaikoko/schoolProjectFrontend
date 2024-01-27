@@ -5,7 +5,7 @@ import Spinner from '../Spinner';
 import { toast } from 'react-toastify';
 import { ADD_STAFF } from './staffMutation';
 import { GET_STAFF } from '../queries/query';
-import style from '../../styles/dashboard.module.css'
+import style from '../../styles/register.module.css'
 
 const addTeacher = () => {
     const [isStaffForm, setIsStaffForm] = useState(false);
@@ -1181,10 +1181,10 @@ const addTeacher = () => {
           </div>
           <div className={style.formGroup}>
             <label htmlFor='staffYearAdmitted' className='form-label'>
-              Session Admitted
+              Year Admitted
             </label>
             <input
-              type='text'
+              type='date'
               name='yearAdmitted'
               id='staffYearAdmitted'
               value={yearAdmitted}

@@ -51,6 +51,15 @@ const Navbar = () => {
             <Link
               onClick={menuBtnClicked}
               className={style.navLink}
+              href='/register'
+            >
+              Register
+            </Link>
+          </li>
+          <li>
+            <Link
+              onClick={menuBtnClicked}
+              className={style.navLink}
               href='/admission'
             >
               Admission

@@ -4,6 +4,7 @@ import UpdateStudentBtn from '@/components/Student/UpdateStudentBtn';
 import { GET_STUDENT } from '@/components/Student/studentQueries';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
+import style from '@/styles/detail.module.css';
 
 const StudentDetails = () => {
   const router = useRouter();
@@ -15,9 +16,81 @@ const StudentDetails = () => {
     },
   });
 
+  // loading && (
+  //   <div className={style.container}>
+  //     <h3>Loading Student Infomation</h3>
+  //   </div>
+  // );
+
   return (
     <>
       {data ? (
+        <>
+          <div className={style.container}>
+            <div className={style.title}>
+              <h1>{data.studentDetails.surname}'s Profile</h1>
+            </div>
+            <div className={style.profile}>
+              <ul>
+                <li>
+                  Surname <br />
+                  <h4>{data.studentDetails.surname}</h4>
+                </li>
+                <li>
+                  First name <br />
+                  <h4>{data.studentDetails.firstName}</h4>
+                </li>
+                <li>
+                  Other name <br />
+                  <h4>{data.studentDetails.lastName}</h4>
+                </li>
+                <li>
+                  Class <br />
+                  <h4>{data.studentDetails.level}</h4>
+                </li>
+                <li>
+                  Date of birth <br />
+                  <h4>{data.studentDetails.dob}</h4>
+                </li>
+                <li>
+                  Gender <br />
+                  <h4>{data.studentDetails.gender}</h4>
+                </li>
+                <li>
+                  State of Origin <br />
+                  <h4>{data.studentDetails.stateOfOrigin}</h4>
+                </li>
+                <li>
+                  Local Gvt <br />
+                  <h4>{data.studentDetails.localGvt}</h4>
+                </li>
+                <li>
+                  Home Town <br />
+                  <h4>{data.studentDetails.homeTown}</h4>
+                </li>
+                <li>
+                  Sponsor <br />
+                  <h4>{data.studentDetails.sponsor.name}</h4>
+                </li>
+                <li>
+                  Relationship with Sponser <br />
+                  <h4>{data.studentDetails.sponsor.relationship}</h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className={style.profileBtn}>
+            <UpdateStudentBtn
+              student={data.studentDetails}
+              key={data.studentDetails.id}
+            />
+            <DeleteStudentBtn student={data.studentDetails} />
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+      {/* {data ? (
         <div className='container'>
           <h1 className='text-center mb-4'>Student Details</h1>
           <div className='card shadow'>
@@ -102,7 +175,7 @@ const StudentDetails = () => {
         </div>
       ) : (
         <Spinner />
-      )}
+      )}*/}
     </>
   );
 };

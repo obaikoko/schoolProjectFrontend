@@ -1,5 +1,6 @@
-.dashboard {
+.registers {
   display: flex;
+  flex-wrap: wrap;
   /* align-items: center; */
   justify-content: space-evenly;
 
@@ -80,10 +81,11 @@
   background-color: red;
   color: #fff;
 }
-.list{
+.allList{
     display: flex;
+    flex-wrap: wrap;
 }
-.stdContainer{
+.listContainer{
     width: 500px;
     max-height: 500px;
     overflow-y: auto;
@@ -93,7 +95,7 @@
     margin: 10px 2px;
    
 }
-.students ul {
+.listContainer ul {
   list-style: none;
   display: grid;
   grid-template-columns: 0.3fr 2fr 1fr 1fr;
@@ -101,19 +103,19 @@
  color: #fff;
  padding: 10px 5px;
 }
-.student {
+.list {
   display: grid;
   grid-template-columns: 0.3fr 2fr 1fr 1fr;
   padding: 10px 0;
   border-bottom: 1px solid #161643;
   margin: 2px 0;
 }
-.student .link {
+.list .link {
     text-decoration: none;
 }
 
 @media (max-width: 600px) {
-  .dashboard {
+  .registers {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,11 +136,11 @@
   .form {
     width: 90%;
   }
-  .list{
+  .allList{
     display: flex;
     flex-direction: column;
   }
-  .stdContainer{
+  .listContainer{
     width: auto;
   }
 }

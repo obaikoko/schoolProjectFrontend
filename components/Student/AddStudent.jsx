@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { ADD_STUDENT } from './studentMutations';
 import { GET_STUDENTS } from './studentQueries';
 import { GET_SPONSORS } from '../queries/query';
-import style from '../../styles/dashboard.module.css'
+import style from '../../styles/register.module.css'
 import Spinner from '../Spinner';
 
 const addStudent = () => {
@@ -1078,10 +1078,10 @@ const addStudent = () => {
             </div>
             <div className={style.formGroup}>
               <label htmlFor='studentYearAdmitted' className='form-label'>
-                Session Admitted
+                Year Admitted
               </label>
               <input
-                type='text'
+                type='date'
                 name='yearAdmitted'
                 placeholder='Enter the session Admitted eg(2017/2018)'
                 id='studentYearAdmitted'

@@ -3,8 +3,7 @@ import { useQuery } from '@apollo/client';
 import { GET_STAFF } from './staffQueries';
 import Link from 'next/link';
 import StaffCard from './StaffCard';
-import Spinner from '../Spinner';
-import style from '@/styles/dashboard.module.css'
+import style from '@/styles/register.module.css';
 
 const StaffList = () => {
   const [filterRole, setFilterRole] = useState('');
@@ -20,7 +19,7 @@ const StaffList = () => {
 
   const { loading, error, data } = useQuery(GET_STAFF);
 
-  if (loading) return <Spinner />;
+  if (loading) return  <h3>Loading Staff Data...</h3>
   if (error) return <p>Error: {error.message}</p>;
 
   const staffData = data.staff;
@@ -35,9 +34,10 @@ const StaffList = () => {
   });
 
   return (
+    
     <div className='container p-3'>
       <h3>Filter Staff</h3>
-      <div className='form-group'>
+      <div className={style.formGroup}>
         <select className='form-control' onChange={handleFilterChange}>
           <option value=''>All Role</option>
           <option value='Mathematics'>Mathematics</option>
@@ -45,17 +45,16 @@ const StaffList = () => {
           <option value='Kitchen'>Kitchen</option>
         </select>
       </div>
-      <div className='form-group'>
+      <div className={style.formGroup}>
         <input
           type='text'
-          className='form-control'
           placeholder='Search by First Name or Surname'
           onChange={handleSearchChange}
         />
       </div>
 
-      <div className={style.students}>
-        <div className={style.stdContainer}>
+      
+        <div className={style.listContainer}>
           <ul>
             <li>#</li>
             <li>Name</li>
@@ -63,7 +62,7 @@ const StaffList = () => {
             <li>Details</li>
           </ul>
           {filteredStaff.map((staff, index) => (
-            <div className={style.student} key={staff.id}>
+            <div className={style.list} key={staff.id}>
               <p>{index + 1}</p>
               <p>
                 {staff.surname} {staff.firstName}
@@ -77,15 +76,6 @@ const StaffList = () => {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* <div className='row'>
-        {filteredStaff.map((staff) => (
-          <div className='col-md-4' key={staff.id}>
-            <StaffCard staff={staff} />
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };

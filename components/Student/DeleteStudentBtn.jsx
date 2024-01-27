@@ -4,6 +4,7 @@ import { DELETE_STUDENT } from "./studentMutations"
 import { toast } from "react-toastify"
 import Spinner from "../Spinner"
 import { GET_STUDENTS } from "./studentQueries"
+import style from '@/styles/register.module.css'
 
 
 const DeleteStudentBtn = () => {
@@ -29,14 +30,12 @@ const DeleteStudentBtn = () => {
     <div>
       <button
         type='button'
-        className='btn btn-sm'
-        onClick={() => {deleteStudent()}}
+        className={`${style.btn} ${style.btnCancel} `}
+        onClick={() => {
+          deleteStudent();
+        }}
       >
-        {loading ? (
-          <Spinner />
-        ) : (
-          <p className='btn btn-secondary'>delete</p>
-        )}
+        {loading ? <Spinner /> : <p className='btn btn-secondary'>delete</p>}
       </button>
     </div>
   );
