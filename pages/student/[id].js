@@ -4,7 +4,7 @@ import UpdateStudentBtn from '@/components/Student/UpdateStudentBtn';
 import { GET_STUDENT } from '@/components/Student/studentQueries';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
-import style from '@/styles/detail.module.css';
+import style from '@/styles/profile.module.css';
 
 const StudentDetails = () => {
   const router = useRouter();
@@ -16,11 +16,7 @@ const StudentDetails = () => {
     },
   });
 
-  // loading && (
-  //   <div className={style.container}>
-  //     <h3>Loading Student Infomation</h3>
-  //   </div>
-  // );
+
 
   return (
     <>
@@ -28,7 +24,7 @@ const StudentDetails = () => {
         <>
           <div className={style.container}>
             <div className={style.title}>
-              <h1>{data.studentDetails.surname}'s Profile</h1>
+              <h1>{data.studentDetails.firstName}'s Profile</h1>
             </div>
             <div className={style.profile}>
               <ul>
@@ -73,7 +69,7 @@ const StudentDetails = () => {
                   <h4>{data.studentDetails.sponsor.name}</h4>
                 </li>
                 <li>
-                  Relationship with Sponser <br />
+                  Sponser Relationship <br />
                   <h4>{data.studentDetails.sponsor.relationship}</h4>
                 </li>
               </ul>
@@ -90,92 +86,7 @@ const StudentDetails = () => {
       ) : (
         <></>
       )}
-      {/* {data ? (
-        <div className='container'>
-          <h1 className='text-center mb-4'>Student Details</h1>
-          <div className='card shadow'>
-            <div className='card-body'>
-              <div className='row'>
-                <div className='col-md-6'>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>First Name:</label>
-                    <p className='text-muted'>
-                      {data.studentDetails.firstName}
-                    </p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Last Name:</label>
-                    <p className='text-muted'>{data.studentDetails.lastName}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Surname:</label>
-                    <p className='text-muted'>{data.studentDetails.surname}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Level:</label>
-                    <p className='text-muted'>{data.studentDetails.level}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Date of Birth:</label>
-                    <p className='text-muted'>{data.studentDetails.dob}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Gender:</label>
-                    <p className='text-muted'>{data.studentDetails.gender}</p>
-                  </div>
-                </div>
-                <div className='col-md-6'>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Year Admitted:</label>
-                    <p className='text-muted'>
-                      {data.studentDetails.yearAdmitted}
-                    </p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>State of Origin:</label>
-                    <p className='text-muted'>
-                      {data.studentDetails.stateOfOrigin}
-                    </p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>
-                      Local Government:
-                    </label>
-                    <p className='text-muted'>{data.studentDetails.localGvt}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Home Town:</label>
-                    <p className='text-muted'>{data.studentDetails.homeTown}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Sponsor:</label>
-                    <p className='text-muted'>
-                      {data.studentDetails.sponsor.name}
-                    </p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>
-                      Sponsor Relationship:
-                    </label>
-                    <p className='text-muted'>
-                      {data.studentDetails.sponsor.relationship}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='d-flex m-2'>
-            <UpdateStudentBtn
-              student={data.studentDetails}
-              key={data.studentDetails.id}
-            />
-            <DeleteStudentBtn student={data.studentDetails} />
-          </div>
-        </div>
-      ) : (
-        <Spinner />
-      )}*/}
+     
     </>
   );
 };

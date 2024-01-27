@@ -6,8 +6,10 @@ import { UPDATE_STAFF } from './staffMutation';
 import { GET_STAFF } from './staffQueries';
 import Spinner from '../Spinner';
 import { useRouter } from 'next/router';
+import style from '@/styles/register.module.css';
 
 const UpdateStaffBtn = ({ staff }) => {
+   const [isStaffForm, setIsStaffForm] = useState(false);
   const [formData, setFormData] = useState({
     firstName: staff.firstName,
     lastName: staff.lastName,
@@ -996,312 +998,304 @@ const UpdateStaffBtn = ({ staff }) => {
       phone,
       email
     );
-   
+    setIsStaffForm(!isStaffForm);
   };
+      const clickedStaffBtn = () => {
+        setIsStaffForm(!isStaffForm);
+      };
   return (
     <>
       <button
-        type='button'
-        className='btn btn-sm'
-        data-bs-toggle='modal'
-        data-bs-target='#updateStffmodal'
+        onClick={clickedStaffBtn}
+        className={
+          isStaffForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}`
+        }
       >
-        {loading ? <Spinner /> : <p className='btn btn-secondary'>update</p>}
+        update staff profile
       </button>
 
       <div
-        className='modal fade'
-        id='updateStffmodal'
-        tabIndex='-1'
-        aria-labelledby='exampleModalLabel'
-        aria-hidden='true'
+        className={
+          isStaffForm
+            ? `${style.formContainer} ${style.showForm} `
+            : `${style.formContainer}`
+        }
       >
-        <div className='modal-dialog'>
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <h1 className='modal-title fs-5' id='exampleModalLabel'>
-                Update Staff
-              </h1>
-              <button
-                type='button'
-                className='btn-close'
-                data-bs-dismiss='modal'
-                aria-label='Close'
-              ></button>
+        <div className={style.form}>
+          <form onSubmit={onSubmit}>
+            <h2>Update {staff.surname}'s profile</h2>
+            <div className={style.formGroup}>
+              <label htmlFor='firstName' className='form-label'>
+                Fisrt Name
+              </label>
+              <input
+                type='text'
+                name='firstName'
+                id='firstName'
+                value={firstName}
+                onChange={handleInputChange}
+                className='form-control'
+              />
             </div>
-            <div className='modal-body'>
-              <form onSubmit={onSubmit}>
-                <div className='mb-3'>
-                  <label htmlFor='firstName' className='form-label'>
-                    Fisrt Name
-                  </label>
-                  <input
-                    type='text'
-                    name='firstName'
-                    id='firstName'
-                    value={firstName}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='lastName' className='form-label'>
-                    Last Name
-                  </label>
-                  <input
-                    type='text'
-                    name='lastName'
-                    id='lastName'
-                    value={lastName}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='surname' className='form-label'>
-                    Surname
-                  </label>
-                  <input
-                    type='text'
-                    name='surname'
-                    id='surname'
-                    value={surname}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-
-                <div className='mb-3'>
-                  <label htmlFor='qualification' className='form-label'>
-                    Qualification
-                  </label>
-                  <select
-                    name='qualification'
-                    id='qualification'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  >
-                    <option value=''>Select Highest Qualification</option>
-                    <option value='Professor'>Professor </option>
-                    <option value='Phd'>Phd </option>
-                    <option value='Master'>Master </option>
-                    <option value='Bachelors Degree'>Bachelors Degree </option>
-                    <option value='HND'>HND </option>
-                    <option value='OND'>OND </option>
-                    <option value='NCE'>NCE </option>
-                    <option value='SSCE'>SSCE </option>
-                    <option value='Others'>Others </option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='category' className='form-label'>
-                    Staff Category
-                  </label>
-                  <select
-                    name='category'
-                    id='category'
-                    className='form-select'
-                    onChange={handleCategoryChange}
-                  >
-                    <option value=''></option>
-                    <option value='Tutorial'>Tutorial</option>
-                    <option value='Non Tutorial'>Non Tutorial</option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='role' className='form-label'>
-                    Subject Handled or Role
-                  </label>
-                  <select
-                    name='role'
-                    id='role'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  ></select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='gender' className='form-label'>
-                    Gender
-                  </label>
-                  <select
-                    name='gender'
-                    id='gender'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  >
-                    <option value=''></option>
-                    <option value='Male'>Male</option>
-                    <option value='Female'>Female</option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='maritalStatus' className='form-label'>
-                    Marital Status
-                  </label>
-                  <select
-                    name='maritalStatus'
-                    id='maritalStatus'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  >
-                    <option value=''></option>
-                    <option value='Married'>Married</option>
-                    <option value='Single'>Single</option>
-                  </select>
-                </div>
-
-                <div className='mb-3'>
-                  <label htmlFor='dob' className='form-label'>
-                    Date of birth
-                  </label>
-                  <input
-                    type='text'
-                    name='dob'
-                    placeholder='DD/MM/YYYY'
-                    id='dob'
-                    value={dob}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='yearAdmitted' className='form-label'>
-                    Session Admitted
-                  </label>
-                  <input
-                    type='text'
-                    name='yearAdmitted'
-                    placeholder='Enter the session Admitted eg(2017/2018)'
-                    id='yearAdmitted'
-                    value={yearAdmitted}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-
-                <div className='mb-3'>
-                  <label htmlFor='stateOfOrigin' className='form-label'>
-                    State of origin
-                  </label>
-                  <select
-                    name='stateOfOrigin'
-                    id='stateOfOrigin'
-                    className='form-select'
-                    // onChange={handleInputChange}
-                    onChange={handleStateChange}
-                  >
-                    <option value=''></option>
-                    <option value='Abia'>Abia</option>
-                    <option value='Adamawa'>Adamawa</option>
-                    <option value='Akwa Ibom'>Akwa Ibom</option>
-                    <option value='Anambra'>Anambra</option>
-                    <option value='Bauchi'>Bauchi</option>
-                    <option value='Bayelsa'>Bayelsa</option>
-                    <option value='Benue'>Benue</option>
-                    <option value='Borno'>Borno</option>
-                    <option value='Cross River'>Cross River</option>
-                    <option value='Delta'>Delta</option>
-                    <option value='Ebonyi'>Ebonyi</option>
-                    <option value='Edo'>Edo</option>
-                    <option value='Ekiti'>Ekiti</option>
-                    <option value='Enugu'>Enugu</option>
-                    <option value='Gombe'>Gombe</option>
-                    <option value='Imo'>Imo</option>
-                    <option value='Jigawa'>Jigawa</option>
-                    <option value='Kaduna'>Kaduna</option>
-                    <option value='Kano'>Kano</option>
-                    <option value='Katsina'>Katsina</option>
-                    <option value='Kebbi'>Kebbi</option>
-                    <option value='Kogi'>Kogi</option>
-                    <option value='Kwara'>Kwara</option>
-                    <option value='Lagos'>Lagos</option>
-                    <option value='Nasarawa'>Nasarawa</option>
-                    <option value='Niger'>Niger</option>
-                    <option value='Ogun'>Ogun</option>
-                    <option value='Ondo'>Ondo</option>
-                    <option value='Osun'>Osun</option>
-                    <option value='Oyo'>Oyo</option>
-                    <option value='Plateau'>Plateau</option>
-                    <option value='Rivers'>Rivers</option>
-                    <option value='Sokoto'>Sokoto</option>
-                    <option value='Taraba'>Taraba</option>
-                    <option value='Yobe'>Yobe</option>
-                    <option value='Zamfara'>Zamfara</option>
-                  </select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='staffLocalGvt' className='form-label'>
-                    Local Government
-                  </label>
-                  <select
-                    name='localGvt'
-                    id='staffLocalGvt'
-                    className='form-select'
-                    onChange={handleInputChange}
-                  ></select>
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='homeTown' className='form-label'>
-                    Home Town
-                  </label>
-                  <input
-                    type='text'
-                    name='homeTown'
-                    id='homeTown'
-                    value={homeTown}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='residence' className='form-label'>
-                    Residential Address
-                  </label>
-                  <input
-                    type='text'
-                    name='residence'
-                    id='residence'
-                    value={residence}
-                    onChange={handleInputChange}
-                    className='form-control'
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='phone' className='form-label'>
-                    Phone Number
-                  </label>
-                  <input
-                    className='form-control'
-                    type='text'
-                    name='phone'
-                    id='phone'
-                    value={phone}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className='mb-3'>
-                  <label htmlFor='email' className='form-label'>
-                    Email Address
-                  </label>
-                  <input
-                    className='form-control'
-                    type='email'
-                    name='email'
-                    id='email'
-                    value={email}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <button
-                  className='btn btn-secondary'
-                  type='submit'
-                  data-bs-dismiss='modal'
-                >
-                  submit
-                </button>
-              </form>
+            <div className={style.formGroup}>
+              <label htmlFor='lastName' className='form-label'>
+                Last Name
+              </label>
+              <input
+                type='text'
+                name='lastName'
+                id='lastName'
+                value={lastName}
+                onChange={handleInputChange}
+                className='form-control'
+              />
             </div>
-          </div>
+            <div className={style.formGroup}>
+              <label htmlFor='surname' className='form-label'>
+                Surname
+              </label>
+              <input
+                type='text'
+                name='surname'
+                id='surname'
+                value={surname}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+
+            <div className={style.formGroup}>
+              <label htmlFor='qualification' className='form-label'>
+                Qualification
+              </label>
+              <select
+                name='qualification'
+                id='qualification'
+                className='form-select'
+                onChange={handleInputChange}
+              >
+                <option value=''>Select Highest Qualification</option>
+                <option value='Professor'>Professor </option>
+                <option value='Phd'>Phd </option>
+                <option value='Master'>Master </option>
+                <option value='Bachelors Degree'>Bachelors Degree </option>
+                <option value='HND'>HND </option>
+                <option value='OND'>OND </option>
+                <option value='NCE'>NCE </option>
+                <option value='SSCE'>SSCE </option>
+                <option value='Others'>Others </option>
+              </select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='category' className='form-label'>
+                Staff Category
+              </label>
+              <select
+                name='category'
+                id='category'
+                className='form-select'
+                onChange={handleCategoryChange}
+              >
+                <option value=''></option>
+                <option value='Tutorial'>Tutorial</option>
+                <option value='Non Tutorial'>Non Tutorial</option>
+              </select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='role' className='form-label'>
+                Subject Handled or Role
+              </label>
+              <select
+                name='role'
+                id='role'
+                className='form-select'
+                onChange={handleInputChange}
+              ></select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='gender' className='form-label'>
+                Gender
+              </label>
+              <select
+                name='gender'
+                id='gender'
+                className='form-select'
+                onChange={handleInputChange}
+              >
+                <option value=''></option>
+                <option value='Male'>Male</option>
+                <option value='Female'>Female</option>
+              </select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='maritalStatus' className='form-label'>
+                Marital Status
+              </label>
+              <select
+                name='maritalStatus'
+                id='maritalStatus'
+                className='form-select'
+                onChange={handleInputChange}
+              >
+                <option value=''></option>
+                <option value='Married'>Married</option>
+                <option value='Single'>Single</option>
+              </select>
+            </div>
+
+            <div className={style.formGroup}>
+              <label htmlFor='dob' className='form-label'>
+                Date of birth
+              </label>
+              <input
+                type='text'
+                name='dob'
+                placeholder='DD/MM/YYYY'
+                id='dob'
+                value={dob}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='yearAdmitted' className='form-label'>
+                Session Admitted
+              </label>
+              <input
+                type='text'
+                name='yearAdmitted'
+                placeholder='Enter the session Admitted eg(2017/2018)'
+                id='yearAdmitted'
+                value={yearAdmitted}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+
+            <div className={style.formGroup}>
+              <label htmlFor='stateOfOrigin' className='form-label'>
+                State of origin
+              </label>
+              <select
+                name='stateOfOrigin'
+                id='stateOfOrigin'
+                className='form-select'
+                // onChange={handleInputChange}
+                onChange={handleStateChange}
+              >
+                <option value=''></option>
+                <option value='Abia'>Abia</option>
+                <option value='Adamawa'>Adamawa</option>
+                <option value='Akwa Ibom'>Akwa Ibom</option>
+                <option value='Anambra'>Anambra</option>
+                <option value='Bauchi'>Bauchi</option>
+                <option value='Bayelsa'>Bayelsa</option>
+                <option value='Benue'>Benue</option>
+                <option value='Borno'>Borno</option>
+                <option value='Cross River'>Cross River</option>
+                <option value='Delta'>Delta</option>
+                <option value='Ebonyi'>Ebonyi</option>
+                <option value='Edo'>Edo</option>
+                <option value='Ekiti'>Ekiti</option>
+                <option value='Enugu'>Enugu</option>
+                <option value='Gombe'>Gombe</option>
+                <option value='Imo'>Imo</option>
+                <option value='Jigawa'>Jigawa</option>
+                <option value='Kaduna'>Kaduna</option>
+                <option value='Kano'>Kano</option>
+                <option value='Katsina'>Katsina</option>
+                <option value='Kebbi'>Kebbi</option>
+                <option value='Kogi'>Kogi</option>
+                <option value='Kwara'>Kwara</option>
+                <option value='Lagos'>Lagos</option>
+                <option value='Nasarawa'>Nasarawa</option>
+                <option value='Niger'>Niger</option>
+                <option value='Ogun'>Ogun</option>
+                <option value='Ondo'>Ondo</option>
+                <option value='Osun'>Osun</option>
+                <option value='Oyo'>Oyo</option>
+                <option value='Plateau'>Plateau</option>
+                <option value='Rivers'>Rivers</option>
+                <option value='Sokoto'>Sokoto</option>
+                <option value='Taraba'>Taraba</option>
+                <option value='Yobe'>Yobe</option>
+                <option value='Zamfara'>Zamfara</option>
+              </select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='staffLocalGvt' className='form-label'>
+                Local Government
+              </label>
+              <select
+                name='localGvt'
+                id='staffLocalGvt'
+                className='form-select'
+                onChange={handleInputChange}
+              ></select>
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='homeTown' className='form-label'>
+                Home Town
+              </label>
+              <input
+                type='text'
+                name='homeTown'
+                id='homeTown'
+                value={homeTown}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='residence' className='form-label'>
+                Residential Address
+              </label>
+              <input
+                type='text'
+                name='residence'
+                id='residence'
+                value={residence}
+                onChange={handleInputChange}
+                className='form-control'
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='phone' className='form-label'>
+                Phone Number
+              </label>
+              <input
+                className='form-control'
+                type='text'
+                name='phone'
+                id='phone'
+                value={phone}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor='email' className='form-label'>
+                Email Address
+              </label>
+              <input
+                className='form-control'
+                type='email'
+                name='email'
+                id='email'
+                value={email}
+                onChange={handleInputChange}
+              />
+            </div>
+            <button className={style.btn} type='submit'>
+              submit
+            </button>
+            <button
+              onClick={clickedStaffBtn}
+              className={`${style.btn} ${style.btnCancel} `}
+              type='button'
+            >
+              Cancel
+            </button>
+          </form>
         </div>
       </div>
     </>

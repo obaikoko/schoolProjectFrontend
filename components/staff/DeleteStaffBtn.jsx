@@ -4,6 +4,7 @@ import { DELETE_STAFF } from './staffMutation';
 import { toast } from 'react-toastify';
 import Spinner from '../Spinner';
 import { GET_STAFF } from './staffQueries';
+import style from '@/styles/register.module.css';
 
 const DeleteStaffBtn = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const DeleteStaffBtn = () => {
     <div>
       <button
         type='button'
-        className='btn btn-sm'
+        className={`${style.btn} ${style.btnCancel} `}
         onClick={() => {
           deleteStaff();
         }}

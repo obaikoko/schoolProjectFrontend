@@ -4,7 +4,6 @@ import { GET_SPONSORS } from '../queries/query';
 import { toast } from 'react-toastify';
 import { UPDATE_STUDENT } from './studentMutations';
 import { GET_STUDENTS } from './studentQueries';
-import Spinner from '../Spinner';
 import style from '@/styles/register.module.css'
 
 const UpdateStudentBtn = ({ student }) => {
@@ -942,8 +941,7 @@ const UpdateStudentBtn = ({ student }) => {
       homeTown,
       sponsorId
     );
-    console.log(student.id);
-
+    setIsStudentForm(!isStudentForm)
   };
     const clickedStudentBtn = () => {
       setIsStudentForm(!isStudentForm);
@@ -951,7 +949,7 @@ const UpdateStudentBtn = ({ student }) => {
   return (
     <>
 
-      <button onClick={clickedStudentBtn} className={style.btn}>
+      <button onClick={clickedStudentBtn} className={isStudentForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}` }>
         update Student profile
       </button>
 

@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import UpdateStaffBtn from '@/components/staff/UpdateStaffBtn';
 import DeleteStaffBtn from '@/components/staff/DeleteStaffBtn';
+import style from '@/styles/profile.module.css';
 
 const StaffDetails = () => {
   const router = useRouter();
@@ -15,90 +16,82 @@ const StaffDetails = () => {
     },
   });
 
-
   return (
     <>
       {data ? (
-        <div className='container'>
-          <h1 className='text-center mb-4'>Staff Details</h1>
-          <div className='card shadow'>
-            <div className='card-body'>
-              <div className='row'>
-                <div className='col-md-6'>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>First Name:</label>
-                    <p className='text-muted'>
-                      {data.staffDetail.firstName}
-                    </p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Last Name:</label>
-                    <p className='text-muted'>{data.staffDetail.lastName}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Surname:</label>
-                    <p className='text-muted'>{data.staffDetail.surname}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Role or Subject handled:</label>
-                    <p className='text-muted'>{data.staffDetail.role}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Date of Birth:</label>
-                    <p className='text-muted'>{data.staffDetail.dob}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Gender:</label>
-                    <p className='text-muted'>{data.staffDetail.gender}</p>
-                  </div>
-                </div>
-                <div className='col-md-6'>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Year Admitted:</label>
-                    <p className='text-muted'>
-                      {data.staffDetail.yearAdmitted}
-                    </p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>State of Origin:</label>
-                    <p className='text-muted'>
-                      {data.staffDetail.stateOfOrigin}
-                    </p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>
-                      Local Government:
-                    </label>
-                    <p className='text-muted'>{data.staffDetail.localGvt}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Home Town:</label>
-                    <p className='text-muted'>{data.staffDetail.homeTown}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Residence:</label>
-                    <p className='text-muted'>{data.staffDetail.residence}</p>
-                  </div>
-                  <div className='form-group'>
-                    <label className='font-weight-bold'>Phone No:</label>
-                    <p className='text-muted'>{data.staffDetail.phone}</p>
-                  </div>
-                </div>
-              </div>
+        <>
+          <div className={style.container}>
+            <div className={style.title}>
+              <h1>{data.staffDetail.firstName}'s Profile</h1>
+            </div>
+            <div className={style.profile}>
+              <ul>
+                <li>
+                  Surname <br />
+                  <h4>{data.staffDetail.surname}</h4>
+                </li>
+                <li>
+                  First name <br />
+                  <h4>{data.staffDetail.firstName}</h4>
+                </li>
+                <li>
+                  Other name <br />
+                  <h4>{data.staffDetail.lastName}</h4>
+                </li>
+                <li>
+                  Qualification <br />
+                  <h4>{data.staffDetail.qualification}</h4>
+                </li>
+                <li>
+                  Department <br />
+                  <h4>{data.staffDetail.role}</h4>
+                </li>
+
+                <li>
+                  Date of birth <br />
+                  <h4>{data.staffDetail.dob}</h4>
+                </li>
+                <li>
+                  Gender <br />
+                  <h4>{data.staffDetail.gender}</h4>
+                </li>
+                <li>
+                  State of Origin <br />
+                  <h4>{data.staffDetail.stateOfOrigin}</h4>
+                </li>
+                <li>
+                  Local Gvt <br />
+                  <h4>{data.staffDetail.localGvt}</h4>
+                </li>
+                <li>
+                  Home Town <br />
+                  <h4>{data.staffDetail.homeTown}</h4>
+                </li>
+                <li>
+                  Residence <br />
+                  <h4>{data.staffDetail.residence}</h4>
+                </li>
+                <li>
+                  Contact <br />
+                  <h4>{data.staffDetail.phone}</h4>
+                </li>
+                <li>
+                  Year of Appointment <br />
+                  <h4>{data.staffDetail.yearAdmitted}</h4>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className='d-flex m-2'>
+          <div className={style.profileBtn}>
             <UpdateStaffBtn
               staff={data.staffDetail}
               key={data.staffDetail.id}
             />
-            <DeleteStaffBtn
-              staff={data.staffDetail}
-            />
+            <DeleteStaffBtn staff={data.staffDetail} />
           </div>
-        </div>
+        </>
       ) : (
-        <Spinner />
+        <></>
       )}
     </>
   );

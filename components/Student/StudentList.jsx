@@ -69,7 +69,6 @@ const StudentList = () => {
             <p>{index + 1}</p>
             <p>
               {student.surname} {student.firstName}
-              {student.lastName}
             </p>
             <p>{student.level}</p>
             <Link className={style.link} href={`/student/${student.id}`}>

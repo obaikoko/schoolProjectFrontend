@@ -81,6 +81,9 @@
   background-color: red;
   color: #fff;
 }
+.hideBtn{
+  display: none;
+}
 .allList{
     display: flex;
     flex-wrap: wrap;
