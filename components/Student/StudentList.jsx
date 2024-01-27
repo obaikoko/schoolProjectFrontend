@@ -4,6 +4,7 @@ import { GET_STUDENTS } from './studentQueries';
 
 import Link from 'next/link';
 import Spinner from '../Spinner';
+import style from '@/styles/dashboard.module.css'
 
 const StudentList = () => {
   const [filterLevel, setFilterLevel] = useState('');
@@ -56,38 +57,28 @@ const StudentList = () => {
         />
       </div>
 
-      <table className='table table-hover table-striped'>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Class</th>
-
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className={style.students}>
+        <div className={style.stdContainer}>
+          <ul>
+            <li>#</li>
+            <li>Name</li>
+            <li>Class</li>
+            <li>Details</li>
+          </ul>
           {filteredStudents.map((student, index) => (
-            <tr key={student.id}>
-              <td>{index + 1}</td>
-              <td>
-                {student.surname} {student.firstName}
-              </td>
-              <td>{student.level}</td>
-              <td>
-                <Link
-                  className='btn btn-sm btn-light'
-                  href={`/student/${student.id}`}
-                >
-                  View
-                </Link>
-              </td>
-            </tr>
+            <div className={style.student}>
+              <p>{index + 1}</p>
+              <p>
+                {student.surname} {student.firstName} {student.lastName}
+              </p>
+              <p>{student.level}</p>
+              <Link className={style.link} href={`/student/${student.id}`}>
+                Details
+              </Link>
+            </div>
           ))}
-        </tbody>
-      </table>
-
-      <div className='row'></div>
+        </div>
+      </div>
     </div>
   );
 };

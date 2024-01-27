@@ -4,6 +4,7 @@ import { GET_STAFF } from './staffQueries';
 import Link from 'next/link';
 import StaffCard from './StaffCard';
 import Spinner from '../Spinner';
+import style from '@/styles/dashboard.module.css'
 
 const StaffList = () => {
   const [filterRole, setFilterRole] = useState('');
@@ -53,36 +54,30 @@ const StaffList = () => {
         />
       </div>
 
-      <table className='table table-hover table-striped'>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Department</th>
-
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className={style.students}>
+        <div className={style.stdContainer}>
+          <ul>
+            <li>#</li>
+            <li>Name</li>
+            <li>Department</li>
+            <li>Details</li>
+          </ul>
           {filteredStaff.map((staff, index) => (
-            <tr key={staff.id}>
-              <td>{index + 1}</td>
-              <td>
+            <div className={style.student} key={staff.id}>
+              <p>{index + 1}</p>
+              <p>
                 {staff.surname} {staff.firstName}
-              </td>
-              <td>{staff.role}</td>
-              <td>
-                <Link
-                  className='btn btn-sm btn-light'
-                  href={`/staff/${staff.id}`}
-                >
-                  View
+              </p>
+              <p>{staff.role}</p>
+              <p>
+                <Link className={style.link} href={`/staff/${staff.id}`}>
+                  Details
                 </Link>
-              </td>
-            </tr>
+              </p>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       {/* <div className='row'>
         {filteredStaff.map((staff) => (
