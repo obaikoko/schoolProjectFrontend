@@ -62,7 +62,7 @@ const addSponsor = () => {
   }
   return (
     <div className={style.container}>
-      <button className={style.btn} onClick={clickedSponsorForm}>
+      <button className={ isSponsorForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}`} onClick={clickedSponsorForm}>
         Register Sponsor
       </button>
       <div

@@ -16,11 +16,13 @@ const StudentDetails = () => {
     },
   });
 
+  if (loading) return <h3 className={style.loading}>Loading profile...</h3>;
 
+  if (error) return <p loading>Error: {error.message}</p>;
 
   return (
     <>
-      {data ? (
+      {data && (
         <>
           <div className={style.container}>
             <div className={style.title}>
@@ -83,10 +85,7 @@ const StudentDetails = () => {
             <DeleteStudentBtn student={data.studentDetails} />
           </div>
         </>
-      ) : (
-        <></>
       )}
-     
     </>
   );
 };

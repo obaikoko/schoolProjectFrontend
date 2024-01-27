@@ -1034,7 +1034,12 @@ const addTeacher = () => {
     };
   return (
     <div>
-      <button onClick={clickedStaffForm} className={style.btn}>
+      <button
+        onClick={clickedStaffForm}
+        className={
+          isStaffForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}`
+        }
+      >
         Register Staff
       </button>
       <div

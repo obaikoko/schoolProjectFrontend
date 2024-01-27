@@ -9,7 +9,8 @@ import StaffList from '@/components/staff/StaffList';
 
 function register() {
   return (
-    <>
+    <div className={style.registersContainer}>
+    <h1>Registration Page</h1>
       <div className={style.registers}>
         <AddSponsor />
         <AddStudent />
@@ -20,7 +21,7 @@ function register() {
         <StudentList />
         <StaffList />
       </div>
-    </>
+    </div>
   );
 }
 

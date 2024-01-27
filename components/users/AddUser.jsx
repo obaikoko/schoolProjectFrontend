@@ -950,7 +950,12 @@ const addUser = () => {
    };
   return (
     <div className={style.container}>
-      <button className={style.btn} onClick={clickedUserForm}>
+      <button
+        className={
+          isUserForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}`
+        }
+        onClick={clickedUserForm}
+      >
         Register User
       </button>
       <div
