@@ -1003,16 +1003,21 @@ const UpdateStaffBtn = ({ staff }) => {
       const clickedStaffBtn = () => {
         setIsStaffForm(!isStaffForm);
       };
+      
   return (
     <>
-      <button
-        onClick={clickedStaffBtn}
-        className={
-          isStaffForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}`
-        }
-      >
-        update staff profile
-      </button>
+      {loading ? (
+        <p>updating</p>
+      ) : (
+        <button
+          onClick={clickedStaffBtn}
+          className={
+            isStaffForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}`
+          }
+        >
+          update staff profile
+        </button>
+      )}
 
       <div
         className={
@@ -1180,7 +1185,6 @@ const UpdateStaffBtn = ({ staff }) => {
                 name='stateOfOrigin'
                 id='stateOfOrigin'
                 className='form-select'
-                // onChange={handleInputChange}
                 onChange={handleStateChange}
               >
                 <option value=''></option>
@@ -1286,7 +1290,7 @@ const UpdateStaffBtn = ({ staff }) => {
               />
             </div>
             <button className={style.btn} type='submit'>
-              submit
+              update
             </button>
             <button
               onClick={clickedStaffBtn}

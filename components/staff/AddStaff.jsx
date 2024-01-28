@@ -4,11 +4,11 @@ import { useState } from 'react';
 import Spinner from '../Spinner';
 import { toast } from 'react-toastify';
 import { ADD_STAFF } from './staffMutation';
-import { GET_STAFF } from '../queries/query';
-import style from '../../styles/register.module.css'
+import { GET_STAFF } from './staffQueries';
+import style from '../../styles/register.module.css';
 
 const addTeacher = () => {
-    const [isStaffForm, setIsStaffForm] = useState(false);
+  const [isStaffForm, setIsStaffForm] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -47,7 +47,7 @@ const addTeacher = () => {
     email,
   } = formData;
 
-  const [addStaff, {loading}] = useMutation(ADD_STAFF, {
+  const [addStaff, { loading }] = useMutation(ADD_STAFF, {
     variables: {
       firstName,
       lastName,
@@ -66,13 +66,13 @@ const addTeacher = () => {
       phone,
       email,
     },
-    onError:(error)=> {
+    refetchQueries: [{ query: GET_STAFF }],
+    onError: (error) => {
       toast.error(error.message);
     },
     onCompleted: () => {
-        toast.success(`Staff registered successfully`);
+      toast.success(`Staff registered successfully`);
     },
-    refetchQueries: [{query: GET_STAFF}]
   });
 
   const handleInputChange = (e) => {
@@ -88,7 +88,7 @@ const addTeacher = () => {
     }));
 
     const selectedCategory = e.target.value;
-    const role = document.getElementById('role');
+    const role = document.getElementById('staffRole');
 
     role.innerHTML = '';
 
@@ -991,47 +991,45 @@ const addTeacher = () => {
       phone &&
       email
     ) {
-  addStaff(
-    firstName,
-    lastName,
-    surname,
-    qualification,
-    dob,
-    category,
-    role,
-    gender,
-    maritalStatus,
-    yearAdmitted,
-    stateOfOrigin,
-    localGvt,
-    homeTown,
-    residence,
-    phone,
-    email
-  );
+      addStaff(
+        firstName,
+        lastName,
+        surname,
+        qualification,
+        dob,
+        category,
+        role,
+        gender,
+        maritalStatus,
+        yearAdmitted,
+        stateOfOrigin,
+        localGvt,
+        homeTown,
+        residence,
+        phone,
+        email
+      );
 
-
-
-    setFormData({
-      firstName: '',
-      lastName: '',
-      surname: '',
-      qualification: '',
-      gender: '',
-      dob: '',
-      yearAdmitted: '',
-      stateOfOrigin: '',
-      localGvt: '',
-      homeTown: '',
-    });
+      setFormData({
+        firstName: '',
+        lastName: '',
+        surname: '',
+        qualification: '',
+        gender: '',
+        dob: '',
+        yearAdmitted: '',
+        stateOfOrigin: '',
+        localGvt: '',
+        homeTown: '',
+      });
     } else {
-      toast.error('Please add all field')
+      toast.error('Please add all field');
     }
   };
 
-    const clickedStaffForm = () => {
-      setIsStaffForm(!isStaffForm);
-    };
+  const clickedStaffForm = () => {
+    setIsStaffForm(!isStaffForm);
+  };
   return (
     <div>
       <button
@@ -1175,7 +1173,7 @@ const addTeacher = () => {
               Date of birth
             </label>
             <input
-              type='text'
+              type='date'
               name='dob'
               placeholder='DD/MM/YYYY'
               id='staffDob'

@@ -58,8 +58,8 @@ const UpdateStudentBtn = ({ student }) => {
       toast.error(error.message);
     },
 
-    onCompleted: () => {
-      toast.success(`Student updated successfully`);
+    onCompleted: (data) => {
+      toast.success(`updated ${firstName}'s profile `);
     },
   });
 
@@ -948,10 +948,10 @@ const UpdateStudentBtn = ({ student }) => {
     };
   return (
     <>
-
-      <button onClick={clickedStudentBtn} className={isStudentForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}` }>
+{loading ? (<p>updating...</p>) : (    <button onClick={clickedStudentBtn} className={isStudentForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}` }>
         update Student profile
-      </button>
+      </button>)}
+  
 
       <div
         className={
@@ -1164,7 +1164,7 @@ const UpdateStudentBtn = ({ student }) => {
               </select>
             </div>
             <button className={style.btn} type='submit'>
-              submit
+              update
             </button>
             <button
               onClick={clickedStudentBtn}

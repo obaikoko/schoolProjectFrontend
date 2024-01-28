@@ -106,21 +106,26 @@
 .listContainer ul {
   list-style: none;
   display: grid;
-  grid-template-columns: 0.3fr 2fr 2fr 1fr;
+  grid-template-columns: 0.3fr 4fr 2fr ;
  background-color: #161643;
  color: #fff;
  padding: 10px 5px;
 }
 .list {
   display: grid;
-  grid-template-columns: 0.3fr 2fr 2fr 1fr;
+  grid-template-columns: 0.3fr 4fr 2fr ;
   padding: 10px 0;
   border-bottom: 1px solid #161643;
   margin: 2px 0;
 }
-.list .link {
-    text-decoration: none;
+.list:hover{
+  background-color: rgba(0, 0, 0, 0.09);
 }
+ .link {
+    text-decoration: none;
+    color: #161643;
+}
+
 
 @media (max-width: 600px) {
   .registers {

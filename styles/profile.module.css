@@ -43,7 +43,7 @@
     grid-template-columns: 1fr 1fr;
   }
   .title h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
   .profile ul li {
     font-weight: 600;
@@ -52,7 +52,7 @@
   }
   .profile ul li h4 {
     font-weight: 100;
-    font-size: x-small;
+    font-size: small;
   }
   .profileBtn {
     padding-left: 5px;

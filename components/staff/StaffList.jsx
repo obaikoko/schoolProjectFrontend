@@ -59,21 +59,19 @@ const StaffList = () => {
             <li>#</li>
             <li>Name</li>
             <li>Department</li>
-            <li>Details</li>
+           
           </ul>
           {filteredStaff.map((staff, index) => (
+                <Link className={style.link} href={`/staff/${staff.id}`}>
             <div className={style.list} key={staff.id}>
               <p>{index + 1}</p>
               <p>
-                {staff.surname} {staff.firstName}
+                {staff.surname} {staff.firstName} {staff.lastName}
               </p>
               <p>{staff.role}</p>
-              <p>
-                <Link className={style.link} href={`/staff/${staff.id}`}>
-                  Details
-                </Link>
-              </p>
+              
             </div>
+                </Link>
           ))}
         </div>
     </div>

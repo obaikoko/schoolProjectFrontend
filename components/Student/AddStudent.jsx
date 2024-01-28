@@ -966,8 +966,6 @@ const addStudent = () => {
         localGvt: '',
         homeTown: '',
       });
-    } else if (loading) {
-      toast.loading(<Spinner />);
     } else {
       toast.error('Please add all field');
     }

@@ -62,19 +62,18 @@ const StudentList = () => {
           <li>#</li>
           <li>Name</li>
           <li>Class</li>
-          <li>Details</li>
+         
         </ul>
         {filteredStudents.map((student, index) => (
-          <div className={style.list} key={index}>
-            <p>{index + 1}</p>
-            <p>
-              {student.surname} {student.firstName}
-            </p>
-            <p>{student.level}</p>
             <Link className={style.link} href={`/student/${student.id}`}>
-              Details
-            </Link>
+          <div className={style.list} key={index}>
+              <p>{index + 1}</p>
+              <p>
+                {student.surname} {student.firstName} {student.lastName}
+              </p>
+              <p>{student.level}</p>
           </div>
+            </Link>
         ))}
       </div>
     </div>
