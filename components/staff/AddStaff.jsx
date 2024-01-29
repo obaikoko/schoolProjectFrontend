@@ -1031,7 +1031,7 @@ const addTeacher = () => {
     setIsStaffForm(!isStaffForm);
   };
   return (
-    <div>
+    <div className={style.container}>
       <button
         onClick={clickedStaffForm}
         className={

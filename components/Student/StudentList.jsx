@@ -20,8 +20,8 @@ const StudentList = () => {
 
   const { loading, error, data } = useQuery(GET_STUDENTS);
 
-  if (loading) return <h3>Loading Students Data...</h3>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <h3 className={style.loading}>Loading Students Data...</h3>;
+  if (error) return <p className={style.loading}>Error: {error.message}</p>;
 
   const studentsData = data.students;
 

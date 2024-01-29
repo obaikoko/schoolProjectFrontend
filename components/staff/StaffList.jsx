@@ -19,8 +19,9 @@ const StaffList = () => {
 
   const { loading, error, data } = useQuery(GET_STAFF);
 
-  if (loading) return  <h3>Loading Staff Data...</h3>
-  if (error) return <p>Error: {error.message}</p>;
+ if (loading)
+   return <h3 className={style.loading}>Loading Students Data...</h3>;
+ if (error) return <p className={style.loading}>Error: {error.message}</p>;
 
   const staffData = data.staff;
 
