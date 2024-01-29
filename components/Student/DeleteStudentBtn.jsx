@@ -24,20 +24,20 @@ const DeleteStudentBtn = ({ student }) => {
   });
 
   const confirmDelete = () => {
-    const deleteProfle = window.confirm(`Are you sure you want to delete ${student.firstName}'s profile `);
+    const deleteProfle = window.confirm(
+      `Are you sure you want to delete ${student.firstName}'s profile `
+    );
     deleteProfle && deleteStudent();
   };
 
   return (
-    <div>
-      <button
-        type='button'
-        className={`${style.btn} ${style.btnCancel} `}
-        onClick={confirmDelete}
-      >
-        {loading ? <Spinner /> : <p className='btn btn-secondary'>delete</p>}
-      </button>
-    </div>
+    <button
+      type='button'
+      className={`${style.btn} ${style.btnDelete} `}
+      onClick={confirmDelete}
+    >
+      Delete
+    </button>
   );
 };
 

@@ -1197,7 +1197,7 @@ const addStudent = () => {
               className={`${style.btn} ${style.btnCancel} `}
               type='button'
             >
-              Cancel
+              Close
             </button>
           </form>
         </div>

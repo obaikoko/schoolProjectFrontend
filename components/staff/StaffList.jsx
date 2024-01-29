@@ -21,7 +21,7 @@ const StaffList = () => {
 
  if (loading)
    return <h3 className={style.loading}>Loading Students Data...</h3>;
- if (error) return <p className={style.loading}>Error: {error.message}</p>;
+ if (error) return <p className={style.loading}>Error: {error.message} Staff Data</p>;
 
   const staffData = data.staff;
 

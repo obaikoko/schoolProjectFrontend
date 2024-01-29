@@ -32,10 +32,10 @@ const DeleteStaffBtn = ({staff}) => {
     <div>
       <button
         type='button'
-        className={`${style.btn} ${style.btnCancel} `}
+        className={`${style.btn} ${style.btnDelete} `}
         onClick={confirmDelete}
       >
-        {loading ? <Spinner /> : <p className='btn btn-secondary'>delete</p>}
+        Delete
       </button>
     </div>
   );

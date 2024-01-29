@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_SPONSORS } from '../queries/query';
 import { toast } from 'react-toastify';
 import { UPDATE_STAFF } from './staffMutation';
 import { GET_STAFF } from './staffQueries';
-import Spinner from '../Spinner';
 import { useRouter } from 'next/router';
 import style from '@/styles/register.module.css';
 
@@ -1015,7 +1013,7 @@ const UpdateStaffBtn = ({ staff }) => {
             isStaffForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}`
           }
         >
-          update staff profile
+          update {staff.firstName}'s  profile
         </button>
       )}
 
@@ -1028,7 +1026,7 @@ const UpdateStaffBtn = ({ staff }) => {
       >
         <div className={style.form}>
           <form onSubmit={onSubmit}>
-            <h2>Update {staff.surname}'s profile</h2>
+            <h2>Update {staff.firstName}'s profile</h2>
             <div className={style.formGroup}>
               <label htmlFor='firstName' className='form-label'>
                 Fisrt Name
@@ -1297,7 +1295,7 @@ const UpdateStaffBtn = ({ staff }) => {
               className={`${style.btn} ${style.btnCancel} `}
               type='button'
             >
-              Cancel
+              Close
             </button>
           </form>
         </div>

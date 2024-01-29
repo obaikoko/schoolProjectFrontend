@@ -58,6 +58,7 @@ function dashboard() {
         <li className={style.totalStaff}>
           <h3>Total Staff</h3>
           <FaChalkboardTeacher />
+          
           <p>{totalStaff}</p>
         </li>
         <li className={style.totalSponsors}>

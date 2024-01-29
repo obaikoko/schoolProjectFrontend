@@ -949,7 +949,7 @@ const UpdateStudentBtn = ({ student }) => {
   return (
     <>
 {loading ? (<p>updating...</p>) : (    <button onClick={clickedStudentBtn} className={isStudentForm ? `${style.btn} ${style.hideBtn}` : `${style.btn}` }>
-        update Student profile
+        update {student.firstName}'s  profile
       </button>)}
   
 
@@ -962,7 +962,7 @@ const UpdateStudentBtn = ({ student }) => {
       >
         <div className={style.form}>
           <form onSubmit={onSubmit}>
-            <h2>Update {student.surname}'s profile</h2>
+            <h2>Update {student.firstName}'s profile</h2>
             <div className={style.formGroup}>
               <label htmlFor='firstName' className='form-label'>
                 Fisrt Name
@@ -1164,14 +1164,14 @@ const UpdateStudentBtn = ({ student }) => {
               </select>
             </div>
             <button className={style.btn} type='submit'>
-              update
+              Update
             </button>
             <button
               onClick={clickedStudentBtn}
               className={`${style.btn} ${style.btnCancel} `}
               type='button'
             >
-              Cancel
+              Close
             </button>
           </form>
         </div>

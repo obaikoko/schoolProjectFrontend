@@ -18,7 +18,7 @@ const StudentDetails = () => {
 
   if (loading) return <h3 className={style.loading}>Loading profile...</h3>;
 
-  if (error) return <p loading>Error: {error.message}</p>;
+  if (error) return <p className={style.loading}>Error: {error.message}</p>;
 
   return (
     <>
