@@ -100,14 +100,8 @@ const UPDATE_STUDENT = gql`
   }
 `;
 const DELETE_STUDENT = gql`
-  mutation deleteStudent(
-    $id: ID!
-   
-  ) {
-    deleteStudent(
-      id: $id
-   
-    ) {
+  mutation deleteStudent($id: ID!) {
+    deleteStudent(id: $id) {
       id
     }
   }

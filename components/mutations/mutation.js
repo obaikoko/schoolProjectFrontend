@@ -24,5 +24,33 @@ const ADD_SPONSOR = gql`
     }
   }
 `;
+const ADD_USER = gql`
+  mutation addUser(
+    $firstName: String!
+    $lastName: String!
+    $surname: String!
+    $stateOfOrigin: String!
+    $localGvt: String!
+    $phoneNumber: String!
+    $email: String!
+    $password: String!
+  ) {
+    addUser(
+      firstName: $firstName
+      lastName: $lastName
+      surname: $surname
+      stateOfOrigin: $stateOfOrigin
+      localGvt: $localGvt
+      phone: $phoneNumber
+      email: $email
+      password: $password
+    ) {
+      id
+      firstName
+      email
+      role
+    }
+  }
+`;
 
-export {ADD_SPONSOR };
+export { ADD_SPONSOR, ADD_USER };

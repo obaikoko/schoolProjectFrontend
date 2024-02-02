@@ -1,14 +1,25 @@
 import Link from 'next/link';
 import style from '../styles/nav.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState('');
   const [open, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const loginUser = JSON.parse(localStorage.getItem('User'));
+    setIsLoggedIn(loginUser);
+  }, []);
+
   const menuBtnClicked = () => {
     setIsOpen(!open);
     document.body.classList.toggle('stopScrolling');
   };
-
+  const handleLogout = () => {
+    setIsOpen(!open);
+    localStorage.removeItem('User');
+    setIsLoggedIn('');
+  };
   return (
     <>
       <div className={open ? `${style.overlay}` : ''}></div>
@@ -21,7 +32,7 @@ const Navbar = () => {
         }
       >
         <ul>
-          {/* monile menu only */}
+          {/* mobile menu only */}
 
           <li className={style.mobileOnly}>
             <Link onClick={menuBtnClicked} href='/' className={style.navLink}>
@@ -38,24 +49,28 @@ const Navbar = () => {
             </Link>
           </li>
 
-          <li>
-            <Link
-              onClick={menuBtnClicked}
-              className={style.navLink}
-              href='/dashboard'
-            >
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={menuBtnClicked}
-              className={style.navLink}
-              href='/register'
-            >
-              Register
-            </Link>
-          </li>
+          {isLoggedIn && (
+            <>
+              <li>
+                <Link
+                  onClick={menuBtnClicked}
+                  className={style.navLink}
+                  href='/dashboard'
+                >
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={menuBtnClicked}
+                  className={style.navLink}
+                  href='/register'
+                >
+                  Register
+                </Link>
+              </li>
+            </>
+          )}
           <li>
             <Link
               onClick={menuBtnClicked}
@@ -65,6 +80,7 @@ const Navbar = () => {
               Admission
             </Link>
           </li>
+
           <li className={style.mobileOnly}>
             <Link
               onClick={menuBtnClicked}
@@ -83,14 +99,27 @@ const Navbar = () => {
               news
             </Link>
           </li>
+          <li>
+            {isLoggedIn ? (
+              <Link href='/' className={style.navLink} onClick={handleLogout}>
+                logout
+              </Link>
+            ) : (
+              <Link className={style.navLink} href='/login'>
+                login
+              </Link>
+            )}
+          </li>
           <li className={style.mobileOnly}>
-            <Link
-              onClick={menuBtnClicked}
-              className={style.navLink}
-              href='/login'
-            >
-              login
-            </Link>
+            {isLoggedIn ? (
+              <Link href='/' className={style.navLink} onClick={handleLogout}>
+                logout
+              </Link>
+            ) : (
+              <Link className={style.navLink} href='/login'>
+                login
+              </Link>
+            )}
           </li>
         </ul>
       </div>
@@ -116,11 +145,6 @@ const Navbar = () => {
             <li>
               <Link className={style.navLink} href='/events'>
                 events
-              </Link>
-            </li>
-            <li>
-              <Link className={style.navLink} href='/login'>
-                login
               </Link>
             </li>
           </ul>

@@ -19,9 +19,10 @@ const StaffList = () => {
 
   const { loading, error, data } = useQuery(GET_STAFF);
 
- if (loading)
-   return <h3 className={style.loading}>Loading Students Data...</h3>;
- if (error) return <p className={style.loading}>Error: {error.message} Staff Data</p>;
+  if (loading)
+    return <h3 className={style.loading}>Loading Students Data...</h3>;
+  if (error)
+    return <p className={style.loading}>Error: {error.message} Staff Data</p>;
 
   const staffData = data.staff;
 
@@ -35,7 +36,6 @@ const StaffList = () => {
   });
 
   return (
-    
     <div className='container p-3'>
       <h3>Filter Staff</h3>
       <div className={style.formGroup}>
@@ -54,27 +54,28 @@ const StaffList = () => {
         />
       </div>
 
-      
-        <div className={style.listContainer}>
-          <ul>
-            <li>#</li>
-            <li>Name</li>
-            <li>Department</li>
-           
-          </ul>
-          {filteredStaff.map((staff, index) => (
-                <Link className={style.link} href={`/staff/${staff.id}`}>
-            <div className={style.list} key={staff.id}>
+      <div className={style.listContainer}>
+        <ul>
+          <li>#</li>
+          <li>Name</li>
+          <li>Department</li>
+        </ul>
+        {filteredStaff.map((staff, index) => (
+          <Link
+            key={staff.id}
+            className={style.link}
+            href={`/staff/${staff.id}`}
+          >
+            <div className={style.list}>
               <p>{index + 1}</p>
               <p>
                 {staff.surname} {staff.firstName} {staff.lastName}
               </p>
               <p>{staff.role}</p>
-              
             </div>
-                </Link>
-          ))}
-        </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,17 +1,20 @@
-import React from 'react';
-import style from '../styles/admission.module.css'
+import Head from 'next/head';
+import style from '../styles/admission.module.css';
 
 function admission() {
   return (
     <div className={style.admission}>
+      <Head>
+        <title>Bendonalds</title>
+      </Head>
       <div className={style.imgBg}>
         <div className={style.img}></div>
       </div>
       <div className={style.admissionTxt}>
         <h1>ADMISSION</h1>
         <h2>
-           Explore a world of possibilities at Bendonalds International
-          Secondary School! 
+          Explore a world of possibilities at Bendonalds International Secondary
+          School!
         </h2>
         <p>
           Welcome to a place where education transcends boundaries, guided by

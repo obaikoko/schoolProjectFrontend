@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '@/components/users/userMutation';
+import { LOGIN_USER } from '@/components/user/userMutetion';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
@@ -21,9 +21,9 @@ function loginPage() {
       toast.error(error.message);
     },
     onCompleted: (data) => {
-      toast.success(`welcome ${data.loginUser.firstName} `)
+      toast.success(`welcome ${data.loginUser.name} `);
       localStorage.setItem('User', JSON.stringify(data));
-      router.push('/dashboard')
+      router.push('/dashboard');
     },
   });
 

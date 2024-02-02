@@ -1,24 +1,17 @@
- .loading {
-    width: 100vw;
-    height: 100vh;
-  }
-.container {
-  position: relative;
-  width: 100%;
+.loading {
+  width: 100vw;
   height: 100vh;
-  overflow: hidden;
-
 }
-.loginBg {
-  background-image: url('../components/img/Facade_of_Central_High_School_-_Little_Rock_-_Arkansas_-_USA_-_01.jpg');
+.container {
+  background-image: url('../components/img/pngtree-blue-three-dimensional-city-building-smart-technology-background-picture-image_980354.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
-  width: 100%;
-  filter: blur(5px);
- 
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
+
 .form {
   position: absolute;
   top: 25%;
@@ -31,6 +24,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
   z-index: 1;
 }
 .formGroup {
@@ -71,19 +65,19 @@
   cursor: pointer;
 }
 
-@media(max-width: 960px){
-.form{
-  left: 0;
-  width: 100%;
-  height: auto;
-  background-color: transparent;
+@media (max-width: 960px) {
+  .form {
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+  }
 }
-}
-@media(max-width: 600px){
-.form{
-  left: 0;
-  width: 100%;
-  height: auto;
-  background-color: transparent;
-}
+@media (max-width: 600px) {
+  .form {
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+  }
 }

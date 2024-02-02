@@ -20,8 +20,12 @@ const StudentList = () => {
 
   const { loading, error, data } = useQuery(GET_STUDENTS);
 
-  if (loading) return <h3 className={style.loading}>Loading Students Data...</h3>;
-  if (error) return <p className={style.loading}>Error: {error.message} Students Data</p>;
+  if (loading)
+    return <h3 className={style.loading}>Loading Students Data...</h3>;
+  if (error)
+    return (
+      <p className={style.loading}>Error: {error.message} Students Data</p>
+    );
 
   const studentsData = data.students;
 
@@ -62,18 +66,21 @@ const StudentList = () => {
           <li>#</li>
           <li>Name</li>
           <li>Class</li>
-         
         </ul>
         {filteredStudents.map((student, index) => (
-            <Link className={style.link} href={`/student/${student.id}`}>
-          <div className={style.list} key={index}>
+          <Link
+            key={index}
+            className={style.link}
+            href={`/student/${student.id}`}
+          >
+            <div className={style.list}>
               <p>{index + 1}</p>
               <p>
                 {student.surname} {student.firstName} {student.lastName}
               </p>
               <p>{student.level}</p>
-          </div>
-            </Link>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

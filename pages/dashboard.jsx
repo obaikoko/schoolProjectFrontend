@@ -1,10 +1,11 @@
-import React from 'react';
+import Head from 'next/head';
 import { GET_SPONSORS } from '@/components/queries/query';
 import { GET_STAFF } from '@/components/staff/staffQueries';
 import { GET_STUDENTS } from '@/components/Student/studentQueries';
 import { GET_USERS } from '@/components/queries/query';
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import style from '@/styles/dashboard.module.css';
 import {
   FaChalkboardTeacher,
@@ -15,6 +16,17 @@ import {
 } from 'react-icons/fa';
 
 function dashboard() {
+  const router = useRouter();
+  useEffect(() => {
+    const { loginUser } = JSON.parse(localStorage.getItem('User'));
+    if (!loginUser) {
+      router.push('/');
+    } else if (loginUser && loginUser.role != 'Admin') {
+      router.push('/');
+    }
+    setIsLoogedIn(loginUser);
+  }, []);
+  const [isLoggedIn, setIsLoogedIn] = useState('');
   const [totalSponsors, setTotalSponsors] = useState('');
   const [totalStudents, setTotalStudents] = useState('');
   const [totalStaff, setTotalStaff] = useState('');
@@ -49,27 +61,44 @@ function dashboard() {
 
   return (
     <div className={style.container}>
+      <Head>
+        <title>Bendonalds</title>
+      </Head>
       <ul>
         <li className={style.totalStudents}>
           <h3>Total Students</h3>
-          <FaChild />
-          <p>{totalStudents}</p>
+          {studentLoading ? (
+            <p>fetching data...</p>
+          ) : (
+            <>
+              <FaChild />
+              <p>{totalStudents}</p>
+            </>
+          )}
         </li>
         <li className={style.totalStaff}>
           <h3>Total Staff</h3>
-          <FaChalkboardTeacher />
-          
-          <p>{totalStaff}</p>
+
+          {staffLoading ? (
+            <p>fetching data...</p>
+          ) : (
+            <>
+              <FaChalkboardTeacher />
+
+              <p>{totalStaff}</p>
+            </>
+          )}
         </li>
         <li className={style.totalSponsors}>
           <h3>Total Sponsors</h3>
-          <FaHandshake />
-          <p>{totalSponsors}</p>
-        </li>
-        <li className={style.totalUsers}>
-          <h3>Total Users</h3>
-          <FaUserAlt />
-          <p>{totalUsers}</p>
+          {sponsorLoading ? (
+            <p>fetching data...</p>
+          ) : (
+            <>
+              <FaHandshake />
+              <p>{totalSponsors}</p>
+            </>
+          )}
         </li>
       </ul>
     </div>

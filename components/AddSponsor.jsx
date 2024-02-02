@@ -84,7 +84,6 @@ const addSponsor = () => {
               id='name'
               value={name}
               onChange={handleInputChange}
-              className='form-control'
             />
           </div>
           <div className={style.formGroup}>
