@@ -32,7 +32,7 @@
 }
 .img {
   
-  background-image: url('../components/img/logo.jpg');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706916906/Bendonalds/logo_zcvtfv.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
