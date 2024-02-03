@@ -26,7 +26,9 @@ function loginPage() {
       router.push('/dashboard');
     },
   });
-
+if (loading) {
+  return <h1 className={style.loading}>Authenticating...</h1>;
+}
   const handleInputChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -47,39 +49,35 @@ function loginPage() {
     <div className={style.container}>
       <div className={style.loginBg}></div>
 
-      {loading ? (
-        <Spinner />
-      ) : (
-        <form className={style.form} onSubmit={handleSubmit}>
-          <h1>SIGN IN</h1>
-          <div className={style.formGroup}>
-            <label htmlFor='email'>Username</label>
-            <input
-              type='email'
-              name='email'
-              id='email'
-              value={email}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className={style.formGroup}>
-            <label htmlFor='password'>Password</label>
-            <input
-              type='password'
-              name='password'
-              id='password'
-              value={password}
-              onChange={handleInputChange}
-            />
-          </div>
-          <button type='submit' className={style.btn}>
-            Login
-          </button>
-          <Link href='/resetPassword' className={style.btn}>
-            Forgotten password ?
-          </Link>
-        </form>
-      )}
+      <form className={style.form} onSubmit={handleSubmit}>
+        <h1>SIGN IN</h1>
+        <div className={style.formGroup}>
+          <label htmlFor='email'>Username</label>
+          <input
+            type='email'
+            name='email'
+            id='email'
+            value={email}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className={style.formGroup}>
+          <label htmlFor='password'>Password</label>
+          <input
+            type='password'
+            name='password'
+            id='password'
+            value={password}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type='submit' className={style.btn}>
+          Login
+        </button>
+        <Link href='/resetPassword' className={style.btn}>
+          Forgotten password ?
+        </Link>
+      </form>
     </div>
   );
 }

@@ -1,9 +1,12 @@
 .loading {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .container {
-  background-image: url('../components/img/pngtree-blue-three-dimensional-city-building-smart-technology-background-picture-image_980354.jpg');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941060/Bendonalds/pngtree-blue-three-dimensional-city-building-smart-technology-background-picture-image_980354_eyqkhc.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

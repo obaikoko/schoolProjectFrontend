@@ -8,7 +8,7 @@
   justify-content: center;
 }
 .imgBgA {
-  background-image: url('../components/img/Art2.png');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941049/Bendonalds/Art2_copy_1070x334_eteaes.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,7 +16,7 @@
   height: 100%;
 }
 .imgBgB {
-  background-image: url('../components/img/sport3.jpg');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941057/Bendonalds/sport3_copy_1114x615_fe4z6s.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,7 +24,7 @@
   height: 100%;
 }
 .imgBgC {
-  background-image: url('../components/img/parenting-178380-elementaryconference-es-main1-200608.webp');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941054/Bendonalds/parenting-178380-elementaryconference-es-main1-200608_ocjld1.webp');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,7 +32,7 @@
   height: 100%;
 }
 .imgBgD {
-  background-image: url('../components/img/LiteracyWeek.png');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941055/Bendonalds/LiteracyWeek_copy_725x330_qjp2w4.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -40,7 +40,7 @@
   height: 100%;
 }
 .imgBgE {
-  background-image: url('../components/img/Culture.jpg');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941050/Bendonalds/Culture_qnm0na.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

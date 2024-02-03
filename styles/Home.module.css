@@ -1,7 +1,7 @@
 /* Hero section Landing Page */
 .sectionA {
   position: relative;
-  background-image: url('../components/img/SchBuilding.jpg');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941057/Bendonalds/SchBuilding_copy_911x683_js95zi.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -91,7 +91,7 @@
   border-radius: 10px;
 }
 .imgA {
-  background-image: url(../components/img/facility.jpg);
+  background-image: url(https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941051/Bendonalds/facility_copy_1065x799_b1ptko.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -101,7 +101,7 @@
   height: 100%;
 }
 .imgB {
-  background-image: url(../components/img/facility2.jpg);
+  background-image: url(https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941050/Bendonalds/facility2_copy_1075x806_w2xnti.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -110,7 +110,7 @@
   height: 100%;
 }
 .imgC {
-  background-image: url(../components/img/facility3.jpg);
+  background-image: url(https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941050/Bendonalds/facility3_copy_816x1089_muweb3.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -126,7 +126,7 @@
   height: 100vh;
 }
 .imgD {
-  background-image: url(../components/img/morningDrills.jpg);
+  background-image: url(https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941053/Bendonalds/morningDrills_copy_1014x761_xsig1p.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -238,7 +238,7 @@
   margin-top: 10px;
 }
 .adminImgBg .adminImg {
-  background-image: url('../components/img/Mrs\ Esther.jpg');
+  background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941053/Bendonalds/MrsEsther_copy_1011x782_u42jan.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -4,7 +4,7 @@
     height: 500px;
 }
 .img{
-    background-image: url('../components/img/Band.jpg');
+    background-image: url('https://res.cloudinary.com/dzajrh9z7/image/upload/v1706941050/Bendonalds/Band_copy_1110x832_ly5v1a.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,7 +16,5 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    align-items: center;
-    /* height: 300px; */
-    border: 1px solid #161643;
+    text-align: center;
 }
