@@ -9,7 +9,7 @@ const Navbar = () => {
   useEffect(() => {
     const loginUser = JSON.parse(localStorage.getItem('User'));
     setIsLoggedIn(loginUser);
-  }, [isLoggedIn]);
+  }, []);
 
   const menuBtnClicked = () => {
     setIsOpen(!open);
@@ -105,12 +105,15 @@ const Navbar = () => {
                 logout
               </Link>
             ) : (
-              <Link onClick={menuBtnClicked} className={style.navLink} href='/login'>
+              <Link
+                onClick={menuBtnClicked}
+                className={style.navLink}
+                href='/login'
+              >
                 login
               </Link>
             )}
           </li>
-        
         </ul>
       </div>
       <header className={style.mainHeader}>
