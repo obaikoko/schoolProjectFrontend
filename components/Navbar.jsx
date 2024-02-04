@@ -99,21 +99,20 @@ const Navbar = () => {
               news
             </Link>
           </li>
-          <li>
-            {isLoggedIn ? (
+          {isLoggedIn ? (
+            <li>
               <Link href='/' className={style.navLink} onClick={handleLogout}>
                 logout
               </Link>
-            ) : (
-              <Link
-                onClick={menuBtnClicked}
-                className={style.navLink}
-                href='/login'
-              >
+            </li>
+          ) : (
+            <li>
+              {' '}
+              <Link className={style.navLink} href='/login'>
                 login
               </Link>
-            )}
-          </li>
+            </li>
+          )}
         </ul>
       </div>
       <header className={style.mainHeader}>

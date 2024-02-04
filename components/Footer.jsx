@@ -1,6 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import style from '../styles/footer.module.css';
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+  FaYoutube,
+} from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -9,28 +16,36 @@ function Footer() {
         <ul>
           <li>Bendonalds &copy; 2023</li>
           <li>
-            <Link className={style.footerLink} href='/#'>
+            <Link
+              className={style.footerLink}
+              href='https://wa.me/qr/KMUJWQ364PWAG1'
+            >
+              <FaTwitter />
               Twitter
             </Link>
           </li>
           <li>
             <Link className={style.footerLink} href='/#'>
+              <FaYoutube />
               Youtube
             </Link>
           </li>
           <li>
             <Link className={style.footerLink} href='/#'>
-              Instagram
+              <FaInstagram />
+              Intsagram
             </Link>
           </li>
           <li>
             <Link className={style.footerLink} href='/#'>
-              Linkdin
+              <FaLinkedin />
+              Linkedin
             </Link>
           </li>
           <li>
             <Link className={style.footerLink} href='/#'>
-              FaceBook
+              <FaFacebook />
+              Facebook
             </Link>
           </li>
         </ul>
