@@ -16,10 +16,7 @@ function Footer() {
         <ul>
           <li>Bendonalds &copy; 2023</li>
           <li>
-            <Link
-              className={style.footerLink}
-              href='https://wa.me/qr/KMUJWQ364PWAG1'
-            >
+            <Link className={style.footerLink} href='https://wa.me/08146797467'>
               <FaTwitter />
               Twitter
             </Link>
