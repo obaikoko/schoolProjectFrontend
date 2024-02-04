@@ -16,7 +16,8 @@ const Navbar = () => {
     document.body.classList.toggle('stopScrolling');
   };
   const handleLogout = () => {
-    setIsOpen(!open);
+        setIsOpen(!open);
+        document.body.classList.toggle('stopScrolling');
     localStorage.removeItem('User');
     setIsLoggedIn('');
   };
@@ -107,8 +108,8 @@ const Navbar = () => {
             </li>
           ) : (
             <li>
-              {' '}
-              <Link className={style.navLink} href='/login'>
+            
+              <Link onClick={menuBtnClicked} className={style.navLink} href='/login'>
                 login
               </Link>
             </li>

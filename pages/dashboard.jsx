@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { GET_SPONSORS } from '@/components/queries/query';
 import { GET_STAFF } from '@/components/staff/staffQueries';
 import { GET_STUDENTS } from '@/components/Student/studentQueries';
-import { GET_USERS } from '@/components/queries/query';
+// import { GET_USERS } from '@/components/queries/query';
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -14,6 +14,7 @@ import {
   FaPatreon,
   FaUserAlt,
 } from 'react-icons/fa';
+import ChartComponent from '@/components/chartComponent';
 
 function dashboard() {
   const router = useRouter();
@@ -24,13 +25,13 @@ function dashboard() {
     } else if (loginUser && loginUser.role != 'Admin') {
       router.push('/');
     }
-    setIsLoogedIn(loginUser);
+    setLoggedIn(loginUser);
   }, []);
-  const [isLoggedIn, setIsLoogedIn] = useState('');
+  const [isLoggedIn, setLoggedIn] = useState('');
   const [totalSponsors, setTotalSponsors] = useState('');
   const [totalStudents, setTotalStudents] = useState('');
   const [totalStaff, setTotalStaff] = useState('');
-  const [totalUsers, setTotalUsers] = useState('');
+  // const [totalUsers, setTotalUsers] = useState('');
   const {
     loading: sponsorLoading,
     error: sponsorError,
@@ -46,18 +47,26 @@ function dashboard() {
     error: staffError,
     data: staffData,
   } = useQuery(GET_STAFF);
-  const {
-    loading: userLoading,
-    error: userError,
-    data: userData,
-  } = useQuery(GET_USERS);
+  // const {
+  //   loading: userLoading,
+  //   error: userError,
+  //   data: userData,
+  // } = useQuery(GET_USERS);
+  // const maleStudents = studentData.students.filter(
+  //   (student) => student.gender === 'Male'
+  // );
 
+  studentData &&
+    console.log(
+      studentData.students.filter((student) => student.gender === 'Male')
+    );
+  // console.log(maleStudents);
   useEffect(() => {
     studentData && setTotalStudents(studentData.students.length);
     staffData && setTotalStaff(staffData.staff.length);
-    userData && setTotalUsers(userData.users.length);
+    // userData && setTotalUsers(userData.users.length);
     sponsorData && setTotalSponsors(sponsorData.Sponsors.length);
-  }, [studentLoading, staffLoading, sponsorLoading, staffLoading]);
+  }, [studentLoading, sponsorLoading, staffLoading]);
 
   return (
     <div className={style.container}>
@@ -101,6 +110,7 @@ function dashboard() {
           )}
         </li>
       </ul>
+      {/* <ChartComponent/> */}
     </div>
   );
 }
