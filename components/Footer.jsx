@@ -21,12 +21,7 @@ function Footer() {
               Twitter
             </Link>
           </li>
-          <li>
-            <Link className={style.footerLink} href='/#'>
-              <FaYoutube />
-              Youtube
-            </Link>
-          </li>
+
           <li>
             <Link className={style.footerLink} href='/#'>
               <FaInstagram />
