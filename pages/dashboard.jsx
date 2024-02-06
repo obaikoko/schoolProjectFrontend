@@ -14,7 +14,6 @@ import {
   FaPatreon,
   FaUserAlt,
 } from 'react-icons/fa';
-import ChartComponent from '@/components/chartComponent';
 
 function dashboard() {
   const router = useRouter();
@@ -110,7 +109,6 @@ function dashboard() {
           )}
         </li>
       </ul>
-      {/* <ChartComponent/> */}
     </div>
   );
 }

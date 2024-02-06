@@ -93,9 +93,26 @@ const addTeacher = () => {
     role.innerHTML = '';
 
     if (selectedCategory === 'Tutorial') {
-      addStaffOption(role, 'Mathematics');
+      addStaffOption(role, '');
+      addStaffOption(role, 'Agricultural Science');
+      addStaffOption(role, 'Basic Science');
+      addStaffOption(role, 'Basic Technology');
+      addStaffOption(role, 'Biology');
+      addStaffOption(role, 'Business Studies');
+      addStaffOption(role, 'C.R.K');
+      addStaffOption(role, 'Chemistry');
+      addStaffOption(role, 'Commerce');
+      addStaffOption(role, 'Computer');
+      addStaffOption(role, 'Cultural and Creative Art');
+      addStaffOption(role, 'Economics');
       addStaffOption(role, 'English');
+      addStaffOption(role, 'Further Maths');
+      addStaffOption(role, 'Geography');
+      addStaffOption(role, 'Home Economics');
+      addStaffOption(role, 'Mathematics');
+      addStaffOption(role, 'Physical and Health Education');
       addStaffOption(role, 'Physics');
+      addStaffOption(role, 'Social Studies');
     } else if (selectedCategory === 'Non Tutorial') {
       addStaffOption(role, '');
       addStaffOption(role, 'Kitchen');

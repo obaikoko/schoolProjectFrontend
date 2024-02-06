@@ -179,22 +179,23 @@ export default function Home() {
             <div className={style.adminTxt}>
               <h1>Academic Administrator</h1>
               <p>
-                Welcome to Bendonalds International Secondary School, led by the
-                visionary Mrs. Agiye Esther. With a passion for holistic
-                education, Mrs. Esther fosters a nurturing environment where
-                students thrive academically and personally. Her commitment to
-                excellence and character development ensures our students are
-                well-prepared for a dynamic future. Join us on this journey of
-                growth and achievement under Mrs. Agiye Esther's inspiring
-                leadership
+                Welcome to Bendonalds International Secondary School, where our
+                Academic Administrator leads with dedication and vision. With a
+                commitment to holistic education, our administrator fosters a
+                nurturing environment for students to thrive academically and
+                personally. The emphasis on excellence and character development
+                ensures that our students are well-prepared for a dynamic
+                future. Join us on this journey of growth and achievement under
+                the inspiring leadership at Bendonalds International Secondary
+                School.
               </p>
             </div>
             <div className={style.adminImgBg}>
-              <div className={style.adminImg}></div>
+              <div className={style.adminImg2}></div>
             </div>
           </section>
           {/* Guardian and Councellor */}
-          <section className={style.admin}>
+          {/* <section className={style.admin}>
             <div className={style.adminTxt}>
               <h1> Guidance and Councellor</h1>
               <p>
@@ -211,10 +212,10 @@ export default function Home() {
             <div className={style.adminImgBg}>
               <div className={style.adminImg}></div>
             </div>
-          </section>
+          </section> */}
 
           {/* Secretory */}
-          <section className={style.admin}>
+          {/* <section className={style.admin}>
             <div className={style.adminTxt}>
               <h1>Secretary</h1>
               <p>
@@ -231,10 +232,10 @@ export default function Home() {
             <div className={style.adminImgBg}>
               <div className={style.adminImg}></div>
             </div>
-          </section>
+          </section> */}
           {/* Hod */}
-          <section className={style.admin}>
-            <div className={style.adminTxt}  >
+          {/* <section className={style.admin}>
+            <div className={style.adminTxt}>
               <h1>Head of Department</h1>
               <p>
                 Welcome to Bendonalds International Secondary School, led by the
@@ -250,7 +251,7 @@ export default function Home() {
             <div className={style.adminImgBg}>
               <div className={style.adminImg}></div>
             </div>
-          </section>
+          </section> */}
         </div>
       </main>
     </>
