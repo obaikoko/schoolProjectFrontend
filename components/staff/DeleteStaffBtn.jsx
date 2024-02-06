@@ -6,7 +6,7 @@ import Spinner from '../Spinner';
 import { GET_STAFF } from './staffQueries';
 import style from '@/styles/register.module.css';
 
-const DeleteStaffBtn = ({staff}) => {
+const DeleteStaffBtn = ({ staff }) => {
   const router = useRouter();
   const { id } = router.query;
   const [deleteStaff, { loading, error }] = useMutation(DELETE_STAFF, {
@@ -22,22 +22,20 @@ const DeleteStaffBtn = ({staff}) => {
     },
     refetchQueries: [{ query: GET_STAFF }],
   });
-   const confirmDelete = () => {
-     const deleteProfle = window.confirm(
-       `Are you sure you want to delete ${staff.firstName}'s profile `
-     );
-     deleteProfle && deleteStaff();
-   };
+  const confirmDelete = () => {
+    const deleteProfle = window.confirm(
+      `Are you sure you want to delete ${staff.firstName}'s profile `
+    );
+    deleteProfle && deleteStaff();
+  };
   return (
-    <div>
-      <button
-        type='button'
-        className={`${style.btn} ${style.btnDelete} `}
-        onClick={confirmDelete}
-      >
-        Delete
-      </button>
-    </div>
+    <button
+      type='button'
+      className={`${style.btn} ${style.btnDelete} `}
+      onClick={confirmDelete}
+    >
+      Delete
+    </button>
   );
 };
 
