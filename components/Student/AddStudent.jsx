@@ -1,4 +1,3 @@
-import { FaUser, FaChild } from 'react-icons/fa';
 import { useMutation, useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -6,7 +5,9 @@ import { ADD_STUDENT } from './studentMutations';
 import { GET_STUDENTS } from './studentQueries';
 import { GET_SPONSORS } from '../queries/query';
 import style from '../../styles/register.module.css'
-import Spinner from '../Spinner';
+
+
+
 
 const addStudent = () => {
   const [isStudentForm, setIsStudentForm] = useState(false)

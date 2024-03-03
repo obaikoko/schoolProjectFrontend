@@ -18,19 +18,19 @@ import {
 function dashboard() {
   const router = useRouter();
   useEffect(() => {
-    const { loginUser } = JSON.parse(localStorage.getItem('User'));
-    if (!loginUser) {
+    const User = JSON.parse(localStorage.getItem('User'));
+    if (!User) {
       router.push('/');
-    } else if (loginUser && loginUser.role != 'Admin') {
+    } else if (User && User.role !== 'Admin') {
       router.push('/');
     }
-    setLoggedIn(loginUser);
+    setLoggedIn(User);
   }, []);
   const [isLoggedIn, setLoggedIn] = useState('');
   const [totalSponsors, setTotalSponsors] = useState('');
   const [totalStudents, setTotalStudents] = useState('');
   const [totalStaff, setTotalStaff] = useState('');
-  // const [totalUsers, setTotalUsers] = useState('');
+
   const {
     loading: sponsorLoading,
     error: sponsorError,
@@ -46,24 +46,11 @@ function dashboard() {
     error: staffError,
     data: staffData,
   } = useQuery(GET_STAFF);
-  // const {
-  //   loading: userLoading,
-  //   error: userError,
-  //   data: userData,
-  // } = useQuery(GET_USERS);
-  // const maleStudents = studentData.students.filter(
-  //   (student) => student.gender === 'Male'
-  // );
 
-  studentData &&
-    console.log(
-      studentData.students.filter((student) => student.gender === 'Male')
-    );
-  // console.log(maleStudents);
   useEffect(() => {
     studentData && setTotalStudents(studentData.students.length);
     staffData && setTotalStaff(staffData.staff.length);
-    // userData && setTotalUsers(userData.users.length);
+
     sponsorData && setTotalSponsors(sponsorData.Sponsors.length);
   }, [studentLoading, sponsorLoading, staffLoading]);
 

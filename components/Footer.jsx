@@ -69,11 +69,7 @@ function Footer() {
                 Admission
               </Link>
             </li>
-            <li>
-              <Link className={style.footerLink} href='/news'>
-                news
-              </Link>
-            </li>
+           
           </ul>
       
       </footer>

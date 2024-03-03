@@ -6,7 +6,7 @@ import AddSponsor from '@/components/AddSponsor';
 import style from '../styles/register.module.css';
 import StudentList from '@/components/Student/StudentList';
 import StaffList from '@/components/staff/StaffList';
-import AddUser from '@/components/user/AddUser';
+import AddUser from '@/components/user/registerUser';
 import { useRouter } from 'next/router';
 
 function register() {
@@ -15,13 +15,13 @@ function register() {
   const [isAgent, setAgent] = useState('');
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('User'));
-    if (!user) {
+    const User = JSON.parse(localStorage.getItem('User'));
+    if (!User) {
       router.push('/');
-    } else if (user.loginUser && user.loginUser.role == 'Admin') {
-      setAdmin(user.loginUser);
-    } else if (user.loginUser && user.loginUser.role == 'Agent') {
-      setAgent(user.loginUser);
+    } else if (User && User.role == 'Admin') {
+      setAdmin(User);
+    } else if (User && User.role == 'Agent') {
+      setAgent(User);
     }
   }, []);
   return (

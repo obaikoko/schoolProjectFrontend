@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '@/components/user/userMutetion';
+import { useDispatch } from 'react-redux';
+import { useLoginMutation } from '@/src/features/auth/usersApiSlice';
+import { setCredentials, logout } from '@/src/features/auth/authSlice';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
@@ -8,42 +9,39 @@ import Spinner from '@/components/Spinner';
 import style from '../styles/login.module.css';
 
 function loginPage() {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
   const { email, password } = formData;
+  const [login, { isLoading }] = useLoginMutation();
 
   const router = useRouter();
-  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    variables: { email, password },
-    onError: (error) => {
-      toast.error(error.message);
-    },
-    onCompleted: (data) => {
-      toast.success(`welcome ${data.loginUser.name} `);
-      localStorage.setItem('User', JSON.stringify(data));
-      router.push('/dashboard');
-    },
-  });
-if (loading) {
-  return <h1 className={style.loading}>Authenticating...</h1>;
-}
+
   const handleInputChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    loginUser(email, password);
-    setFormData({
-      email: '',
-      password: '',
-    });
+
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      toast.success('logged In');
+      router.push('/');
+    } catch (err) {
+      console.log(err?.data?.message || err.error);
+      toast.error(err?.data?.message || err.error);
+    }
   };
+
+if (isLoading) {
+  return <h1 className={style.loading}>Authenticating...</h1>;
+}
 
   return (
     <div className={style.container}>

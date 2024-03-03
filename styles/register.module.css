@@ -1,4 +1,4 @@
-.loading{
+.loading {
   width: 100vw;
   height: 20vh;
 }
@@ -11,7 +11,7 @@
 .registers {
   display: flex;
   flex-wrap: wrap;
-  /* align-items: center; */
+  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -104,6 +104,8 @@
 .allList {
   display: flex;
   flex-wrap: wrap;
+  margin: 10px;
+  justify-content: space-around;
 }
 .listContainer {
   width: 500px;

@@ -71,6 +71,10 @@ const StudentDetails = () => {
                   <h4>{data.studentDetails.sponsor.name}</h4>
                 </li>
                 <li>
+                  Contact <br />
+                  <h4>{data.studentDetails.sponsor.phoneNumber}</h4>
+                </li>
+                <li>
                   Sponser Relationship <br />
                   <h4>{data.studentDetails.sponsor.relationship}</h4>
                 </li>

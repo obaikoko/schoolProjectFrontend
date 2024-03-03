@@ -76,6 +76,10 @@ const StaffDetails = () => {
                   <h4>{data.staffDetail.residence}</h4>
                 </li>
                 <li>
+                  Email Address <br />
+                  <h4>{data.staffDetail.email}</h4>
+                </li>
+                <li>
                   Contact <br />
                   <h4>{data.staffDetail.phone}</h4>
                 </li>

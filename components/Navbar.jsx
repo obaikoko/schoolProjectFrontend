@@ -1,10 +1,18 @@
 import Link from 'next/link';
 import style from '../styles/nav.module.css';
 import { useState, useEffect } from 'react';
+import { useLogoutMutation } from '@/src/features/auth/usersApiSlice';
+import { logout } from '@/src/features/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState('');
   const [open, setIsOpen] = useState(false);
+
+  const [logoutApi, { isLoading }] = useLogoutMutation();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const loginUser = JSON.parse(localStorage.getItem('User'));
@@ -15,9 +23,16 @@ const Navbar = () => {
     setIsOpen(!open);
     document.body.classList.toggle('stopScrolling');
   };
-  const handleLogout = () => {
-        setIsOpen(!open);
-        document.body.classList.toggle('stopScrolling');
+  const handleLogout = async() => {
+      try {
+      await logoutApi().unwrap();
+      dispatch(logout);
+    } catch (error) {
+      toast.error(error);
+      console.log(error);
+    }
+    setIsOpen(!open);
+    document.body.classList.toggle('stopScrolling');
     localStorage.removeItem('User');
     setIsLoggedIn('');
   };
@@ -108,8 +123,11 @@ const Navbar = () => {
             </li>
           ) : (
             <li>
-            
-              <Link onClick={menuBtnClicked} className={style.navLink} href='/login'>
+              <Link
+                onClick={menuBtnClicked}
+                className={style.navLink}
+                href='/login'
+              >
                 login
               </Link>
             </li>
