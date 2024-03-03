@@ -26,7 +26,7 @@ const Navbar = () => {
   const handleLogout = async() => {
       try {
       await logoutApi().unwrap();
-      dispatch(logout);
+      dispatch(logout());
     } catch (error) {
       toast.error(error);
       console.log(error);
