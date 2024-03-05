@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import style from '../styles/nav.module.css';
 import { useState, useEffect } from 'react';
-// import { useLogoutMutation } from '@/src/features/auth/usersApiSlice';
-import { logout, reset } from '@/src/features/auth/authSlice';
+import { useLogoutMutation } from '@/src/features/auth/usersApiSlice';
+import { logout } from '@/src/features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -10,14 +10,13 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState('');
   const [open, setIsOpen] = useState(false);
 
-  // const [logoutApi, { isLoading }] = useLogoutMutation();
-  const { user, isSuccess } = useSelector((state) => state.auth);
+  const [logoutApi, { isLoading }] = useLogoutMutation();
+  const { user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     // const loginUser = JSON.parse(localStorage.getItem('User'));
-
     setIsLoggedIn(user);
   }, [user]);
 
@@ -27,7 +26,7 @@ const Navbar = () => {
   };
   const handleLogout = async () => {
     try {
-      // await logoutApi().unwrap();
+      await logoutApi().unwrap();
       dispatch(logout());
     } catch (error) {
       toast.error(error);
@@ -35,12 +34,9 @@ const Navbar = () => {
     }
     setIsOpen(!open);
     document.body.classList.toggle('stopScrolling');
-    localStorage.removeItem('user');
+    localStorage.removeItem('User');
     setIsLoggedIn('');
   };
-  if (isSuccess) {
-    // dispatch(reset());
-  }
   return (
     <>
       <div className={open ? `${style.overlay}` : ''}></div>
