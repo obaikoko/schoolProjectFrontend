@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useLoginMutation } from '@/src/features/auth/usersApiSlice';
-import { setCredentials, logout } from '@/src/features/auth/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useLoginMutation } from '@/src/features/auth/usersApiSlice';
+// import { setCredentials, logout } from '@/src/features/auth/authSlice';
+import { login, logout, reset } from '@/src/features/auth/authSlice';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
@@ -10,14 +11,15 @@ import style from '../styles/login.module.css';
 
 function loginPage() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
   const { email, password } = formData;
-  const [login, { isLoading }] = useLoginMutation();
-
-  const router = useRouter();
+  const { name, isLoading, isSuccess, isError } = useSelector(
+    (state) => state.auth
+  );
 
   const handleInputChange = (e) => {
     setFormData((prevState) => ({
@@ -29,19 +31,20 @@ function loginPage() {
     e.preventDefault();
 
     try {
-      const res = await login({ email, password }).unwrap();
-      dispatch(setCredentials({ ...res }));
-      toast.success(`welcome ${res.name}`);
-      router.push('/');
+      dispatch(login(formData));
     } catch (err) {
       console.log(err?.data?.message || err.error);
       toast.error(err?.data?.message || err.error);
     }
   };
 
-if (isLoading) {
-  return <h1 className={style.loading}>Authenticating...</h1>;
-}
+  if (isLoading) {
+    return <h1 className={style.loading}>Authenticating...</h1>;
+  }
+  if (isSuccess) {
+    router.push('/register');
+    dispatch(reset());
+  }
 
   return (
     <div className={style.container}>
