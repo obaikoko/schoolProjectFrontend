@@ -15,14 +15,14 @@ const client = new ApolloClient({
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <ApolloProvider client={client}>
-        <Provider store={store}>
+      <Provider store={store}>
+        <ApolloProvider client={client}>
           <Layout>
             <Component {...pageProps} />
             <ToastContainer />
           </Layout>
-        </Provider>
-      </ApolloProvider>
+        </ApolloProvider>
+      </Provider>
     </>
   );
 }
