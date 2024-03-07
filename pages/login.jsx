@@ -32,7 +32,7 @@ function loginPage() {
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
-      toast.success(` ${res.firstName}`);
+      toast.success(`welcome ${res.firstName}`);
       router.push('/');
     } catch (err) {
       console.log(err?.data?.message || err.error);
