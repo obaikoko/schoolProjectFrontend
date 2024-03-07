@@ -5,9 +5,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-.stopScrolling{
+.stopScrolling {
   overflow: hidden;
 }
-body{
-  background-image: -o-repeating-linear-gradient();
+body {
+  /* background-image: -o-repeating-linear-gradient(); */
 }

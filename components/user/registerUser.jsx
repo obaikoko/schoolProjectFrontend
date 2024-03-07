@@ -7,16 +7,18 @@ import style from '@/styles/register.module.css';
 function AddUser() {
   const [isUserForm, setIsUserForm] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     role: '',
   });
 
-  const { name, email, password, role } = formData;
+  const { firstName, lastName, email, password, role } = formData;
   const [addUser, { loading, error }] = useMutation(ADD_USER, {
     variables: {
-      name,
+      firstName,
+      lastName,
       email,
       password,
       role,
@@ -26,7 +28,7 @@ function AddUser() {
       console.log(error.message);
     },
     onCompleted: () => {
-      toast.success('Finally Thank God');
+      toast.success(`${firstName} Account created Successfully `);
     },
   });
 
@@ -39,7 +41,7 @@ function AddUser() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addUser(name, email, password, role);
+    addUser(firstName, lastName, email, password, role);
   };
   const clickedUserForm = () => {
     setIsUserForm(!isUserForm);
@@ -64,13 +66,24 @@ function AddUser() {
         <form className={style.form} onSubmit={onSubmit}>
           <h2>Register User</h2>
           <div className={style.formGroup}>
-            <label htmlFor='userName'>Name</label>
+            <label htmlFor='userFirstName'>First Name</label>
             <input
               className={style.form}
               type='text'
-              name='name'
-              id='userName'
-              value={name}
+              name='firstName'
+              id='userFirstName'
+              value={firstName}
+              onChange={onChange}
+            />
+          </div>
+          <div className={style.formGroup}>
+            <label htmlFor='userLastName'>Last Name</label>
+            <input
+              className={style.form}
+              type='text'
+              name='lastName'
+              id='userLastName'
+              value={lastName}
               onChange={onChange}
             />
           </div>
